@@ -1,0 +1,3 @@
+killall hyprpaper
+
+hyprpaper 
