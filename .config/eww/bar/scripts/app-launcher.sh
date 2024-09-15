@@ -1,0 +1,1 @@
+rofi -show drun

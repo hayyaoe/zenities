@@ -1,0 +1,24 @@
+[env]
+TERM = "xterm-256color"
+
+[cursor.style]
+blinking = "on"
+shape = "Beam"
+[window]
+padding.x = 30
+padding.y = 30
+decorations = "full"
+dynamic_title = true
+
+opacity = 0.8
+blur = true
+
+option_as_alt = "Both"
+
+[font.normal]
+family = "Mononoki"
+
+[window.dimensions]
+columns = 60
+lines = 20
+

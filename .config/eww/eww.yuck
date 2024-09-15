@@ -1,0 +1,11 @@
+;;;;; Variables ;;;;;;
+
+(deflisten workspaces :initial "[]" "sh ~/.config/eww/bar/scripts/get-workspaces.sh")
+(deflisten current_workspace :initial "1" "sh ~/.config/eww/bar/scripts/get-active-workspace.sh")
+
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; Widgets ;;
+
+(include "bar/eww.yuck")
+;; (include "wallpaper-switcher/eww.yuck")

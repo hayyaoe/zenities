@@ -1,0 +1,124 @@
+* {
+  bg: rgba(0,0,0,0.9);
+  fg: rgba(255,255,255, 0.9);
+  secondary: rgba(10,10,10,0.4);
+  primary: rgba(20,20,20,0.6);
+}
+
+
+window {
+    background-color: @bg;
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       400px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    margin:                      0px;
+    padding:                     0px;
+}
+mainbox {
+    border:  0;
+    padding: 0;
+}
+message {
+    border:       1px dash 0px 0px ;
+    padding:      1px ;
+}
+textbox {
+    text-color: @fg;
+}
+listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    border-color: @bg;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+element {
+    border:  0;
+    padding: 1px ;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element.normal.normal {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.normal.urgent {
+    background-color: @bg;
+    text-color:       @secondary;
+}
+element.normal.active {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.selected.normal {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.selected.urgent {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.selected.active {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.alternate.normal {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.alternate.urgent {
+    background-color: @bg;
+    text-color:       @primary;
+}
+element.alternate.active {
+    background-color: @bg;
+    text-color:       @secondary;
+}
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      0;
+}
+mode-switcher {
+    border:       2px dash 0px 0px ;
+    border-color: @secondary;
+}
+button.selected {
+    background-color: @bg;
+    text-color:       @primary;
+}
+inputbar {
+    spacing:    0;
+    text-color: @primary;
+    padding:    1px ;
+}
+case-indicator {
+    spacing:    0;
+    text-color: @primary;
+}
+entry {
+    spacing:    0;
+    text-color: @primary;
+}
+prompt {
+    spacing:    0;
+    text-color: @primary;
+}
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @primary;
+}
+
