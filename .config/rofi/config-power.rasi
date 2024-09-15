@@ -1,0 +1,95 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+/**
+ * Abuku Color Theme
+ * User: Abuku
+ * Copyright: Hayya U
+ */
+
+configuration {
+    modi:                       "drun,run";
+    font:                       "Mononoki 24";
+}
+
+window {
+    width:                        520px;
+    x-offset:                     0px;
+    y-offset:                     0px;
+    padding:                      10px;
+    margin:                       0px;
+    border:                       0px;
+    border-color:                 transparent;
+    cursor:                       "default";
+    transparency:                 "real";
+    location:                     center;
+    anchor:                       center;
+    fullscreen:                   false;
+    enabled:                      true;
+    border-radius:                12px;
+}
+
+mainbox {
+  enabled:                      true;
+    spacing:                      0px;
+    margin:                       0px;
+    background-color:             transparent;
+    children:                     ["listbox"];
+}
+
+listbox {
+  enabled:                        true;
+    spacing:                      0;
+    background-color:             transparent;
+    children:                     ["listview"];
+}
+
+listview {
+    enabled:                     true;
+    columns:                     5;
+    lines:                       1;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     15px;
+    background-color:            transparent;
+    cursor:                     "default";
+    }
+
+element {
+    spacing: 8px;
+    margin: 0;
+    padding: 20px 25px 20px 30px;
+    border: 0px solid;
+    border-radius: 8px;
+    background-color: transparent;
+    enabled: true;
+    cursor: pointer;
+
+}
+
+element normal.normal {
+    background-color: transparent;
+}
+
+element alternate.normal {
+    background-color: transparent;
+}
+
+element selected.active {
+    text-color: @background;
+}
+
+element selected.normal {
+    text-color: @background;
+}
+
+message {
+    background-color: red;
+    border: 0px solid;
+}
+

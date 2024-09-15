@@ -1,0 +1,113 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+/**
+ * Abuku Color Theme
+ * User: Abuku
+ * Copyright: Hayya U
+ */
+
+
+configuration {
+    modi:                       "drun,run";
+    font:                       "Mononoki 14";
+    show-icons:                 true;
+    hover-select:               false;
+    scroll-method:              1;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+    
+}
+
+window {
+    width:                        350px;
+    x-offset:                     0px;
+    y-offset:                     0px;
+    spacing:                      0px;
+    padding:                      10px;
+    margin:                       0px; 
+    border:                       0px;
+    border-color:                 transparent;
+    cursor:                       "default";
+    transparency:                 "real";
+    location:                     center;
+    anchor:                       center;
+    fullscreen:                   false;
+    enabled:                      true;
+    border-radius:                12px;
+}
+
+mainbox {
+    enabled:                      true;
+    orientation:                  vertical;
+    spacing:                      0px;
+    margin:                       0px;
+    background-color:             transparent;
+    children:                     ["listbox"];
+}
+
+listbox {
+    spacing:                     4px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listview" ];
+}
+
+listview {
+    columns: 1;
+    lines: 3;
+    fixed-height: true;
+    fixed-columns: true;
+    cycle: false;
+    scrollbar: false;
+    border: 0px solid;
+}
+
+
+prompt {
+    padding: 0 5px 0 5px;
+}
+
+inputbar {
+    children: ["prompt", "entry"];
+    spacing: 2px;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+entry {
+    placeholder: "select";
+    padding: 2px;
+}
+
+
+listview{
+    border-radius: 8px;
+}
+
+element {
+    spacing: 0;
+    margin: 0;
+    padding: 4px;
+    border: 0px solid;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+element normal.normal {
+	background-color: transparent;
+}
+
+element alternate.normal {
+	background-color: transparent;
+}
+
+element selected.active {
+	text-color: @background;
+}
+
+element selected.normal {
+	text-color: @background;
+}
+

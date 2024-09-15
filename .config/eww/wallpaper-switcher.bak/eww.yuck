@@ -1,0 +1,44 @@
+;;;;;; Widget ;;;;;;;
+
+;; selector ;;
+(defwidget selector []
+  (box  :class "selector"
+        :vexpand "false"
+        :hexpand "false"
+        :orientation "horizontal"
+        (scroll :vscroll "false"
+                :hscroll "true"
+                (for wallpaper in wallpapers
+                      (button :class "wallpaper"
+                              :onclick ""
+                              "${current_workspace == workspace.id ? "" : ""}")))))
+
+;; preview ;;
+(defwidget preview []
+  (box  :class "preview"
+        :vexpand "false"
+        :hexpand "false"
+        :style "background-image: url('~/wallpapers/kogecha1.png');"))
+
+;; win ;;
+(defwidget win []
+  (box  :class "window"
+        :vexpand "false"
+        :hexpand "false"
+        :orientation "vertical"
+        (preview)))
+
+;;;;;; Windows ;;;;;;
+
+(defwindow wallpaper-switcher
+          :monitor 0
+          :windowtype "normal"
+          :geometry (geometry :x "0"
+                              :y "0"
+                              :width "600px"
+                              :height "400px"
+                              :anchor "center")
+          :stacking "fg"
+          :exclusive "true"
+          :focusable "false"
+(win))

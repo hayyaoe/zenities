@@ -1,0 +1,12 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
+[manager]
+# : Manager {{{
+
+# Border
+
+border_symbol = " "
+border_style  = { fg = "#838ba7" }
+
+# : }}}
+

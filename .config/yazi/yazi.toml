@@ -1,0 +1,99 @@
+[manager]
+ratio = [2, 2, 4]
+sort_by = "natural"
+sort_sensitive = true
+sort_reverse = false
+sort_dir_first = true
+linemode = "size"
+show_hidden = false
+show_symlink = true
+scrolloff = 5
+
+[preview]
+tab_size = 2
+max_width = 600
+max_height = 900
+cache_dir = ""
+image_filter = "triangle"
+image_quality = 75
+sixel_fraction = 15
+ueberzug_scale = 1
+ueberzug_offset = [0, 0, 0, 0]
+
+[opener]
+edit = [
+  # editor
+  { run = 'nvim "$@"', block = true, for = "unix" },
+  { run = 'code "$@"', block = true, for = "unix" },
+  { run = 'code "%*"', orphan = true, for = "windows" },
+]
+open = [
+  # system app
+  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+  { run = 'start "%1"', orphan = true, desc = "Open", for = "windows" },
+]
+reveal = [
+  # reveal
+  { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
+  { run = 'explorer /select,%1', orphan = true, desc = "Reveal", for = "windows" },
+  { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
+]
+extract = [
+  # extract
+  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
+  { run = 'unar "%1"', desc = "Extract here", for = "windows" },
+]
+play = [
+  # media
+  { run = 'vlc "$@"', orphan = true, for = "unix" },
+  { run = 'vlc "%1"', orphan = true, for = "windows" },
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
+]
+
+[open]
+rules = [
+  # rules for open file
+  { name = "*/", use = ["edit", "open", "reveal"] },
+
+  { mime = "text/*", use = ["edit", "reveal"] },
+  { mime = "image/*", use = ["open", "reveal"] },
+  { mime = "video/*", use = ["play", "reveal"] },
+  { mime = "audio/*", use = ["play", "reveal"] },
+  { mime = "inode/x-empty", use = ["edit", "reveal"] },
+
+  { mime = "application/json", use = ["edit", "reveal"] },
+  { mime = "*/javascript", use = ["edit", "reveal"] },
+
+  { mime = "application/zip", use = ["extract", "reveal"] },
+  { mime = "application/gzip", use = ["extract", "reveal"] },
+  { mime = "application/x-tar", use = ["extract", "reveal"] },
+  { mime = "application/x-bzip", use = ["extract", "reveal"] },
+  { mime = "application/x-bzip2", use = ["extract", "reveal"] },
+  { mime = "application/x-7z-compressed", use = ["extract", "reveal"] },
+  { mime = "application/x-rar", use = ["extract", "reveal"] },
+  { mime = "application/xz", use = ["extract", "reveal"] },
+
+  { mime = "*", use = ["open", "reveal"] },
+]
+
+[tasks]
+micro_workers = 5
+macro_workers = 10
+bizarre_retry = 5
+image_alloc = 536870912
+image_bound = [0, 0]
+suppress_preload = false
+
+[plugin]
+
+preloaders = [
+  { name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
+  # Image
+  { mime = "image/vnd.djvu", run = "noop" },
+  { mime = "image/*", run = "image" },
+  # Video
+  { mime = "video/*", run = "video" },
+  # PDF
+  { mime = "application/pdf", run = "pdf" },
+]

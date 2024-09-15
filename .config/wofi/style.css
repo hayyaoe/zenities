@@ -1,0 +1,52 @@
+* {
+  font-family: Mononoki;
+  font-size: 18px;
+}
+
+window {
+  width: 200px;
+  background-color: rgba(50, 50, 50, 0.8);
+  border-radius: 12px;
+  padding: 0 0 8px 0;
+}
+
+#input {
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(20, 20, 20, 0.4);
+  color: #ffffff;
+}
+
+#inner-box {
+}
+
+#outer-box {
+}
+
+#scroll {
+  background-color: rgba(40, 40, 40, 0.6);
+  margin: 0 8px 8px 8px;
+  border-radius: 6px;
+}
+
+#text {
+  padding: 5px;
+  color: white;
+}
+
+#entry {
+  background-color: transparent;
+}
+
+#entry:selected {
+  background-color: rgba(20, 20, 20, 0.6);
+  border-radius: 6px;
+}
+
+#expander-box{
+  background-color: transparent;
+}
+
+#text:selected {
+}
