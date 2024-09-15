@@ -18,10 +18,13 @@ if [ -n "$SELECTED_WALLPAPER" ]; then
           -e "s|wallpaper = ,.*|wallpaper = ,$HOME/wallpapers/$SELECTED_WALLPAPER|" "$TARGET_FILE"
    sed -i -e "s|path = .*|path = $HOME/wallpapers/$SELECTED_WALLPAPER|" "$TARGET_FILE2"
 
-   killall hyprpaper
-   hyprpaper
+    killall hyprpaper
+    hyprpaper
 
-   killall waybar
-   waybar
+   cd 
+   killall eww
+   ./eww/target/release/eww open bar
+
+
 fi
 
