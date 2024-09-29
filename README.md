@@ -19,9 +19,10 @@ This installation script **only works on Arch Linux** and requires **Hyprland** 
     sudo pacman -S git
     ```
 
-2. Clone this repository:
+2. Clone this repository in your Home directory:
 
     ```bash
+    cd $HOME
     git clone https://github.com/hayyaoe/zenities
     ```
 
