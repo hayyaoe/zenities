@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install necessary packages via pacman
-sudo pacman -S --noconfirm git github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh
+sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh
 
 # Clone zenities dotfiles
 cd $HOME/.config
