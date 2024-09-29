@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove symlinked dotfiles installed by stow
-cd $HOME/.config/zenities
+cd $HOME/zenities
 stow -D .
 
 # Restore the original hypr and kitty configurations (if backups exist)
@@ -17,7 +17,7 @@ if [ -d "kitty.bak" ]; then
 fi
 
 # Remove cloned zenities dotfiles
-cd $HOME/.config
+cd $HOME
 rm -rf zenities
 
 # Clean up Eww
