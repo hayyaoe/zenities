@@ -1,6 +1,6 @@
 # Get the current position of the song in seconds
-POSITION=$(playerctl position)
-LENGTH_MICROSECONDS=$(playerctl metadata --format "{{mpris:length}}")
+POSITION=$(playerctl --player=ncspot position)
+LENGTH_MICROSECONDS=$(playerctl --player=ncspot metadata --format "{{mpris:length}}")
 
 # Calculate the percentage using Python
 PERCENTAGE=$(python3 -c "
