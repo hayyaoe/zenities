@@ -6,11 +6,6 @@ Thank you so much for visiting my Hyprland rice. I'm relatively new to ricing, a
 
 I hope you enjoy it, and feel free to use this rice!
 
-
-## Installation
-
-# Zenities
-
 ## Installation
 
 ### ⚠️ Requirements ⚠️
