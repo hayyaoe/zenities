@@ -9,8 +9,43 @@ I hope you enjoy it, and feel free to use this rice!
 
 ## Installation
 
-#### Coming Soon!
-    
+# Zenities
+
+## Installation
+
+### ⚠️ Requirements ⚠️
+This installation script **only works on Arch Linux** and requires **Hyprland** to be installed.
+
+### Steps
+
+1. Open your terminal and install Git:
+
+    ```bash
+    sudo pacman -S git
+    ```
+
+2. Clone this repository:
+
+    ```bash
+    git clone https://github.com/hayyaoe/zenities
+    ```
+
+3. Navigate to the project directory:
+
+    ```bash
+    cd zenities
+    ```
+
+4. Run the installation script:
+
+    ```bash
+    sh INSTALL.sh
+    ```
+
+---
+
+For more details or issues, please visit the repository’s [issues page](https://github.com/hayyaoe/zenities/issues).
+
 ## Details
 
 - OS: **[Arch Linux](https://github.com/archlinux)**
