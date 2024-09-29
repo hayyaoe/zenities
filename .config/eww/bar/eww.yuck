@@ -15,8 +15,8 @@
 ;;;;; Deflistens ;;;;;
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ title }}' || true")
-(deflisten current-music-cover :initial "" "playerctl --follow metadata --format {{mpris:artUrl}}")
+  "playerctl --player=ncspot --follow metadata --format '{{ title }}' || true")
+(deflisten current-music-cover :initial "" "playerctl --player=ncspot --follow metadata --format {{mpris:artUrl}}")
 
 ;;;;;;;;;;;;;;;;;;;;;;
 
@@ -28,10 +28,14 @@
                             "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
 (defpoll current-brightness :interval "1s" 
                             :initial "0"
-                            "light -G")
+                            "echo $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))
+")
 (defpoll current-battery    :interval "15s" 
                             :initial "0"
                             "~/.config/eww/bar/scripts/get-battery.sh")
+(defpoll time-left          :interval "15s"
+                            :initial "0"
+                            "~/.config/eww/bar/scripts/get-time-left.sh")
 (defpoll current-memory     :interval "10s"    
                             :initial "0"
                             "~/.config/eww/bar/scripts/get-memory.sh")
@@ -84,11 +88,11 @@
                 :space-evenly "true"
                 :spacing "16"
             (button :class "prev"
-                    :onclick "playerctl previous" "")
+                    :onclick "playerctl --player=ncspot previous" "")
             (button :class "pause"
-                    :onclick "playerctl play-pause" "")
+                    :onclick "playerctl --player=ncspot play-pause" "")
             (button :class "next"
-                    :onclick "playerctl next" "")))
+                    :onclick "playerctl --player=ncspot next" "")))
       )
     )
 )
@@ -230,7 +234,7 @@
                :orientation "horizontal"
                :max 101
                :min 0
-               :onchange "light -S {}%")
+               :onchange "brightnessctl s {}%")
       )
     )
   )
@@ -248,13 +252,13 @@
                        :class "batterybar"
                        :thickness 4
       (button :class "battery-icon"
-              :tooltip "battery: ${current-battery}%"
+              :tooltip time-left
               ""))
       (revealer :transition "slideleft"
                 :reveal battery
                 :duration "300ms"
         (label  :class "battery-label"
-                :tooltip "battery: ${current-battery}%"
+                :tooltip time-left
                 :text "${current-battery}%")))
   )
 )
@@ -363,7 +367,7 @@
                               :width "99%"
                               :height "20px"
                               :anchor "top center")
-          :stacking "fg"
+          :stacking "bg"
           :exclusive "true"
           :focusable "false"
           (bar))
