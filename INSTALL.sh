@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Install necessary packages via pacman
+cd $HOME
 sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh
 
 # Clone zenities dotfiles
 cd $HOME/.config
 mv hypr hypr.bak 2>/dev/null
 mv kitty kitty.bak 2>/dev/null
-git clone https://github.com/hayyaoe/zenities
-cd zenities
+cd $HOME/zenities
 stow .
 
 # Go back to home directory
