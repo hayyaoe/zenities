@@ -38,6 +38,11 @@ This installation script **only works on Arch Linux** and requires **Hyprland** 
     sh INSTALL.sh
     ```
 
+### Note
+After installing this rice, the system will automatically reboot. On the first load, the colors may appear incorrect because the cache from Pywal is not available yet. To fix this, you will need to reload the wallpaper 2-3 times by using the key combination `SUPER + SHIFT + W` to open the wallpaper picker then pick a wallpaper so pywal reloads.  
+- On macOS, the `SUPER` key refers to the **Command** key.
+- On most other keyboards, `SUPER` refers to the **Windows** key.
+
 ---
 
 For more details or issues, please visit the repository’s [issues page](https://github.com/hayyaoe/zenities/issues).
