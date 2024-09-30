@@ -21,7 +21,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;; Defpolls ;;;;;
-
+(defpoll adjustable-brightness
+                            :interval "24h"
+                            :initial "false"
+                            "~/.config/eww/bar/scripts/is-brightness.sh")
+(defpoll has-battery
+                            :interval "24h"
+                            :initial "false"
+                            "~/.config/eww/bar/scripts/is-battery.sh")
 (defpoll clock :interval "10s" "date '+%H:%M'")
 (defpoll current-volume     :interval "1s" 
                             :initial "0"
@@ -50,7 +57,6 @@
 (defpoll calendar-year :interval "10h"
     "date '+%Y'")
 (defpoll calendar-short :interval "10h" "date '+%b %d, %Y'")
-
 ;;;;;;;;;;;;;;;;;;;;
 
 
@@ -59,7 +65,9 @@
 
 ;; Music ;;
 (defwidget music []
-  (eventbox :onhover "${eww} update music-control=true"
+  (eventbox :onhover "${eww} update music-control=true.false{
+  font-size: 0rem;
+}"
             :onhoverlost "${eww} update music-control=false"
             :cursor "pointer"
     (revealer :transition "slideup"
@@ -225,6 +233,7 @@
           :orientation "horizontal"
           :space-evenly "false"
           :spacing "2"
+          :visible adjustable-brightness
       (button :class "brightness-icon" "󰖨")
       (revealer :transition "slideleft"
                 :reveal brightness
@@ -248,6 +257,7 @@
   (box  :class "battery"
         :orientation "horizontal"
         :space-evenly "false"
+        :visible has-battery
     (circular-progress :value current-battery
                        :class "batterybar"
                        :thickness 4
@@ -360,7 +370,7 @@
 
 ;; bar ;;
 (defwindow bar
-          :monitor 0
+          :monitor '[1, 0]'
           :windowtype "dock"
           :geometry (geometry :x "10px"
                               :y "10px"
@@ -373,7 +383,7 @@
           (bar))
 
 (defwindow calendar
-          :monitor 0
+          :monitor '[1, 0]'
           :geometry (geometry :x "10px"
                               :y "5px"
                               :width "270px"

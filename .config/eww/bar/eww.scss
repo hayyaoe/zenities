@@ -16,6 +16,11 @@
   background-color: mix($background, $foreground, 95%);
 }
 
+.false{
+  font-size: 0rem;
+}
+
+
 .clock {
   color: $color6;
   padding: 0 4px 0 4px;
