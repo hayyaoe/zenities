@@ -65,9 +65,7 @@
 
 ;; Music ;;
 (defwidget music []
-  (eventbox :onhover "${eww} update music-control=true.false{
-  font-size: 0rem;
-}"
+  (eventbox :onhover "${eww} update music-control=true"
             :onhoverlost "${eww} update music-control=false"
             :cursor "pointer"
     (revealer :transition "slideup"
