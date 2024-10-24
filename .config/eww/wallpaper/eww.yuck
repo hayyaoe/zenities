@@ -1,4 +1,6 @@
 ;;;;;; Widget ;;;;;;;
+(defvar wallpapers "$HOME/eww/wallpaper/scripsts/get-wallpapers.sh")
+
 
 ;; selector ;;
 (defwidget selector []
@@ -11,7 +13,7 @@
                 (for wallpaper in wallpapers
                       (button :class "wallpaper"
                               :onclick ""
-                              "${current_workspace == workspace.id ? "" : ""}")))))
+                              )))))
 
 ;; preview ;;
 (defwidget preview []
@@ -30,7 +32,7 @@
 
 ;;;;;; Windows ;;;;;;
 
-(defwindow wallpaper-switcher
+(defwindow wallpaper
           :monitor 0
           :windowtype "normal"
           :geometry (geometry :x "0"
