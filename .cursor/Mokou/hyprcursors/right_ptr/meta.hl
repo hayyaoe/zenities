@@ -1,0 +1,27 @@
+# what resize algorithm to use when a size is requested
+# that doesn't match any of your predefined ones.
+# available: bilinear, nearest, none. None will pick the closest. Nearest is nearest neighbor.
+resize_algorithm = bilinear
+
+# "hotspot" is where in your cursor the actual "click point" should be.
+# this is in absolute coordinates. x+ is east, y+ is south.
+# the pixel coordinates of the hotspot at size are rounded to the nearest:
+# (round(size * hotspot_x), round(size * hotspot_y))
+hotspot_x = 0.0 # this goes 0 - 1
+hotspot_y = 0.0 # this goes 0 - 1
+
+# Define what cursor images this one should override.
+# What this means is that a request for a cursor name e.g. "arrow"
+# will instead use this one, even if this one is named something else.
+define_override = right_ptr
+
+# define your size variants.
+# Multiple size variants for the same size are treated as an animation.
+define_size = 64, select.png
+
+# If you want to animate it, add a timeout in ms at the end:
+# define_size = 64, anim1.png, 500
+# define_size = 64, anim2.png, 500
+# define_size = 64, anim3.png, 500
+# define_size = 64, anim4.png, 500
+# Make sure the timeout is > 0, as otherwise the consumer might ignore your timeouts for being invalid.
