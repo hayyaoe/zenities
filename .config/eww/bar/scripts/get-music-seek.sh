@@ -2,6 +2,9 @@
 POSITION=$(playerctl --player=ncspot position)
 LENGTH_MICROSECONDS=$(playerctl --player=ncspot metadata --format "{{mpris:length}}")
 
+POSITION=$(playerctl --player=spotify position)
+LENGTH_MICROSECONDS=$(playerctl --player=spotify metadata --format "{{mpris:length}}")
+
 # Calculate the percentage using Python
 PERCENTAGE=$(python3 -c "
 import sys
