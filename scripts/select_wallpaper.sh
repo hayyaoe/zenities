@@ -24,7 +24,7 @@ if [ -n "$SELECTED_WALLPAPER" ]; then
    cd 
    killall eww
    ./eww/target/release/eww open bar
-
+   ./eww/target/release/eww open bar
 
 fi
 

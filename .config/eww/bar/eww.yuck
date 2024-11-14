@@ -15,8 +15,8 @@
 ;;;;; Deflistens ;;;;;
 
 (deflisten music :initial ""
-  "playerctl --player=spotify --follow metadata --format '{{ title }}' || true")
-(deflisten current-music-cover :initial "" "playerctl --player=spotify --follow metadata --format {{mpris:artUrl}}")
+  "playerctl --player=ncspot --follow metadata --format '{{ title }}' || true")
+(deflisten current-music-cover :initial "" "playerctl --player=ncspot --follow metadata --format {{mpris:artUrl}}")
 
 ;;;;;;;;;;;;;;;;;;;;;;
 
@@ -94,11 +94,11 @@
                 :space-evenly "true"
                 :spacing "16"
             (button :class "prev"
-                    :onclick "playerctl --player=spotify previous" "")
+                    :onclick "playerctl --player=ncspot previous" "")
             (button :class "pause"
-                    :onclick "playerctl --player=spotify play-pause" "")
+                    :onclick "playerctl --player=ncspot play-pause" "")
             (button :class "next"
-                    :onclick "playerctl --player=spotify next" "")))
+                    :onclick "playerctl --player=ncspot next" "")))
       )
     )
 )
