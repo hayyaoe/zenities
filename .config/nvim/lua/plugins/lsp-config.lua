@@ -11,7 +11,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls", "html", "jsonls", "jdtls", "psalm", "sqls", "ts_ls", "cssls", "stylelint_lsp", "tailwindcss", "rust_analyzer"
+          "lua_ls", "html", "jsonls", "jdtls", "sqls", "ts_ls", "cssls", "stylelint_lsp", "tailwindcss", "rust_analyzer"
         } -- Install all required LSP servers through Mason
       })
     end
@@ -25,6 +25,9 @@ return {
       -- Lua
       lspconfig.lua_ls.setup({ capabilities = capabilities })
 
+      -- Python
+      lspconfig.pyright.setup({ capabilities = capabilities })
+
       -- HTML
       lspconfig.html.setup({ capabilities = capabilities })
 
@@ -36,6 +39,8 @@ return {
 
       -- Prisma LS
       lspconfig.prismals.setup({ capabilities = capabilities })
+
+      lspconfig.intelephense.setup({ capabilities = capabilities })
 
       -- TypeScript
       lspconfig.ts_ls.setup({

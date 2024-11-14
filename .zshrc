@@ -33,3 +33,4 @@ neofetch
 eval $(thefuck --alias)
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export PATH=$PATH:/home/abuku/.spicetify
+source /usr/share/nvm/init-nvm.sh
