@@ -1,5 +1,5 @@
 .main-bar {
-  background-color: mix($background, transparent, 90%);
+  background-color: rgba($background, $alpha: 0.84);
   padding: 5px;
   border-radius: 12px;
 }
