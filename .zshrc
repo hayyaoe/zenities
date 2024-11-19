@@ -21,6 +21,8 @@ eval "$(thefuck --alias fuck)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias ls="eza --color=always --long --git --no-permissions --icons=always"
+alias speed="speedtest-cli"
+alias spot="ncspot"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
