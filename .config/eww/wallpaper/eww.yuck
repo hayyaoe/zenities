@@ -1,46 +1,36 @@
-;;;;;; Widget ;;;;;;;
-(defvar wallpapers "$HOME/eww/wallpaper/scripsts/get-wallpapers.sh")
+(defpoll wallpapers :interval "10m" :initial "[1,2,3,4,5]" "~/zenities/.config/eww/wallpaper/scripts/get-wallpapers.sh");
 
 
-;; selector ;;
-(defwidget selector []
-  (box  :class "selector"
+(defwidget image-list []
+  (box :class "scroll-container" 
         :vexpand "false"
-        :hexpand "false"
-        :orientation "horizontal"
-        (scroll :vscroll "false"
-                :hscroll "true"
-                (for wallpaper in wallpapers
-                      (button :class "wallpaper"
-                              :onclick ""
-                              )))))
+        :hexpand "true"
+        :width 900;
+        :height 300;
+  (scroll :hscroll "true"
+          :hexpand "true"
+          (box :orientation "horizontal"
+               (for wallpaper in wallpapers
+                 (eventbox  :class "image-container"
+                            :onclick "~/zenities/.config/eww/wallpaper/scripts/change-wallpaper.sh ${wallpaper}"
+                            (box  :class "image-list-preview"
+                                  :width 300;
+                                  :height 300;
+                                  :orientation "vertical"
+                                  :style "background-image: url('../../../zenities/wallpapers/${wallpaper}.jpg');")))))))
 
-;; preview ;;
-(defwidget preview []
-  (box  :class "preview"
-        :vexpand "false"
-        :hexpand "false"
-        :style "background-image: url('~/wallpapers/kogecha1.png');"))
-
-;; win ;;
 (defwidget win []
-  (box  :class "window"
-        :vexpand "false"
-        :hexpand "false"
-        :orientation "vertical"
-        (preview)))
-
-;;;;;; Windows ;;;;;;
+  (box :class "window"
+       :vexpand "false"
+       :hexpand "false"
+       :orientation "vertical"
+       (image-list)))
 
 (defwindow wallpaper
-          :monitor 0
-          :windowtype "normal"
-          :geometry (geometry :x "0"
-                              :y "0"
-                              :width "600px"
-                              :height "400px"
-                              :anchor "center")
-          :stacking "fg"
-          :exclusive "true"
-          :focusable "false"
+           :monitor 0
+           :windowtype "normal"
+           :geometry (geometry :x "0" :y "0" :anchor "center")
+           :stacking "fg"
+           :exclusive "true"
+           :focusable "false"
 (win))

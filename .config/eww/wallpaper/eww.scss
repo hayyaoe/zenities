@@ -1,9 +1,20 @@
 .window{
-  background-color: mix($background, transparent, 80%);
-  padding: 4px;
+  background-color: rgba($background, $alpha: 0.84);
+  padding: 8px;
   border-radius: 12px;
 }
 
-.preview{
-  border-radius: 8px;
+.preview {
+  background-size: cover;  
+  background-position: center;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+.image-list-preview {
+  padding: 4px;
+  margin: 4px;
+  background-size: cover;  
+  background-position: center;
+  border-radius: 4px;
 }
