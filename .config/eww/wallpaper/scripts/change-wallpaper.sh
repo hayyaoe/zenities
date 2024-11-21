@@ -18,7 +18,8 @@ if [ -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
            -e "s|wallpaper = ,.*|wallpaper = ,$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE"
     sed -i -e "s|path = .*|path = $HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE2"
 
-    eww --restart open bar
+    killall eww
+    eww open bar
     
     killall hyprpaper
     hyprpaper
