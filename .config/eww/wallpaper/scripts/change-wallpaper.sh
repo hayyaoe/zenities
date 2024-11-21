@@ -12,18 +12,12 @@ if [ -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
     TARGET_FILE=$(readlink -f "$SYMLINK_CONFIG_FILE")
     TARGET_FILE2=$(readlink -f "$SYMLINK_LOCK_CONFIG")
 
-    wal -i "$HOME/wallpapers/$SELECTED_WALLPAPER"
-
     sed -i -e "s|preload = .*|preload = $HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" \
            -e "s|wallpaper = ,.*|wallpaper = ,$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE"
     sed -i -e "s|path = .*|path = $HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE2"
 
-    killall eww
-    eww open bar
-    
-    killall hyprpaper
-    hyprpaper
-
+    # Call the separate script to reload pywal, eww, and hyprpaper
+    ~/zenities/.config/eww/wallpaper/scripts/update-color.sh "$SELECTED_WALLPAPER"
 else
     echo "Wallpaper not found: $SELECTED_WALLPAPER"
 fi
