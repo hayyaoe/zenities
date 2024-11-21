@@ -25,9 +25,6 @@ return {
       -- Lua
       lspconfig.lua_ls.setup({ capabilities = capabilities })
 
-      -- Blade
-      lspconfig.tlint.setup({ capabilities = capabilities })
-
       -- Python
       lspconfig.pyright.setup({ capabilities = capabilities })
 
