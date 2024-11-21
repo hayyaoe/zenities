@@ -1,4 +1,4 @@
-(defpoll wallpapers :interval "10m" :initial "[1,2,3,4,5]" "~/zenities/.config/eww/wallpaper/scripts/get-wallpapers.sh");
+(defpoll wallpapers :interval "10m" :initial "[1,3,7,8,9]" "~/zenities/.config/eww/wallpaper/scripts/get-wallpapers.sh");
 
 
 (defwidget image-list []
@@ -17,7 +17,7 @@
                                   :width 300;
                                   :height 300;
                                   :orientation "vertical"
-                                  :style "background-image: url('../../../zenities/wallpapers/${wallpaper}.jpg');")))))))
+                                  :style "background-image: url('../../../zenities/wallpapers/preview-${wallpaper}.jpg');")))))))
 
 (defwidget win []
   (box :class "window"
