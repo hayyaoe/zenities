@@ -1,5 +1,5 @@
 .main-bar {
-  background-color: rgba($background, $alpha: 0.84);
+  background-color: mix($background, $foreground, 95%);
   padding: 5px;
   border-radius: 12px;
 }
@@ -184,7 +184,7 @@ tooltip.background{
 }
 
 .cal{
-  background-color: mix($background, transparent, 90%);
+  background-color: mix($background, $foreground, 95%);
   border-radius: 12px;
   padding: 4px;
 }
