@@ -1,4 +1,4 @@
-(defpoll wallpapers :interval "10m" :initial "[1,3,7,8,9]" "~/zenities/.config/eww/wallpaper/scripts/get-wallpapers.sh");
+(defpoll wallpapers :interval "10m" :initial "[1,7,8,9,12]" "~/zenities/.config/eww/wallpaper/scripts/get-wallpapers.sh");
 
 
 (defwidget image-list []
@@ -6,7 +6,7 @@
         :vexpand "false"
         :hexpand "true"
         :width 900;
-        :height 300;
+        :height 200;
   (scroll :hscroll "true"
           :hexpand "true"
           (box :orientation "horizontal"
@@ -15,7 +15,7 @@
                             :onclick "~/zenities/.config/eww/wallpaper/scripts/change-wallpaper.sh ${wallpaper}"
                             (box  :class "image-list-preview"
                                   :width 300;
-                                  :height 300;
+                                  :height 200;
                                   :orientation "vertical"
                                   :style "background-image: url('../../../zenities/wallpapers/preview-${wallpaper}.jpg');")))))))
 
@@ -28,9 +28,8 @@
 
 (defwindow wallpaper
            :monitor 0
-           :windowtype "normal"
-           :geometry (geometry :x "0" :y "0" :anchor "center")
-           :stacking "fg"
-           :exclusive "true"
-           :focusable "false"
+           :geometry (geometry :x "0" :y "50" :anchor "center bottom")
+           :stacking "overlay"
+           :exclusive "false"
+           :focusable "true"
 (win))
