@@ -369,7 +369,6 @@
 ;; bar ;;
 (defwindow bar
           :monitor '[1, 0]'
-          :windowtype "dock"
           :geometry (geometry :x "10px"
                               :y "10px"
                               :width "99%"

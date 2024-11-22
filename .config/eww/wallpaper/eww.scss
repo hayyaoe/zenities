@@ -1,5 +1,5 @@
 .window{
-  background-color: rgba($background, $alpha: 0.84);
+  background-color: mix($background, $foreground, 95%);
   padding: 8px;
   border-radius: 12px;
 }
