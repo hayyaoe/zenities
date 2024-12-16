@@ -1,66 +1,3 @@
-;;;;; Variables ;;;;;
-
-(defvar volume false)
-(defvar brightness false)
-(defvar battery false)
-(defvar memory false)
-(defvar launcher false)
-(defvar wifi false)
-(defvar music-control false)
-(defvar calendar false)
-(defvar eww "$HOME/eww/target/release/eww -c ~/.config/eww/")
-
-;;;;;;;;;;;;;;;;;;;;;
-
-;;;;; Deflistens ;;;;;
-
-(deflisten music :initial ""
-  "playerctl --player=ncspot --follow metadata --format '{{ title }}' || true")
-(deflisten current-music-cover :initial "" "playerctl --player=ncspot --follow metadata --format {{mpris:artUrl}}")
-
-;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;; Defpolls ;;;;;
-(defpoll adjustable-brightness
-                            :interval "24h"
-                            :initial "false"
-                            "~/.config/eww/bar/scripts/is-brightness.sh")
-(defpoll has-battery
-                            :interval "24h"
-                            :initial "false"
-                            "~/.config/eww/bar/scripts/is-battery.sh")
-(defpoll clock :interval "10s" "date '+%H:%M'")
-(defpoll current-volume     :interval "1s" 
-                            :initial "0"
-                            "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
-(defpoll current-brightness :interval "1s" 
-                            :initial "0"
-                            "echo $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))
-")
-(defpoll current-battery    :interval "15s" 
-                            :initial "0"
-                            "~/.config/eww/bar/scripts/get-battery.sh")
-(defpoll time-left          :interval "15s"
-                            :initial "0"
-                            "~/.config/eww/bar/scripts/get-time-left.sh")
-(defpoll current-memory     :interval "10s"    
-                            :initial "0"
-                            "~/.config/eww/bar/scripts/get-memory.sh")
-(defpoll current-music-seek :interval "1s" "~/.config/eww/bar/scripts/get-music-seek.sh")
-(defpoll current-wifi :interval "5s" "~/.config/eww/bar/scripts/get-network.sh")
-(defpoll wifi-strength :interval "5s" "~/.config/eww/bar/scripts/get-network-strength.sh")
-(defpoll volume-icon :interval "1s" "~/.config/eww/bar/scripts/get-volume-icons.sh")
-(defpoll calendar-day :interval "10h"
-    "date '+%d'")
-(defpoll calendar-month :interval "10h"
-    "~/.config/eww/bar/scripts/get-month.sh")
-(defpoll calendar-year :interval "10h"
-    "date '+%Y'")
-(defpoll calendar-short :interval "10h" "date '+%b %d, %Y'")
-;;;;;;;;;;;;;;;;;;;;
-
-
-
 ;;;;; Widgets ;;;;;
 
 ;; Music ;;
@@ -86,7 +23,7 @@
                :orientation "horizontal"
                :max 101
                :min 0
-               :onchange "~/.config/eww/bar/scripts/set-music-seek.sh {}"))
+               :onchange "~/.config/eww/scripts/set-music-seek.sh {}"))
         (revealer :transition "slideleft"
                   :reveal music-control
                   :duration "300ms"
@@ -98,11 +35,7 @@
             (button :class "pause"
                     :onclick "playerctl --player=ncspot play-pause" "")
             (button :class "next"
-                    :onclick "playerctl --player=ncspot next" "")))
-      )
-    )
-)
-  )
+                    :onclick "playerctl --player=ncspot next" "")))))))
 
 
 ;; button test ;;
@@ -116,7 +49,7 @@
     (box  :orientation "horizontal"
           :space-evenly "false"
       (button :class "launcher"
-              :onclick "~/.config/eww/bar/scripts/app-launcher.sh" "󰣇")
+              :onclick "~/.config/eww/scripts/app-launcher.sh" "󰣇")
       (revealer :transition "slideleft"
                 :reveal launcher
                 :duration "300ms"
@@ -129,7 +62,7 @@
                   :onclick "shutdown now" "")
           (button :class "lock"
                   :tooltip "Lock"
-                  :onclick "~/.config/eww/bar/scripts/lock.sh" "")
+                  :onclick "~/.config/eww/scripts/lock.sh" "")
           (button :class "reboot"
                   :tooltip "Reboot"
                   :onclick "reboot" "")
@@ -138,12 +71,7 @@
                   :onclick "killall Hyprland" "")
           (button :class "suspend"
                   :tooltip "Suspend"
-                  :onclick "systemctl suspend" "")
-        )
-      )
-    )
-  )
-  )
+                  :onclick "systemctl suspend" ""))))))
 
 ;; Clock ;;
 (defwidget clock []
@@ -157,12 +85,12 @@
             (revealer :transition "slideleft"
                       :reveal calendar
         (button :class "calendar"
-                :onclick "~/.config/eww/bar/scripts/calendar-popup.sh"
+                :onclick "~/.config/eww/scripts/calendar-popup.sh"
                 calendar-short)))))
 
 ;; Workspaces ;;
 (defwidget workspaces []
-  (eventbox :onscroll "sh ~/.config/eww/bar/scripts/change-active-workspace.sh {} ${current_workspace}"
+  (eventbox :onscroll "sh ~/.config/eww/scripts/change-active-workspace.sh {} ${current_workspace}"
     (box :orientation "h"
          :space-evenly false
          :class "workspaces"
@@ -170,11 +98,7 @@
       (for workspace in workspaces
         (button :class "workspace ${current_workspace == workspace.id ? "current" : ""}"
                 :onclick "hyprctl dispatch workspace ${workspace.id}"
-                "${current_workspace == workspace.id ? "" : ""}")
-      )
-    )
-  )
-)
+                "${current_workspace == workspace.id ? "" : ""}")))))
 
 ;; Wifi ;;
 (defwidget wifi []
@@ -186,15 +110,13 @@
         :orientation "horizontal"
         :space-evenly "false"
     (button :class "wifi-icon"
-            :onclick "~/.config/eww/bar/scripts/wifi-menu.sh" wifi-strength)
+            :onclick "~/.config/eww/scripts/wifi-menu.sh" wifi-strength)
     (revealer :transition "slideright"
               :reveal wifi
               :duration "300ms"
-              (button :onclick "~/.config/eww/bar/scripts/wifi-menu.sh"
+              (button :onclick "~/.config/eww/scripts/wifi-menu.sh"
               (label  :class "wifi-label"
-                      :text current-wifi)))))
-              )
-
+                      :text current-wifi))))))
 
 ;; Volume ;;
 (defwidget volume []
@@ -215,11 +137,7 @@
                :orientation "horizontal"
                :max 101
                :min 0
-               :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
-      )
-    )
-  )
-)
+               :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))))
 
 ;; Brightness ;;
 (defwidget brightness []
@@ -241,11 +159,7 @@
                :orientation "horizontal"
                :max 101
                :min 0
-               :onchange "brightnessctl s {}%")
-      )
-    )
-  )
-)
+               :onchange "brightnessctl s {}%")))))
 
 
 ;; Battery ;;
@@ -267,9 +181,7 @@
                 :duration "300ms"
         (label  :class "battery-label"
                 :tooltip time-left
-                :text "${current-battery}%")))
-  )
-)
+                :text "${current-battery}%")))))
 
 
 ;; Memory ;;
@@ -290,11 +202,9 @@
                 :duration "300ms"
         (label  :class "memory-label"
                 :tooltip "memory used: ${current-memory}%"
-                :text "${current-memory}%")))
-  )
-)
+                :text "${current-memory}%")))))
 
-;; Calendar Widget ""
+;; Calendar Widget ;;
 (defwidget cal []
 	(box :class "cal-box" 
 		 :orientation "v"
@@ -319,8 +229,7 @@
         :vexpand "false"
         :hexpand "false"
     (launcher)
-    (workspaces))
-)
+    (workspaces)))
 
 ;; Right Group ;;
 (defwidget right []
@@ -335,8 +244,7 @@
     (brightness)
     (volume)
     (wifi)
-    (clock))
-)
+    (clock)))
 
 ;; Center Group ;;
 (defwidget center []
@@ -346,8 +254,7 @@
         :halign "center"
         :vexpand "false"
         :hexpand "false"
-    (music))
-)
+    (music)))
 
 ;; Bar ;;
 (defwidget bar []
@@ -357,8 +264,7 @@
         :hexpand "false"
     (left)
     (center)
-    (right))
-)
+    (right)))
 
 ;;;;;;;;;;;;;;;;;;;;
 
