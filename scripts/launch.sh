@@ -6,4 +6,4 @@
 killall eww
  
 # Start eww bar
-eww open bar 
+eww open side-bar 
