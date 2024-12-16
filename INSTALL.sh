@@ -2,7 +2,7 @@
 
 # Install necessary packages via pacman
 cd $HOME
-sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh imagemagick
+sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh imagemagick acpi
 
 # Clone zenities dotfiles
 cd $HOME/.config
@@ -20,7 +20,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat python2
+yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git

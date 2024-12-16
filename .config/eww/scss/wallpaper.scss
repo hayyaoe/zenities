@@ -1,0 +1,20 @@
+.window{
+  background-color: mix($background, $foreground, 95%);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.preview {
+  background-size: cover;  
+  background-position: center;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+.image-list-preview {
+  padding: 4px;
+  margin: 4px;
+  background-size: cover;  
+  background-position: center;
+  border-radius: 4px;
+}

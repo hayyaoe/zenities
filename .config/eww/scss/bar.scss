@@ -1,0 +1,204 @@
+.main-bar {
+  background-color: mix($background, $foreground, 95%);
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.launcher {
+  font-size: 1.2rem;
+  color: $foreground;
+  padding: 0 12px 0 8px;
+  border-radius: 8px;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.launcher:hover {
+  background-color: mix($background, $foreground, 95%);
+}
+
+.false{
+  font-size: 0rem;
+}
+
+
+.clock {
+  color: $color6;
+  padding: 0 4px 0 4px;
+}
+
+.right {
+  color: $background;
+  font-size: 1.1rem;
+  border-radius: 50px;
+}
+
+.workspaces {
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  padding: 0 4px;
+}
+
+.workspace {
+  color: $color3;
+  border-radius: 1rem;
+  margin: 0 0.25rem;
+  padding: 0 0.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.workspace.current {
+  color: $color2;
+}
+
+.workspace:hover {
+  color: mix($foreground, $color2, 70%);
+}
+
+scale trough {
+  all: unset;
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 5px;
+  min-height: 4px;
+  min-width: 50px;
+  margin: 0 .5rem 0 .1rem ;
+}
+
+.volbar trough highlight {
+  min-height: 8px;
+  background-color: mix($color5, $foreground, 90%);
+  border-radius: 5px;
+}
+
+.brightnessbar trough highlight {
+  min-height: 8px;
+  background-color: mix($color6, $foreground, 90%);
+  border-radius: 5px;
+}
+
+.volume-icon{
+  color: mix($color5, $foreground, 90%);
+  padding: 0 10px 0 0;
+  font-size: 1rem;
+}
+
+.brightness-icon{
+  color: mix($color6, $foreground, 90%);
+  padding: 0 6px 0 2px;
+  font-size: 1.1rem;
+}
+
+.volume{
+  margin: 0 4px;
+}
+
+.brightness{
+  margin: 0 4px;
+}
+
+.wifi-icon{
+  color: mix($color2, $foreground, 90%);
+  font-size: 1.1rem;
+}
+
+.wifi{
+  padding: 0 12px 0 4px;
+}
+
+.batterybar{
+  margin: 0 0 0 12px;
+  color: mix($color3, $foreground, 90%);
+  background-color: mix($background, $foreground, 80%)
+}
+
+.battery-icon{
+  padding: 2px;
+  color: transparent;
+}
+
+.memorybar{
+  margin: 0 0 0 12px;
+  color: mix($color3, $foreground, 90%);
+  background-color: mix($background, $foreground, 80%)
+}
+
+.musicbar{
+  min-width: 150px;
+}
+.musicbar trough highlight {
+  min-height: 4px;
+  background-color: mix($color6, $foreground, 90%);
+  border-radius: 5px;
+}
+.music{
+  font-size: .7rem;
+}
+.memory-icon{
+  padding: 2px;
+  color: transparent;
+}
+
+tooltip.background{
+  color: $foreground;
+  background-color: $background;
+  border-radius: 8px;
+
+}
+
+.powermenu{
+  background-color: mix($background, $foreground, 98%);
+  color: $foreground;
+  font-size: 1rem;
+  padding: 0 12px 0 8px;
+  margin: 0 0 0 6px;
+  border-radius: 8px;
+
+}
+
+
+.music-control{
+  padding: 0 8px;
+}
+
+.song-cover-art {
+	background-size: cover;	
+	background-position: center;
+	min-height: 18px;
+	min-width: 25px;
+	margin: 2px 8px;
+  border-radius: 4px;
+}
+
+.wifi-label{
+  color: mix($color2, $foreground, 90%);
+  margin: 0 0 0 12px;
+}
+
+.battery-label{
+  color: mix($color3, $foreground, 90%);
+  margin: 0 4px 0 4px;
+}
+
+.memory-label{
+  color: mix($color3, $foreground, 90%);
+  margin: 0 4px 0 4px;
+}
+
+.cal{
+  background-color: mix($background, $foreground, 95%);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.calendar{
+  padding: 0 4px 0 8px;
+}
+
+.cal:selected{
+  background-color: $color9;
+  font-weight: bold;
+}
+
+.cal.indeterminate{
+  background-color: $color9;
+}

@@ -1,0 +1,32 @@
+(defwidget image-list []
+  (box :class "scroll-container" 
+        :vexpand "true"
+        :hexpand "false"
+        :width 300;
+        :height 600;
+  (scroll :vscroll "true"
+          :vexpand "true"
+          (box :orientation "vertical"
+               (for wallpaper in wallpapers
+                 (eventbox  :class "image-container"
+                            :onclick "~/zenities/.config/eww/scripts/change-wallpaper.sh ${wallpaper}"
+                            (box  :class "image-list-preview"
+                                  :width 300;
+                                  :height 200;
+                                  :orientation "vertical"
+                                  :style "background-image: url('../../../zenities/wallpapers/preview-${wallpaper}.jpg');")))))))
+
+(defwidget win []
+  (box :class "window"
+       :vexpand "false"
+       :hexpand "false"
+       :orientation "vertical"
+       (image-list)))
+
+(defwindow wallpaper
+           :monitor 0
+           :geometry (geometry :x "10" :y "10" :anchor "center left")
+           :stacking "overlay"
+           :exclusive "false"
+           :focusable "true"
+(win))
