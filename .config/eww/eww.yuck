@@ -1,11 +1,50 @@
 ;;;;; Variables ;;;;;;
+(deflisten workspaces :initial "[]" "sh ~/.config/eww/scripts/get-workspaces.sh")
+(defvar power-vert false)
+(deflisten current_workspace :initial "1" "sh ~/.config/eww/scripts/get-active-workspace.sh")
+(defvar volume false)
+(defvar brightness false)
+(defvar battery false)
+(defvar memory false)
+(defvar launcher false)
+(defvar wifi false)
+(defvar music-control false)
+(defvar calendar false)
+(defvar eww "eww -c ~/.config/eww/")
+;;;;;;;;;;;;;;;;;;;;;
 
-(deflisten workspaces :initial "[]" "sh ~/.config/eww/bar/scripts/get-workspaces.sh")
-(deflisten current_workspace :initial "1" "sh ~/.config/eww/bar/scripts/get-active-workspace.sh")
-
+;;;;; Deflistens ;;;;;
+(deflisten music :initial "" "playerctl --player=ncspot --follow metadata --format '{{ title }}' || true")
+(deflisten current-music-cover :initial "" "playerctl --player=ncspot --follow metadata --format {{mpris:artUrl}}")
 ;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;; Defpolls ;;;;;
+(defpoll hour :interval "10s" "date '+%H'")
+(defpoll minute :interval "10s" "date '+%M'")
+(defpoll adjustable-brightness :interval "24h" :initial "false" "~/.config/eww/scripts/is-brightness.sh")
+(defpoll wallpapers :interval "10m" :initial "[1,7,8,9,12]" "~/zenities/.config/eww/scripts/get-wallpapers.sh")
+(defpoll has-battery :interval "24h" :initial "false" "~/.config/eww/scripts/is-battery.sh")
+(defpoll clock :interval "10s" "date '+%H:%M'")
+(defpoll current-volume :interval "1s" :initial "0" "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
+(defpoll current-brightness :interval "1s" :initial "0" "echo $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))")
+(defpoll current-battery :interval "15s" :initial "0" "~/.config/eww/scripts/get-battery.sh")
+(defpoll time-left :interval "15s" :initial "0" "~/.config/eww/scripts/get-time-left.sh")
+(defpoll current-memory :interval "10s" :initial "0" "~/.config/eww/scripts/get-memory.sh")
+(defpoll current-music-seek :interval "1s" "~/.config/eww/scripts/get-music-seek.sh")
+(defpoll current-wifi :interval "5s" "~/.config/eww/scripts/get-network.sh")
+(defpoll wifi-strength :interval "5s" "~/.config/eww/scripts/get-network-strength.sh")
+(defpoll volume-icon :interval "1s" "~/.config/eww/scripts/get-volume-icons.sh")
+(defpoll calendar-day :interval "10h" "date '+%d'")
+(defpoll calendar-month :interval "10h" "~/.config/eww/scripts/get-month.sh")
+(defpoll calendar-year :interval "10h" "date '+%Y'")
+(defpoll calendar-short :interval "10h" "date '+%b %d, %Y'")
+(defpoll idle :interval "2s" :initial "false" "~/.config/eww/scripts/get-hypridle-status.sh")
+
+
+;;;;;;;;;;;;;;;;;;;;
 
 ;; Widgets ;;
 
-(include "bar/eww.yuck")
-(include "wallpaper/eww.yuck")
+(include "widgets/bar.yuck")
+(include "widgets/side-bar.yuck")
+(include "widgets/wallpaper.yuck")

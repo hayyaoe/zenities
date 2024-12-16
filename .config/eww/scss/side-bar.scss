@@ -1,0 +1,187 @@
+.side-bar {
+  background-color: mix($background, $foreground, 95%);
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.workspaces-vert {
+  font-weight: 900;
+  font-size: 0.75rem;
+  margin: 0 0 12px 0;
+}
+
+.workspace-vert {
+  color: $color3;
+  transition: color 0.3s ease-in-out;
+}
+
+.workspace-vert.current {
+  color: $color2;
+}
+
+.workspace-vert:hover {
+  color: mix($foreground, $color2, 70%);
+}
+
+.power-vert {
+  font-size: 1.22rem;
+  color: $foreground;
+  padding: 0 5px;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.power-vert:hover {
+  background-color: mix($background, $foreground, 95%);
+}
+
+.powermenu-vert {
+  font-family: "Font Awesome 6 Free";
+  font-size: 1rem;
+  padding: 2px 0 4px 0;
+  color: mix($color6, $background, 95%);
+}
+
+.suspend {
+  padding: 0 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.suspend:hover {
+  color: mix($background, $color6, 65%);
+}
+
+.shutdown {
+  padding: 0 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.shutdown:hover {
+  color: mix($background, $color6, 65%);
+}
+
+.lock {
+  padding: 0 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.lock:hover {
+  color: mix($background, $color6, 65%);
+}
+
+.reboot {
+  padding: 0 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.reboot:hover {
+  color: mix($background, $color6, 65%);
+}
+
+.clock-vert {
+  color: $color6;
+  padding: 4px;
+  margin: 2px 0 0 0;
+  border-radius: 8px;
+  background-color: mix($background, $color6, 90%);
+}
+
+.batterybar-vert {
+  margin: 0 0 0 12px;
+  color: mix($color3, $foreground, 90%);
+  background-color: mix($background, $foreground, 80%);
+}
+
+.battery-icon-vert {
+  padding: 2px;
+  color: transparent;
+}
+
+.battery-vert {
+  color: mix($color3, $foreground, 90%);
+  padding: 4px 0;
+}
+
+.memorybar-vert {
+  margin: 0 0 0 12px;
+  color: mix($color3, $foreground, 90%);
+  background-color: mix($background, $foreground, 80%);
+}
+
+.memory-icon-vert {
+  padding: 2px;
+  color: transparent;
+}
+
+.memory-vert {
+  color: mix($color3, $foreground, 90%);
+  padding: 4px 0;
+}
+
+.resource {
+  margin: 2px 0;
+  padding: 4px 0;
+  border-radius: 8px;
+  background-color: mix($background, $color6, 90%);
+}
+
+.device {
+  margin: 2px 0;
+  padding: 4px 0;
+  border-radius: 8px;
+  background-color: mix($background, $color6, 90%);
+}
+
+.brightnessbar-vert trough highlight {
+  min-height: 8px;
+  background-color: mix($color6, $foreground, 90%);
+  border-radius: 5px;
+}
+
+.brightness-icon-vert{
+  color: mix($color6, $foreground, 90%);
+  padding: 0 4px 0 0;
+  font-size: 1rem;
+}
+
+.brightness-vert{
+  margin: 0 4.75px;
+}
+
+.volbar-vert trough highlight {
+  min-height: 8px;
+  background-color: mix($color5, $foreground, 90%);
+  border-radius: 5px;
+}
+
+.volume-icon-vert{
+  color: mix($color5, $foreground, 90%);
+  padding: 0 6px 0 0px;
+  font-size: 1rem;
+}
+
+.wifi-icon-vert{
+  color: mix($color2, $foreground, 90%);
+  font-size: 1rem;
+}
+
+.wifi-vert{
+  padding: 0 5px 0 6px;
+}
+
+.toggle-idle{
+  color: mix($color2, $foreground, 90%);
+  font-size: 0.9rem;
+  padding: 0 5.5px 2px 0;
+}
+
+ scale trough{
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 5px;
+  min-height: 30px;
+  min-width: 9px;
+  margin: 4px;
+}
+
+

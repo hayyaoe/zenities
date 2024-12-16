@@ -23,6 +23,7 @@ eval "$(thefuck --alias fuck)"
 alias ls="eza --color=always --long --git --no-permissions --icons=always"
 alias speed="speedtest-cli"
 alias spot="ncspot"
+alias y="yazi"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
