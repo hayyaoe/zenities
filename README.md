@@ -7,11 +7,6 @@ Thank you so much for visiting my Hyprland rice. I'm relatively new to ricing, a
 I hope you enjoy it, and feel free to use this rice!
 
 ## Prerequisite
-You have to disable autogenerate on the hyprconfig.conf
-
-### Steps
-
-## Prerequisite
 You have to disable autogenerate on the `hyprland.conf`.
 
 ### Steps
