@@ -176,7 +176,7 @@
   padding: 0 5.5px 2px 0;
 }
 
- scale trough{
+.volbar-vert trough{
   background-color: mix($background, $foreground, 80%);
   border-radius: 5px;
   min-height: 30px;
@@ -185,3 +185,10 @@
 }
 
 
+.brightnessbar-vert trough{
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 5px;
+  min-height: 30px;
+  min-width: 9px;
+  margin: 4px;
+}

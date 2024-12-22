@@ -55,7 +55,7 @@
   color: mix($foreground, $color2, 70%);
 }
 
-scale trough {
+.volbar trough {
   all: unset;
   background-color: mix($background, $foreground, 80%);
   border-radius: 5px;
@@ -63,6 +63,25 @@ scale trough {
   min-width: 50px;
   margin: 0 .5rem 0 .1rem ;
 }
+
+.brightnessbar trough {
+  all: unset;
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 5px;
+  min-height: 4px;
+  min-width: 50px;
+  margin: 0 .5rem 0 .1rem ;
+}
+
+.musicbar trough {
+  all: unset;
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 5px;
+  min-height: 4px;
+  min-width: 50px;
+  margin: 0 .5rem 0 .1rem ;
+}
+
 
 .volbar trough highlight {
   min-height: 8px;
