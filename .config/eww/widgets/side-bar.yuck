@@ -185,6 +185,18 @@
        (memory-vert)
        (battery-vert))))
 
+;; Time Group ;;
+(defwidget time-vert []
+  (eventbox
+       :cursor "pointer"
+  (box :class "time-vert"
+       :orientation "vertical"
+       :space-evenly "false"
+       :halign "start"
+       :vexpand "false"
+       :hexpand "false"
+       (clock-vert))))
+
 ;; Top Group ;;
 (defwidget top []
   (box :class "top"
@@ -206,7 +218,7 @@
        :hexpand "false"
        (device)
        (resource)
-       (clock-vert)))
+       (time-vert)))
 
 ;; Mid Group ;;
 (defwidget mid []
@@ -234,9 +246,9 @@
 ;; bar ;;
 (defwindow side-bar
   :monitor '[1, 0]'
-  :geometry (geometry :x "10px"
-                      :y "10px"
-                      :width "20px"
+  :geometry (geometry :x "0.5%"
+                      :y "0.5%"
+                      :width "0%"
                       :height "98%"
                       :anchor "left center")
   :stacking "bg"

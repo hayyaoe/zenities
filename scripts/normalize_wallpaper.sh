@@ -19,7 +19,6 @@ for file in "$DIRECTORY"/*.{png,jpeg,jpg}; do
 
     # Skip files that already start with 'preview-'
     if [[ "$base_name" == preview-* ]]; then
-      echo "File is already a preview: $file. Skipping."
       continue
     fi
 
@@ -28,7 +27,6 @@ for file in "$DIRECTORY"/*.{png,jpeg,jpg}; do
 
     # Skip if the preview already exists
     if [ -f "$preview" ]; then
-      echo "Preview already exists: $preview. Skipping."
       continue
     fi
 
