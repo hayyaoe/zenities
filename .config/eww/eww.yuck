@@ -59,3 +59,4 @@
 (include "widgets/wallpaper.yuck")
 (include "widgets/resource-monitor.yuck")
 (include "widgets/device-control.yuck")
+(include "widgets/notifications.yuck")

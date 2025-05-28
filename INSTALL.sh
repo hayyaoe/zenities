@@ -2,7 +2,7 @@
 
 # Install necessary packages via pacman
 cd $HOME
-sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh imagemagick acpi
+sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim bottom networkmanager bluez bluez-utils rustup zsh imagemagick acpi
 
 # Clone zenities dotfiles
 cd $HOME/.config
@@ -20,7 +20,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot
+yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
@@ -28,6 +28,9 @@ echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.z
 
 # Eww installation
 cd $HOME
+
+curl --proto '=https' -- tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 git clone https://github.com/elkowar/eww
 cd eww
 cargo build --release --no-default-features --features=wayland
@@ -42,7 +45,7 @@ sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
 
 # Change shell to zsh
-chsh -s /bin/zsh
+chsh -s /usr/bin/zsh
 
 # Reboot the system
 echo "Installation complete. The system will now reboot."

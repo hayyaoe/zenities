@@ -24,6 +24,42 @@
   }
 }
 
+.musicbar-vert trough {
+  all: unset;
+  background-color: mix($background, $foreground, 80%);
+  border-radius: 2px;
+  min-height: 80px;
+  min-width: 3px;
+}
+
+.musicbar-vert{
+  min-height: 80px;
+}
+
+.musicbar-vert trough highlight {
+  min-width: 3px;
+  background-color: mix($color6, $foreground, 90%);
+  border-radius: 2px;
+}
+
+.music-vert{
+  font-size: .6rem;
+}
+
+.music-control-vert{
+  padding: 4px 0;
+}
+
+.song-cover-art-vert {
+	background-size: cover;	
+	background-position: center;
+	min-height: 25px;
+	min-width: 12px;
+	margin: 8px 0px;
+  border-radius: 4px;
+}
+
+
 /* Power Menu */
 .power-vert {
   font-size: 1.22rem;
@@ -32,7 +68,7 @@
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: mix($background, $foreground, 95%);
+    color: mix($background, $foreground, 95%);
   }
 }
 
