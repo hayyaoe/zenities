@@ -2,10 +2,12 @@
 
 *{
   all: unset;
-  font-family: "Mononoki";
+  font-family: "Iosevka";
   font-weight: bold;
 }
 
 @import "scss/bar.scss";
 @import "scss/side-bar.scss";
 @import "scss/wallpaper.scss";
+@import "scss/device-control.scss";
+@import "scss/resource-monitor.scss";

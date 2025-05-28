@@ -1,0 +1,105 @@
+;; Temperature Bar ;;
+(defwidget temperature-bar[]
+    (box  :class "temperature-bar"
+          :tooltip "CPU Temperature: ${current-temperature}°C"
+          :orientation "vertical"
+          :space-evenly "false"
+          :spacing "2"
+        (button :class "temperature-bar-icon" "TMP")
+        (button :class "temperature-bar-percentage" "${current-temperature}°")
+        (progress :class "temperature-bar"
+               :flipped true
+               :value current-temperature
+               :orientation "vertical")))
+
+
+;; Storage Bar ;;
+(defwidget storage-bar[]
+    (box  :class "storage-bar"
+          :tooltip "${current-disk-detail} free"
+          :orientation "vertical"
+          :space-evenly "false"
+          :spacing "2"
+        (button :class "storage-bar-icon" "DSK")
+        (button :class "storage-bar-percentage" "${current-disk}%")
+        (progress :class "storage-bar"
+               :flipped true
+               :value current-disk
+               :orientation "vertical")))
+
+
+;; CPU Bar ;;
+(defwidget cpu-bar[]
+    (box  :class "cpu-bar"
+          :tooltip "CPU usage: ${current-cpu}%"
+          :orientation "vertical"
+          :space-evenly "false"
+          :spacing "2"
+        (button :class "cpu-bar-icon" "CPU")
+        (button :class "cpu-bar-percentage" "${current-cpu}%")
+        (progress :class "cpu-bar"
+               :flipped true
+               :value current-cpu
+               :orientation "vertical")))
+
+
+;; Battery Bar ;;
+(defwidget battery-bar[]
+    (box  :class "battery-bar"
+          :tooltip time-left
+          :orientation "vertical"
+          :space-evenly "false"
+          :spacing "2"
+        (button :class "battery-bar-icon" "BAT")
+        (button :class "battery-bar-percentage" "${current-battery}%")
+        (progress :class "battery-bar"
+               :flipped true
+               :value current-battery
+               :orientation "vertical")))
+
+
+;; Memory Bar ;;
+(defwidget memory-bar[]
+    (box  :class "memory-bar"
+          :tooltip "${current-memory-detail} free"
+          :orientation "vertical"
+          :space-evenly "false"
+          :spacing "2"
+      (button :class "memory-bar-icon" "MEM")
+          (button :class "memory-bar-percentage" "${current-memory}%")
+        (progress :class "memory-bar"
+               :flipped true
+               :value current-memory
+               :orientation "vertical")))
+
+
+;; Resources Group ;;
+(defwidget resources []
+  (eventbox
+       :cursor "pointer"
+  (box :class "resources"
+       :orientation "horizontal"
+       :space-evenly "false"
+       :halign "start"
+       :vexpand "false"
+       :hexpand "false"
+       (cpu-bar)
+       (temperature-bar)
+       (memory-bar)
+       (storage-bar)
+       (battery-bar))))
+
+;; resource-monitor ;;
+(defwindow resource-monitor
+  :monitor '[1, 0]'
+  :geometry (geometry :x "0.5%"
+                      :y "27%"
+                      :width "10%"
+                      :height "0%"
+                      :anchor "top right")
+  :stacking "bg"
+  :exclusive "false"
+  :focusable "false"
+  (resources))
+
+

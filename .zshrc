@@ -35,5 +35,11 @@ neofetch
 
 eval $(thefuck --alias)
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-export PATH=$PATH:/home/abuku/.spicetify
 source /usr/share/nvm/init-nvm.sh
+
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+

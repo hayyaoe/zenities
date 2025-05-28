@@ -42,6 +42,47 @@
                 :onclick "hyprctl dispatch workspace ${workspace.id}"
                 "${current_workspace == workspace.id ? "" : ""}")))))
 
+;; Music Vertical ;;
+(defwidget music-vert []
+  (eventbox :onhover "${eww} update music-control=true"
+            :onhoverlost "${eww} update music-control=false"
+            :cursor "pointer"
+    (revealer :transition "slidedown"
+              :reveal {current-music-seek != "" ? "true" : "false"}
+              :duration "500ms"
+    (box  :class "music-vert"
+          :orientation "vertical"
+          :space-evenly "false"
+          :halign "center"
+                  (revealer :transition "slideup"
+                  :reveal music-control
+                  :duration "300ms"
+          (box  :class "music-control-vert"
+                :orientation "vertical"
+                :space-evenly "true"
+                :spacing "8"
+            (button :class "prev"
+                    :onclick "playerctl --player=ncspot previous" "")
+            (button :class "pause"
+                    :onclick "playerctl --player=ncspot play-pause" "")
+            (button :class "next"
+                    :onclick "playerctl --player=ncspot next" "")))
+      (box :class "parentbox-vert"
+            :orientation "horizontal"
+        (label  :text {music != "" ? "${music}" : ""}
+                :truncate "true"
+                :angle 90
+                :limit-width "8")
+        (scale :class "musicbar-vert"
+               :value {current-music-seek != '' ? "${current-music-seek}" : "0"}
+               :orientation "vertical"
+               :flipped "true"
+               :max 101
+               :min 0
+               :onchange "~/.config/eww/scripts/set-music-seek.sh {}"))
+          (box :class "song-cover-art-vert" :vexpand "false" :hexpand "false" :style "background-image: url('${current-music-cover}');")))))
+
+
 ;; Battery ;;
 (defwidget battery-vert []
   (eventbox :onhover "${eww} update battery=true"
@@ -185,6 +226,18 @@
        (memory-vert)
        (battery-vert))))
 
+;; Time Group ;;
+(defwidget time-vert []
+  (eventbox
+       :cursor "pointer"
+  (box :class "time-vert"
+       :orientation "vertical"
+       :space-evenly "false"
+       :halign "start"
+       :vexpand "false"
+       :hexpand "false"
+       (clock-vert))))
+
 ;; Top Group ;;
 (defwidget top []
   (box :class "top"
@@ -206,22 +259,24 @@
        :hexpand "false"
        (device)
        (resource)
-       (clock-vert)))
+       (time-vert)))
 
 ;; Mid Group ;;
 (defwidget mid []
   (box :class "mid"
        :orientation "vertical"
        :space-evenly "false"
-       :halign "center"
+       :valign "center"
        :vexpand "false"
-       :hexpand "false"))
+       :hexpand "false"
+       (music-vert)))
 
 ;; Bar ;;
 (defwidget side-bar []
   (box :class "side-bar"
        :orientation "vertical"
        :vexpand "false"
+       :space-evenly "true"
        :hexpand "false"
        (top)
        (mid)
@@ -234,9 +289,9 @@
 ;; bar ;;
 (defwindow side-bar
   :monitor '[1, 0]'
-  :geometry (geometry :x "10px"
-                      :y "10px"
-                      :width "20px"
+  :geometry (geometry :x "0.5%"
+                      :y "0.5%"
+                      :width "0%"
                       :height "98%"
                       :anchor "left center")
   :stacking "bg"
