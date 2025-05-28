@@ -1,0 +1,10 @@
+(deflisten notifs :initial ""
+  `python ~/.config/eww/main.py`)
+
+(defwindow notifications
+           :monitor 0
+           :geometry (geometry :x "20px"
+                               :y "20px"
+                               :anchor "top right")
+           :stacking "overlay"
+           (literal :content notifs))
