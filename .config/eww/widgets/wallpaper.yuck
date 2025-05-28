@@ -3,7 +3,6 @@
         :vexpand "true"
         :hexpand "false"
         :width 300;
-        :height 600;
   (scroll :vscroll "true"
           :vexpand "true"
           (box :orientation "vertical"
@@ -25,7 +24,11 @@
 
 (defwindow wallpaper
            :monitor 0
-           :geometry (geometry :x "10" :y "10" :anchor "center left")
+           :geometry (geometry  :x "10" 
+                                :y "10" 
+                                :width "310px"
+                                :height "98%"
+                                :anchor "center left")
            :stacking "overlay"
            :exclusive "false"
            :focusable "true"

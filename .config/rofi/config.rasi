@@ -9,7 +9,7 @@
 
 configuration {
     modi:                       "drun,run";
-    font:                       "Mononoki 14";
+    font:                       "Iosevka 14";
     show-icons:                 false;
     icon-theme:                 "kora";
     display-drun:               "∂";

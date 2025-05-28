@@ -73,7 +73,6 @@ return {
         },
         on_attach = function(client, bufnr)
           local opts = { noremap = true, silent = true, buffer = bufnr }
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
           vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
           vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
@@ -82,7 +81,6 @@ return {
       })
 
       -- Keymaps for LSP (can be shared across servers)
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gD', vim.lsp.buf.definition, {})
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
     end
