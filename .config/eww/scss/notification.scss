@@ -1,0 +1,19 @@
+.notifications {
+    min-height: 0px;
+    background-color: transparent;
+}
+
+.notif {
+    background-color: $background;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.notif image {
+    padding-right: 10px;
+}
+
+.notif-summary{  
+  color: $color2;
+}

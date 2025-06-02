@@ -1,0 +1,28 @@
+{
+    "checksum": "299aae6ea02f01e6fd336864b23e356d",
+    "wallpaper": "/home/abuku/wallpapers/10000days.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0D0C12",
+        "foreground": "#c2c2c3",
+        "cursor": "#c2c2c3"
+    },
+    "colors": {
+        "color0": "#0D0C12",
+        "color1": "#3D4264",
+        "color2": "#40435E",
+        "color3": "#474C73",
+        "color4": "#545A86",
+        "color5": "#5C6391",
+        "color6": "#646C9A",
+        "color7": "#c2c2c3",
+        "color8": "#58586c",
+        "color9": "#3D4264",
+        "color10": "#40435E",
+        "color11": "#474C73",
+        "color12": "#545A86",
+        "color13": "#5C6391",
+        "color14": "#646C9A",
+        "color15": "#c2c2c3"
+    }
+}

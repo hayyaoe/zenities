@@ -15,7 +15,7 @@ wal -i "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" || { echo "Error: pywal failed";
 
 # Reload eww
 killall eww || echo "Warning: No eww process found"
-eww open side-bar
+eww open-many side-bar notifications
 
 # Restart hyprpaper
 killall hyprpaper || echo "Warning: No hyprpaper process found"

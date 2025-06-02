@@ -1,0 +1,28 @@
+{
+    "checksum": "160e26163ca01131ba2ab4c32cf648e2",
+    "wallpaper": "/home/abuku/wallpapers/gudako.png",
+    "alpha": "100",
+    "special": {
+        "background": "#042D36",
+        "foreground": "#c0cacc",
+        "cursor": "#c0cacc"
+    },
+    "colors": {
+        "color0": "#042D36",
+        "color1": "#9B778A",
+        "color2": "#2F90ED",
+        "color3": "#35A7F8",
+        "color4": "#5AB5D6",
+        "color5": "#58ABEC",
+        "color6": "#9FA6BA",
+        "color7": "#c0cacc",
+        "color8": "#607276",
+        "color9": "#9B778A",
+        "color10": "#2F90ED",
+        "color11": "#35A7F8",
+        "color12": "#5AB5D6",
+        "color13": "#58ABEC",
+        "color14": "#9FA6BA",
+        "color15": "#c0cacc"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "969120d8e5c1508599f34fa5e5b3a8f6",
+    "wallpaper": "/home/abuku/wallpapers/castoria.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#090909",
+        "foreground": "#c1c1c1",
+        "cursor": "#c1c1c1"
+    },
+    "colors": {
+        "color0": "#090909",
+        "color1": "#605E61",
+        "color2": "#656566",
+        "color3": "#7B7B83",
+        "color4": "#808080",
+        "color5": "#8E8E8D",
+        "color6": "#A1A19F",
+        "color7": "#c1c1c1",
+        "color8": "#685555",
+        "color9": "#605E61",
+        "color10": "#656566",
+        "color11": "#7B7B83",
+        "color12": "#808080",
+        "color13": "#8E8E8D",
+        "color14": "#A1A19F",
+        "color15": "#c1c1c1"
+    }
+}

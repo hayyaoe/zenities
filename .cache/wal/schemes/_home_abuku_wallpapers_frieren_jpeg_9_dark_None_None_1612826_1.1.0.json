@@ -1,0 +1,28 @@
+{
+    "checksum": "233010e8dc22b8fffd3cf4ae8d07879d",
+    "wallpaper": "/home/abuku/wallpapers/frieren.jpeg",
+    "alpha": "100",
+    "special": {
+        "background": "#22313d",
+        "foreground": "#c7cbce",
+        "cursor": "#c7cbce"
+    },
+    "colors": {
+        "color0": "#22313d",
+        "color1": "#75CAE1",
+        "color2": "#97AABC",
+        "color3": "#99CCDF",
+        "color4": "#90CEE3",
+        "color5": "#B1D8E8",
+        "color6": "#C9D9E4",
+        "color7": "#c7cbce",
+        "color8": "#6b7983",
+        "color9": "#75CAE1",
+        "color10": "#97AABC",
+        "color11": "#99CCDF",
+        "color12": "#90CEE3",
+        "color13": "#B1D8E8",
+        "color14": "#C9D9E4",
+        "color15": "#c7cbce"
+    }
+}

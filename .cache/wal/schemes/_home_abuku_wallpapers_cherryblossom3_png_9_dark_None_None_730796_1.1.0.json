@@ -1,0 +1,28 @@
+{
+    "checksum": "05b0e40ba864f8ab9cc9a5df70b20ee3",
+    "wallpaper": "/home/abuku/wallpapers/cherryblossom3.png",
+    "alpha": "100",
+    "special": {
+        "background": "#320c19",
+        "foreground": "#cbc2c5",
+        "cursor": "#cbc2c5"
+    },
+    "colors": {
+        "color0": "#320c19",
+        "color1": "#289EEC",
+        "color2": "#04B3FE",
+        "color3": "#5398D0",
+        "color4": "#07C8FF",
+        "color5": "#31D0FF",
+        "color6": "#4DD7FE",
+        "color7": "#cbc2c5",
+        "color8": "#776269",
+        "color9": "#289EEC",
+        "color10": "#04B3FE",
+        "color11": "#5398D0",
+        "color12": "#07C8FF",
+        "color13": "#31D0FF",
+        "color14": "#4DD7FE",
+        "color15": "#cbc2c5"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "9587c60efaa1ed1eb08f169ac0c3f8fd",
+    "wallpaper": "/home/abuku/wallpapers/inazuma.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#142d1e",
+        "foreground": "#c4cac6",
+        "cursor": "#c4cac6"
+    },
+    "colors": {
+        "color0": "#142d1e",
+        "color1": "#3A6AB1",
+        "color2": "#4D6CA5",
+        "color3": "#71B1C7",
+        "color4": "#71ACE5",
+        "color5": "#9BC1B3",
+        "color6": "#91CAF6",
+        "color7": "#c4cac6",
+        "color8": "#63796b",
+        "color9": "#3A6AB1",
+        "color10": "#4D6CA5",
+        "color11": "#71B1C7",
+        "color12": "#71ACE5",
+        "color13": "#9BC1B3",
+        "color14": "#91CAF6",
+        "color15": "#c4cac6"
+    }
+}

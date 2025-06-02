@@ -1,0 +1,28 @@
+{
+    "checksum": "0687d413524d95f8009049c162e62c5d",
+    "wallpaper": "/home/abuku/wallpapers/180sx.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0C0B0A",
+        "foreground": "#c2c2c1",
+        "cursor": "#c2c2c1"
+    },
+    "colors": {
+        "color0": "#0C0B0A",
+        "color1": "#756C67",
+        "color2": "#847A74",
+        "color3": "#8D837C",
+        "color4": "#867F80",
+        "color5": "#968C86",
+        "color6": "#AEA19A",
+        "color7": "#c2c2c1",
+        "color8": "#696056",
+        "color9": "#756C67",
+        "color10": "#847A74",
+        "color11": "#8D837C",
+        "color12": "#867F80",
+        "color13": "#968C86",
+        "color14": "#AEA19A",
+        "color15": "#c2c2c1"
+    }
+}

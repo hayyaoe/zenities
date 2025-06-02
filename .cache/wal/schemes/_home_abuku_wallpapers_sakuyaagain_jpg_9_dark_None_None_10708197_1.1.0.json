@@ -1,0 +1,28 @@
+{
+    "checksum": "24517cd99dbf87a0b6175cd406c0a37c",
+    "wallpaper": "/home/abuku/wallpapers/sakuyaagain.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#241225",
+        "foreground": "#c8c3c8",
+        "cursor": "#c8c3c8"
+    },
+    "colors": {
+        "color0": "#241225",
+        "color1": "#7C86A3",
+        "color2": "#A196AC",
+        "color3": "#C9B5B6",
+        "color4": "#B5AEC7",
+        "color5": "#C6BACB",
+        "color6": "#D3CBD4",
+        "color7": "#c8c3c8",
+        "color8": "#735f75",
+        "color9": "#7C86A3",
+        "color10": "#A196AC",
+        "color11": "#C9B5B6",
+        "color12": "#B5AEC7",
+        "color13": "#C6BACB",
+        "color14": "#D3CBD4",
+        "color15": "#c8c3c8"
+    }
+}

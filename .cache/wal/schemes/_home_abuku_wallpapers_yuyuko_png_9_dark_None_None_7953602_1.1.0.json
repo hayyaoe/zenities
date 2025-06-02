@@ -1,0 +1,28 @@
+{
+    "checksum": "fc2fe384ff54313058b1912bc2a7bf91",
+    "wallpaper": "/home/abuku/wallpapers/yuyuko.png",
+    "alpha": "100",
+    "special": {
+        "background": "#151720",
+        "foreground": "#c4c5c7",
+        "cursor": "#c4c5c7"
+    },
+    "colors": {
+        "color0": "#151720",
+        "color1": "#897CC3",
+        "color2": "#958BAB",
+        "color3": "#AD95B3",
+        "color4": "#C69CB9",
+        "color5": "#AE9FCA",
+        "color6": "#CEB0D1",
+        "color7": "#c4c5c7",
+        "color8": "#5f6474",
+        "color9": "#897CC3",
+        "color10": "#958BAB",
+        "color11": "#AD95B3",
+        "color12": "#C69CB9",
+        "color13": "#AE9FCA",
+        "color14": "#CEB0D1",
+        "color15": "#c4c5c7"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "be5dbf81f0a3672ca628dc65ac4660ac",
+    "wallpaper": "/home/abuku/wallpapers/jawir.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#181814",
+        "foreground": "#c5c5c4",
+        "cursor": "#c5c5c4"
+    },
+    "colors": {
+        "color0": "#181814",
+        "color1": "#64748F",
+        "color2": "#728DA7",
+        "color3": "#5B97C6",
+        "color4": "#9A9DA6",
+        "color5": "#C5BCB9",
+        "color6": "#9CB3CA",
+        "color7": "#c5c5c4",
+        "color8": "#71715c",
+        "color9": "#64748F",
+        "color10": "#728DA7",
+        "color11": "#5B97C6",
+        "color12": "#9A9DA6",
+        "color13": "#C5BCB9",
+        "color14": "#9CB3CA",
+        "color15": "#c5c5c4"
+    }
+}
