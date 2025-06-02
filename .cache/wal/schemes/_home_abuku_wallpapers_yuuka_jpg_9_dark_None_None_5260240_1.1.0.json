@@ -1,0 +1,28 @@
+{
+    "checksum": "d1ece4e179b27a32b1d08a31ad322080",
+    "wallpaper": "/home/abuku/wallpapers/yuuka.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#211921",
+        "foreground": "#c7c5c7",
+        "cursor": "#c7c5c7"
+    },
+    "colors": {
+        "color0": "#211921",
+        "color1": "#AF9096",
+        "color2": "#A4929A",
+        "color3": "#D69998",
+        "color4": "#CD9BA2",
+        "color5": "#EDB2A9",
+        "color6": "#BFC1B3",
+        "color7": "#c7c5c7",
+        "color8": "#766076",
+        "color9": "#AF9096",
+        "color10": "#A4929A",
+        "color11": "#D69998",
+        "color12": "#CD9BA2",
+        "color13": "#EDB2A9",
+        "color14": "#BFC1B3",
+        "color15": "#c7c5c7"
+    }
+}

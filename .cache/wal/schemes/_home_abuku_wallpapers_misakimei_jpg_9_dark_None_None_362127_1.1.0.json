@@ -1,0 +1,28 @@
+{
+    "checksum": "ce7a5cfa9f0cfefd730f00f502e2d6ac",
+    "wallpaper": "/home/abuku/wallpapers/misakimei.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#131313",
+        "foreground": "#c4c4c4",
+        "cursor": "#c4c4c4"
+    },
+    "colors": {
+        "color0": "#131313",
+        "color1": "#7B8477",
+        "color2": "#878C78",
+        "color3": "#737984",
+        "color4": "#7B858E",
+        "color5": "#8D928D",
+        "color6": "#9FA79C",
+        "color7": "#c4c4c4",
+        "color8": "#6f5a5a",
+        "color9": "#7B8477",
+        "color10": "#878C78",
+        "color11": "#737984",
+        "color12": "#7B858E",
+        "color13": "#8D928D",
+        "color14": "#9FA79C",
+        "color15": "#c4c4c4"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "548206600aa41e073c34f8dcc13e8ec2",
+    "wallpaper": "/home/abuku/wallpapers/liyue.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#090306",
+        "foreground": "#c1c0c0",
+        "cursor": "#c1c0c0"
+    },
+    "colors": {
+        "color0": "#090306",
+        "color1": "#A05927",
+        "color2": "#AF6A45",
+        "color3": "#C89345",
+        "color4": "#D6A05D",
+        "color5": "#AE7689",
+        "color6": "#D5BE9A",
+        "color7": "#c1c0c0",
+        "color8": "#66535c",
+        "color9": "#A05927",
+        "color10": "#AF6A45",
+        "color11": "#C89345",
+        "color12": "#D6A05D",
+        "color13": "#AE7689",
+        "color14": "#D5BE9A",
+        "color15": "#c1c0c0"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "d945b0cb15d1bb7155f8776f472d2239",
+    "wallpaper": "/home/abuku/wallpapers/tristan.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#130f16",
+        "foreground": "#c4c3c4",
+        "cursor": "#c4c3c4"
+    },
+    "colors": {
+        "color0": "#130f16",
+        "color1": "#A71253",
+        "color2": "#DF2467",
+        "color3": "#7A738A",
+        "color4": "#887089",
+        "color5": "#EA5493",
+        "color6": "#7D8296",
+        "color7": "#c4c3c4",
+        "color8": "#645a6f",
+        "color9": "#A71253",
+        "color10": "#DF2467",
+        "color11": "#7A738A",
+        "color12": "#887089",
+        "color13": "#EA5493",
+        "color14": "#7D8296",
+        "color15": "#c4c3c4"
+    }
+}

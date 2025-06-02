@@ -1,0 +1,28 @@
+{
+    "checksum": "eb447768ad50c0488fc2ac193b5c81f5",
+    "wallpaper": "/home/abuku/wallpapers/marisa.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#111214",
+        "foreground": "#c3c3c4",
+        "cursor": "#c3c3c4"
+    },
+    "colors": {
+        "color0": "#111214",
+        "color1": "#B561A2",
+        "color2": "#51A4C1",
+        "color3": "#A2A1A0",
+        "color4": "#C7AFB9",
+        "color5": "#EAE4A3",
+        "color6": "#A9D5E5",
+        "color7": "#c3c3c4",
+        "color8": "#5a5a6f",
+        "color9": "#B561A2",
+        "color10": "#51A4C1",
+        "color11": "#A2A1A0",
+        "color12": "#C7AFB9",
+        "color13": "#EAE4A3",
+        "color14": "#A9D5E5",
+        "color15": "#c3c3c4"
+    }
+}

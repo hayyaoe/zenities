@@ -1,0 +1,28 @@
+{
+    "checksum": "9f8c1e4e9881ffc02fb7766404cc1c1e",
+    "wallpaper": "/home/abuku/wallpapers/amnesiac.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#070505",
+        "foreground": "#c1c0c0",
+        "cursor": "#c1c0c0"
+    },
+    "colors": {
+        "color0": "#070505",
+        "color1": "#2E2548",
+        "color2": "#423D48",
+        "color3": "#5D5D5E",
+        "color4": "#7C7B82",
+        "color5": "#A09FA0",
+        "color6": "#C1BEC1",
+        "color7": "#c1c0c0",
+        "color8": "#655353",
+        "color9": "#2E2548",
+        "color10": "#423D48",
+        "color11": "#5D5D5E",
+        "color12": "#7C7B82",
+        "color13": "#A09FA0",
+        "color14": "#C1BEC1",
+        "color15": "#c1c0c0"
+    }
+}

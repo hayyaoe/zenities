@@ -1,0 +1,28 @@
+{
+    "checksum": "5654981a3c70d355fc954bd4b0c0ddaf",
+    "wallpaper": "/home/abuku/wallpapers/norway.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0A100D",
+        "foreground": "#c1c3c2",
+        "cursor": "#c1c3c2"
+    },
+    "colors": {
+        "color0": "#0A100D",
+        "color1": "#687A85",
+        "color2": "#768994",
+        "color3": "#7AA7C2",
+        "color4": "#91969A",
+        "color5": "#ADAFB3",
+        "color6": "#B4BAC4",
+        "color7": "#c1c3c2",
+        "color8": "#576a60",
+        "color9": "#687A85",
+        "color10": "#768994",
+        "color11": "#7AA7C2",
+        "color12": "#91969A",
+        "color13": "#ADAFB3",
+        "color14": "#B4BAC4",
+        "color15": "#c1c3c2"
+    }
+}

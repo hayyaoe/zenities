@@ -1,0 +1,28 @@
+{
+    "checksum": "7b62c40075f41fe94a360d07207fd16b",
+    "wallpaper": "/home/abuku/wallpapers/you-can-rest-now.png",
+    "alpha": "100",
+    "special": {
+        "background": "#232128",
+        "foreground": "#c8c7c9",
+        "cursor": "#c8c7c9"
+    },
+    "colors": {
+        "color0": "#232128",
+        "color1": "#9690AE",
+        "color2": "#A799B5",
+        "color3": "#C599BA",
+        "color4": "#A99EC1",
+        "color5": "#B2ACC9",
+        "color6": "#CAB4D2",
+        "color7": "#c8c7c9",
+        "color8": "#6e657b",
+        "color9": "#9690AE",
+        "color10": "#A799B5",
+        "color11": "#C599BA",
+        "color12": "#A99EC1",
+        "color13": "#B2ACC9",
+        "color14": "#CAB4D2",
+        "color15": "#c8c7c9"
+    }
+}

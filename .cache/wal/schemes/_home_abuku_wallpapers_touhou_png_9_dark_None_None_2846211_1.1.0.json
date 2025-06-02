@@ -1,0 +1,28 @@
+{
+    "checksum": "1dc86d7c956f1690e6c5cdc2f1093d48",
+    "wallpaper": "/home/abuku/wallpapers/touhou.png",
+    "alpha": "100",
+    "special": {
+        "background": "#35122b",
+        "foreground": "#ccc3ca",
+        "cursor": "#ccc3ca"
+    },
+    "colors": {
+        "color0": "#35122b",
+        "color1": "#D8C7B4",
+        "color2": "#9FB5D0",
+        "color3": "#B5C7D8",
+        "color4": "#B3CCE2",
+        "color5": "#CCCED3",
+        "color6": "#CFD9E3",
+        "color7": "#ccc3ca",
+        "color8": "#7a6474",
+        "color9": "#D8C7B4",
+        "color10": "#9FB5D0",
+        "color11": "#B5C7D8",
+        "color12": "#B3CCE2",
+        "color13": "#CCCED3",
+        "color14": "#CFD9E3",
+        "color15": "#ccc3ca"
+    }
+}

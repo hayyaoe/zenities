@@ -1,0 +1,28 @@
+{
+    "checksum": "b1e832006f02c121d1ebd77f52db3883",
+    "wallpaper": "/home/abuku/wallpapers/yetanothertouhou.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#151518",
+        "foreground": "#c4c4c5",
+        "cursor": "#c4c4c5"
+    },
+    "colors": {
+        "color0": "#151518",
+        "color1": "#9494AC",
+        "color2": "#A69AAF",
+        "color3": "#B0A6B9",
+        "color4": "#C1B0BD",
+        "color5": "#B7B0C3",
+        "color6": "#C8BAC9",
+        "color7": "#c4c4c5",
+        "color8": "#5c5c71",
+        "color9": "#9494AC",
+        "color10": "#A69AAF",
+        "color11": "#B0A6B9",
+        "color12": "#C1B0BD",
+        "color13": "#B7B0C3",
+        "color14": "#C8BAC9",
+        "color15": "#c4c4c5"
+    }
+}

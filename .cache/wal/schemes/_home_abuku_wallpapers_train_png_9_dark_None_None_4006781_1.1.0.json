@@ -1,0 +1,28 @@
+{
+    "checksum": "0d4991698b20a6fe90aaab2c441f5655",
+    "wallpaper": "/home/abuku/wallpapers/train.png",
+    "alpha": "100",
+    "special": {
+        "background": "#16181a",
+        "foreground": "#c4c5c5",
+        "cursor": "#c4c5c5"
+    },
+    "colors": {
+        "color0": "#16181a",
+        "color1": "#3C6C95",
+        "color2": "#12A1EA",
+        "color3": "#41A7C4",
+        "color4": "#64A7DC",
+        "color5": "#61CEF7",
+        "color6": "#9CB7B8",
+        "color7": "#c4c5c5",
+        "color8": "#5e6572",
+        "color9": "#3C6C95",
+        "color10": "#12A1EA",
+        "color11": "#41A7C4",
+        "color12": "#64A7DC",
+        "color13": "#61CEF7",
+        "color14": "#9CB7B8",
+        "color15": "#c4c5c5"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "20398ea7a69c198863cc6e28c931eedc",
+    "wallpaper": "/home/abuku/wallpapers/makoto2.jpeg",
+    "alpha": "100",
+    "special": {
+        "background": "#000101",
+        "foreground": "#bfbfbf",
+        "cursor": "#bfbfbf"
+    },
+    "colors": {
+        "color0": "#000101",
+        "color1": "#196F95",
+        "color2": "#199CD3",
+        "color3": "#0EB1F4",
+        "color4": "#3EC3E9",
+        "color5": "#9C9C9C",
+        "color6": "#96E4F9",
+        "color7": "#bfbfbf",
+        "color8": "#615050",
+        "color9": "#196F95",
+        "color10": "#199CD3",
+        "color11": "#0EB1F4",
+        "color12": "#3EC3E9",
+        "color13": "#9C9C9C",
+        "color14": "#96E4F9",
+        "color15": "#bfbfbf"
+    }
+}
