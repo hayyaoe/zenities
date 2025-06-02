@@ -1,0 +1,28 @@
+{
+    "checksum": "041736152e335f062e49354fb7898257",
+    "wallpaper": "/home/abuku/wallpapers/penguin.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0E1313",
+        "foreground": "#c2c4c4",
+        "cursor": "#c2c4c4"
+    },
+    "colors": {
+        "color0": "#0E1313",
+        "color1": "#2A6393",
+        "color2": "#5D7296",
+        "color3": "#A37F80",
+        "color4": "#648CB7",
+        "color5": "#9C9AA3",
+        "color6": "#D3B3B0",
+        "color7": "#c2c4c4",
+        "color8": "#596d6d",
+        "color9": "#2A6393",
+        "color10": "#5D7296",
+        "color11": "#A37F80",
+        "color12": "#648CB7",
+        "color13": "#9C9AA3",
+        "color14": "#D3B3B0",
+        "color15": "#c2c4c4"
+    }
+}

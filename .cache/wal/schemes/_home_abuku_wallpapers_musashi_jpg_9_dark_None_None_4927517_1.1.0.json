@@ -1,0 +1,28 @@
+{
+    "checksum": "53d11364ddec9df33d574d776fd46863",
+    "wallpaper": "/home/abuku/wallpapers/musashi.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#11161e",
+        "foreground": "#c3c4c6",
+        "cursor": "#c3c4c6"
+    },
+    "colors": {
+        "color0": "#11161e",
+        "color1": "#22D0F4",
+        "color2": "#64D9F3",
+        "color3": "#A4A8B2",
+        "color4": "#93E0F3",
+        "color5": "#B2E8F7",
+        "color6": "#D7D8D9",
+        "color7": "#c3c4c6",
+        "color8": "#5d6572",
+        "color9": "#22D0F4",
+        "color10": "#64D9F3",
+        "color11": "#A4A8B2",
+        "color12": "#93E0F3",
+        "color13": "#B2E8F7",
+        "color14": "#D7D8D9",
+        "color15": "#c3c4c6"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "5c4a0efe706eaee5742c7ecc943387c0",
+    "wallpaper": "/home/abuku/wallpapers/lateralus.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#000000",
+        "foreground": "#bfbfbf",
+        "cursor": "#bfbfbf"
+    },
+    "colors": {
+        "color0": "#000000",
+        "color1": "#40423D",
+        "color2": "#363545",
+        "color3": "#58304C",
+        "color4": "#3A4546",
+        "color5": "#4B5153",
+        "color6": "#636168",
+        "color7": "#bfbfbf",
+        "color8": "#615050",
+        "color9": "#40423D",
+        "color10": "#363545",
+        "color11": "#58304C",
+        "color12": "#3A4546",
+        "color13": "#4B5153",
+        "color14": "#636168",
+        "color15": "#bfbfbf"
+    }
+}

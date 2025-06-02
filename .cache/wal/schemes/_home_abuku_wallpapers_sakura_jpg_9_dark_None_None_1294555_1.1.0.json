@@ -1,0 +1,28 @@
+{
+    "checksum": "fa34fa66439e74bf16cea16112303bb3",
+    "wallpaper": "/home/abuku/wallpapers/sakura.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#080B05",
+        "foreground": "#c1c2c0",
+        "cursor": "#c1c2c0"
+    },
+    "colors": {
+        "color0": "#080B05",
+        "color1": "#838273",
+        "color2": "#9C8777",
+        "color3": "#D38963",
+        "color4": "#AF9991",
+        "color5": "#CBA29E",
+        "color6": "#CEB2AE",
+        "color7": "#c1c2c0",
+        "color8": "#5e6754",
+        "color9": "#838273",
+        "color10": "#9C8777",
+        "color11": "#D38963",
+        "color12": "#AF9991",
+        "color13": "#CBA29E",
+        "color14": "#CEB2AE",
+        "color15": "#c1c2c0"
+    }
+}

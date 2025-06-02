@@ -1,0 +1,28 @@
+{
+    "checksum": "29a345f52779abea81033e48210d2fa1",
+    "wallpaper": "/home/abuku/wallpapers/vagabond2.jpeg",
+    "alpha": "100",
+    "special": {
+        "background": "#0A0A0A",
+        "foreground": "#c1c1c1",
+        "cursor": "#c1c1c1"
+    },
+    "colors": {
+        "color0": "#0A0A0A",
+        "color1": "#676767",
+        "color2": "#777777",
+        "color3": "#909090",
+        "color4": "#AFAFAF",
+        "color5": "#C4C4C4",
+        "color6": "#CDCDCD",
+        "color7": "#c1c1c1",
+        "color8": "#685555",
+        "color9": "#676767",
+        "color10": "#777777",
+        "color11": "#909090",
+        "color12": "#AFAFAF",
+        "color13": "#C4C4C4",
+        "color14": "#CDCDCD",
+        "color15": "#c1c1c1"
+    }
+}

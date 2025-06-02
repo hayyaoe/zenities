@@ -1,0 +1,28 @@
+{
+    "checksum": "adf6207728d42ef4766290d9b9813bcc",
+    "wallpaper": "/home/abuku/wallpapers/jingke.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0d1c37",
+        "foreground": "#c2c6cd",
+        "cursor": "#c2c6cd"
+    },
+    "colors": {
+        "color0": "#0d1c37",
+        "color1": "#4B98F3",
+        "color2": "#54A4F5",
+        "color3": "#6FAFF0",
+        "color4": "#A89AB3",
+        "color5": "#95B1E3",
+        "color6": "#ACBAEE",
+        "color7": "#c2c6cd",
+        "color8": "#636b7a",
+        "color9": "#4B98F3",
+        "color10": "#54A4F5",
+        "color11": "#6FAFF0",
+        "color12": "#A89AB3",
+        "color13": "#95B1E3",
+        "color14": "#ACBAEE",
+        "color15": "#c2c6cd"
+    }
+}

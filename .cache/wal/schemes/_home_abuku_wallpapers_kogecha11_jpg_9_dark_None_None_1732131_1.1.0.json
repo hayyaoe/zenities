@@ -1,0 +1,28 @@
+{
+    "checksum": "e63568891e8a2962e9fa7666d02cfd8a",
+    "wallpaper": "/home/abuku/wallpapers/kogecha11.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#171822",
+        "foreground": "#c5c5c7",
+        "cursor": "#c5c5c7"
+    },
+    "colors": {
+        "color0": "#171822",
+        "color1": "#596F93",
+        "color2": "#B1738B",
+        "color3": "#5D84A1",
+        "color4": "#678BA4",
+        "color5": "#7AA3C4",
+        "color6": "#9E9A9B",
+        "color7": "#c5c5c7",
+        "color8": "#606076",
+        "color9": "#596F93",
+        "color10": "#B1738B",
+        "color11": "#5D84A1",
+        "color12": "#678BA4",
+        "color13": "#7AA3C4",
+        "color14": "#9E9A9B",
+        "color15": "#c5c5c7"
+    }
+}

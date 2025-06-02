@@ -1,0 +1,28 @@
+{
+    "checksum": "7dafbebec9873717927a96b06bae2dc1",
+    "wallpaper": "/home/abuku/wallpapers/akiakane1.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#221930",
+        "foreground": "#c7c5cb",
+        "cursor": "#c7c5cb"
+    },
+    "colors": {
+        "color0": "#221930",
+        "color1": "#3EAFC5",
+        "color2": "#3698F2",
+        "color3": "#E2AFBE",
+        "color4": "#9FCBBC",
+        "color5": "#A2D2DB",
+        "color6": "#98FDF5",
+        "color7": "#c7c5cb",
+        "color8": "#6e657b",
+        "color9": "#3EAFC5",
+        "color10": "#3698F2",
+        "color11": "#E2AFBE",
+        "color12": "#9FCBBC",
+        "color13": "#A2D2DB",
+        "color14": "#98FDF5",
+        "color15": "#c7c5cb"
+    }
+}

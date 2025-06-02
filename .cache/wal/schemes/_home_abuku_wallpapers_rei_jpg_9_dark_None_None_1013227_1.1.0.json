@@ -1,0 +1,28 @@
+{
+    "checksum": "17308cf04abdcec6c7485037091a7bf5",
+    "wallpaper": "/home/abuku/wallpapers/rei.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#120d17",
+        "foreground": "#c3c2c5",
+        "cursor": "#c3c2c5"
+    },
+    "colors": {
+        "color0": "#120d17",
+        "color1": "#2C684C",
+        "color2": "#5F5D67",
+        "color3": "#79737C",
+        "color4": "#822E56",
+        "color5": "#628176",
+        "color6": "#7D4E81",
+        "color7": "#c3c2c5",
+        "color8": "#635a6e",
+        "color9": "#2C684C",
+        "color10": "#5F5D67",
+        "color11": "#79737C",
+        "color12": "#822E56",
+        "color13": "#628176",
+        "color14": "#7D4E81",
+        "color15": "#c3c2c5"
+    }
+}

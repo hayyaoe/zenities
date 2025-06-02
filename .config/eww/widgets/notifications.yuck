@@ -7,4 +7,5 @@
                                :y "20px"
                                :anchor "top right")
            :stacking "overlay"
+           :hexpand true
            (literal :content notifs))

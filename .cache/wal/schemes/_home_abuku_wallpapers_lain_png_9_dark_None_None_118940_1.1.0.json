@@ -1,0 +1,28 @@
+{
+    "checksum": "ea567f5e98d8e2210b88db6d344df1ff",
+    "wallpaper": "/home/abuku/wallpapers/lain.png",
+    "alpha": "100",
+    "special": {
+        "background": "#010101",
+        "foreground": "#bfbfbf",
+        "cursor": "#bfbfbf"
+    },
+    "colors": {
+        "color0": "#010101",
+        "color1": "#363636",
+        "color2": "#444444",
+        "color3": "#565656",
+        "color4": "#6F6F6F",
+        "color5": "#A0A0A0",
+        "color6": "#D1D1D1",
+        "color7": "#bfbfbf",
+        "color8": "#615050",
+        "color9": "#363636",
+        "color10": "#444444",
+        "color11": "#565656",
+        "color12": "#6F6F6F",
+        "color13": "#A0A0A0",
+        "color14": "#D1D1D1",
+        "color15": "#bfbfbf"
+    }
+}
