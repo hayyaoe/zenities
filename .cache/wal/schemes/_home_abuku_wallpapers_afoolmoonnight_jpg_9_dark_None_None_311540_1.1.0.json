@@ -1,0 +1,28 @@
+{
+    "checksum": "cb22a832db654ab635112fad0a3a4f53",
+    "wallpaper": "/home/abuku/wallpapers/afoolmoonnight.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0d0c11",
+        "foreground": "#c2c2c3",
+        "cursor": "#c2c2c3"
+    },
+    "colors": {
+        "color0": "#0d0c11",
+        "color1": "#4C5C72",
+        "color2": "#3E5983",
+        "color3": "#5B708A",
+        "color4": "#74899D",
+        "color5": "#7BA7C1",
+        "color6": "#97A6B0",
+        "color7": "#c2c2c3",
+        "color8": "#58586c",
+        "color9": "#4C5C72",
+        "color10": "#3E5983",
+        "color11": "#5B708A",
+        "color12": "#74899D",
+        "color13": "#7BA7C1",
+        "color14": "#97A6B0",
+        "color15": "#c2c2c3"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "268e053bac5f7606be3a68f030900044",
+    "wallpaper": "/home/abuku/wallpapers/radiohead.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#07080A",
+        "foreground": "#c1c1c1",
+        "cursor": "#c1c1c1"
+    },
+    "colors": {
+        "color0": "#07080A",
+        "color1": "#707E83",
+        "color2": "#79878A",
+        "color3": "#919993",
+        "color4": "#B0B4AD",
+        "color5": "#BDC1BA",
+        "color6": "#C4C5BC",
+        "color7": "#c1c1c1",
+        "color8": "#545e67",
+        "color9": "#707E83",
+        "color10": "#79878A",
+        "color11": "#919993",
+        "color12": "#B0B4AD",
+        "color13": "#BDC1BA",
+        "color14": "#C4C5BC",
+        "color15": "#c1c1c1"
+    }
+}

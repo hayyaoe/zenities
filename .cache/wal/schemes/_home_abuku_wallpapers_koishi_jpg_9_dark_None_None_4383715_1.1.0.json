@@ -1,0 +1,28 @@
+{
+    "checksum": "d0bd5dca72cd3bc8a6939ab82d1b1c6e",
+    "wallpaper": "/home/abuku/wallpapers/koishi.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0b213a",
+        "foreground": "#c2c7cd",
+        "cursor": "#c2c7cd"
+    },
+    "colors": {
+        "color0": "#0b213a",
+        "color1": "#939AA1",
+        "color2": "#AFAFB0",
+        "color3": "#BCB9BA",
+        "color4": "#D6C8BB",
+        "color5": "#B6C8C9",
+        "color6": "#CFCFD3",
+        "color7": "#c2c7cd",
+        "color8": "#636e7a",
+        "color9": "#939AA1",
+        "color10": "#AFAFB0",
+        "color11": "#BCB9BA",
+        "color12": "#D6C8BB",
+        "color13": "#B6C8C9",
+        "color14": "#CFCFD3",
+        "color15": "#c2c7cd"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "6c03a99d2f4e39354f3ec0fd11e61e38",
+    "wallpaper": "/home/abuku/wallpapers/anothersakuya.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#1e1c24",
+        "foreground": "#c6c6c8",
+        "cursor": "#c6c6c8"
+    },
+    "colors": {
+        "color0": "#1e1c24",
+        "color1": "#B4AEB1",
+        "color2": "#C2BCBD",
+        "color3": "#C3BEC1",
+        "color4": "#D4D0CF",
+        "color5": "#E1DEDB",
+        "color6": "#E3E1DE",
+        "color7": "#c6c6c8",
+        "color8": "#666278",
+        "color9": "#B4AEB1",
+        "color10": "#C2BCBD",
+        "color11": "#C3BEC1",
+        "color12": "#D4D0CF",
+        "color13": "#E1DEDB",
+        "color14": "#E3E1DE",
+        "color15": "#c6c6c8"
+    }
+}

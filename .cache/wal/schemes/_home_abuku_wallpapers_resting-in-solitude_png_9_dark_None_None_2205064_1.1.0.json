@@ -1,0 +1,28 @@
+{
+    "checksum": "bd3b954f7ab309cf07044f59a9f7ce4d",
+    "wallpaper": "/home/abuku/wallpapers/resting-in-solitude.png",
+    "alpha": "100",
+    "special": {
+        "background": "#08090D",
+        "foreground": "#c1c1c2",
+        "cursor": "#c1c1c2"
+    },
+    "colors": {
+        "color0": "#08090D",
+        "color1": "#4B2D6A",
+        "color2": "#314A5D",
+        "color3": "#52556B",
+        "color4": "#50378F",
+        "color5": "#656B92",
+        "color6": "#936792",
+        "color7": "#c1c1c2",
+        "color8": "#555c69",
+        "color9": "#4B2D6A",
+        "color10": "#314A5D",
+        "color11": "#52556B",
+        "color12": "#50378F",
+        "color13": "#656B92",
+        "color14": "#936792",
+        "color15": "#c1c1c2"
+    }
+}

@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/abuku/wallpapers/37.jpg"
+let background = "#091927"
+let foreground = "#c0cbc4"
+let cursor     = "#c0cbc4"
+
+" Colors
+let color0  = "#091927"
+let color1  = "#A4584E"
+let color2  = "#AB8C79"
+let color3  = "#597A85"
+let color4  = "#3BA995"
+let color5  = "#4FAD9B"
+let color6  = "#B29885"
+let color7  = "#c0cbc4"
+let color8  = "#868e89"
+let color9  = "#A4584E"
+let color10 = "#AB8C79"
+let color11 = "#597A85"
+let color12 = "#3BA995"
+let color13 = "#4FAD9B"
+let color14 = "#B29885"
+let color15 = "#c0cbc4"

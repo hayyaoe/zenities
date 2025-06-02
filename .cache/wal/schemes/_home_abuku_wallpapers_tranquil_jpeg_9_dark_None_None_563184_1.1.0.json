@@ -1,0 +1,28 @@
+{
+    "checksum": "fc1ef7286ae41a2efe92ab30855f3ff7",
+    "wallpaper": "/home/abuku/wallpapers/tranquil.jpeg",
+    "alpha": "100",
+    "special": {
+        "background": "#0B141D",
+        "foreground": "#c2c4c6",
+        "cursor": "#c2c4c6"
+    },
+    "colors": {
+        "color0": "#0B141D",
+        "color1": "#4E7057",
+        "color2": "#478C4A",
+        "color3": "#61964F",
+        "color4": "#98B35D",
+        "color5": "#2C688C",
+        "color6": "#477390",
+        "color7": "#c2c4c6",
+        "color8": "#5b6670",
+        "color9": "#4E7057",
+        "color10": "#478C4A",
+        "color11": "#61964F",
+        "color12": "#98B35D",
+        "color13": "#2C688C",
+        "color14": "#477390",
+        "color15": "#c2c4c6"
+    }
+}

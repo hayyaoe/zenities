@@ -1,0 +1,28 @@
+{
+    "checksum": "6937be8d061bd07eb14e6199c3267bb7",
+    "wallpaper": "/home/abuku/wallpapers/searocks.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0f1c21",
+        "foreground": "#c3c6c7",
+        "cursor": "#c3c6c7"
+    },
+    "colors": {
+        "color0": "#0f1c21",
+        "color1": "#7A7F7D",
+        "color2": "#5F7886",
+        "color3": "#728C96",
+        "color4": "#7CA6C3",
+        "color5": "#94A9AD",
+        "color6": "#A4BCC3",
+        "color7": "#c3c6c7",
+        "color8": "#5e6d72",
+        "color9": "#7A7F7D",
+        "color10": "#5F7886",
+        "color11": "#728C96",
+        "color12": "#7CA6C3",
+        "color13": "#94A9AD",
+        "color14": "#A4BCC3",
+        "color15": "#c3c6c7"
+    }
+}

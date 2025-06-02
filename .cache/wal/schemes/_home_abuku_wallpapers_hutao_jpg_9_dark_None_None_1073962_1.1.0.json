@@ -1,0 +1,28 @@
+{
+    "checksum": "babe17a7185f161b458253e728083b38",
+    "wallpaper": "/home/abuku/wallpapers/hutao.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#1c212b",
+        "foreground": "#c6c7ca",
+        "cursor": "#c6c7ca"
+    },
+    "colors": {
+        "color0": "#1c212b",
+        "color1": "#699CC2",
+        "color2": "#75A7C9",
+        "color3": "#8C9AB3",
+        "color4": "#C9B7BC",
+        "color5": "#8EB1CE",
+        "color6": "#A7B8CE",
+        "color7": "#c6c7ca",
+        "color8": "#646b7b",
+        "color9": "#699CC2",
+        "color10": "#75A7C9",
+        "color11": "#8C9AB3",
+        "color12": "#C9B7BC",
+        "color13": "#8EB1CE",
+        "color14": "#A7B8CE",
+        "color15": "#c6c7ca"
+    }
+}

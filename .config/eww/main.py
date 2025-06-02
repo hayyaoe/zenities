@@ -4,6 +4,7 @@ from dbus.mainloop.glib import DBusGMainLoop
 from gi.repository import GLib
 import threading
 import time
+import os
 
 class Notification:
     def __init__(self, summary, body, icon):
@@ -24,27 +25,28 @@ def add_object(notif):
     timer_thread = threading.Thread(target=remove_object, args=(notif,))
     timer_thread.start()
 
-def print_state():
-    
+def print_state():    
     string = ""
     for item in notifications:
         string = string + f"""
-                  (button :class 'notif'
-                   (box :orientation 'horizontal' :space-evenly false
-                      (image :image-width 80 :image-height 80 :path '{item.icon or ''}')
-                      (box :orientation 'vertical'
-                        (label :width 100 :wrap true :text '{item.summary or ''}')
-                        (label :width 100 :wrap true :text '{item.body or ''}')
-                  )))
+(button :class "notif"
+ (box :orientation "horizontal" :space-evenly false
+  (image :image-width 20 :image-height 20 :path "{item.icon or ''}")
+  (box :orientation "vertical"
+    (label :class "notif-summary"
+           :width 120
+           :truncate true
+           :halign "start"
+           :justify "left"
+           :text "{item.summary or ''}")
+    (label :width 120
+           :truncate true
+           :halign "start"
+           :justify "left"
+           :text "{item.body or ''}"))))
                   """
     string = string.replace('\n', ' ')
     print(fr"""(box :orientation 'vertical' {string or ''})""", flush=True)
-
-# def print_state():
-#     string = ""
-#     for item in notifications:
-#         string = string + f"{item}"
-#     print(string, flush=True)
 
 class NotificationServer(dbus.service.Object):
     def __init__(self):
@@ -53,15 +55,9 @@ class NotificationServer(dbus.service.Object):
 
     @dbus.service.method('org.freedesktop.Notifications', in_signature='susssasa{ss}i', out_signature='u')
     def Notify(self, app_name, replaces_id, app_icon, summary, body, actions, hints, timeout):
-        # print("Received Notification:")
-        # print("  App Name:", app_name)
-        # print("  Replaces ID:", replaces_id)
-        # print("  App Icon:", app_icon)
-        # print("  Summary:", summary)
-        # print("  Body:", body)
-        # print("  Actions:", actions)
-        # print("  Hints:", hints)
-        # print("  Timeout:", timeout)
+        if not app_icon:
+            app_icon = os.path.expanduser("~/.config/eww/icons/bell-solid.svg")
+
         add_object(Notification(summary, body, app_icon))
         return 0
 

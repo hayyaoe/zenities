@@ -1,0 +1,28 @@
+{
+    "checksum": "c558ba63e93a7d4012c9ee3c2bc2e291",
+    "wallpaper": "/home/abuku/wallpapers/fgo.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0f1015",
+        "foreground": "#c3c3c4",
+        "cursor": "#c3c3c4"
+    },
+    "colors": {
+        "color0": "#0f1015",
+        "color1": "#5E4E5C",
+        "color2": "#936667",
+        "color3": "#80788C",
+        "color4": "#947A8F",
+        "color5": "#A39498",
+        "color6": "#D7ADA7",
+        "color7": "#c3c3c4",
+        "color8": "#5a5a6e",
+        "color9": "#5E4E5C",
+        "color10": "#936667",
+        "color11": "#80788C",
+        "color12": "#947A8F",
+        "color13": "#A39498",
+        "color14": "#D7ADA7",
+        "color15": "#c3c3c4"
+    }
+}

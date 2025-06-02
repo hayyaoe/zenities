@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/abuku/wallpapers/100.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0e0c0f",
+        "foreground": "#e4dfdd",
+        "cursor": "#e4dfdd"
+    },
+    "colors": {
+        "color0": "#0e0c0f",
+        "color1": "#A68578",
+        "color2": "#F1A94D",
+        "color3": "#798084",
+        "color4": "#959095",
+        "color5": "#B2938D",
+        "color6": "#D1BBAE",
+        "color7": "#e4dfdd",
+        "color8": "#9f9c9a",
+        "color9": "#A68578",
+        "color10": "#F1A94D",
+        "color11": "#798084",
+        "color12": "#959095",
+        "color13": "#B2938D",
+        "color14": "#D1BBAE",
+        "color15": "#e4dfdd"
+    }
+}

@@ -1,0 +1,9 @@
+#![enable(implicit_some)]
+(
+    border_width: 2,
+    margin: [4, 4],
+    default_border_color: "#090a0a",
+    floating_border_color: "#ADBDB8",
+    focused_border_color: "#c1c1c1",
+    background_color: "#090a0a",
+)
