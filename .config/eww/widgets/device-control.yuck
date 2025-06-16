@@ -139,7 +139,7 @@
 (defwindow device-control
   :monitor '[1, 0]'
   :geometry (geometry :x "0.8%"
-                      :y "1.5%"
+                      :y "16px"
                       :width "10%"
                       :height "0%"
                       :anchor "top right")
