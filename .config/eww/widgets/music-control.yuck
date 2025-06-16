@@ -37,7 +37,7 @@
 
 (defwindow music-window
   :monitor 0
-  :geometry (geometry :x "0.8%" :y "46%" :anchor "top right")
+  :geometry (geometry :x "0.8%" :y "355px" :anchor "top right")
   :stacking "bg"
   (music-widget))
 
