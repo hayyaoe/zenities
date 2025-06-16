@@ -15,6 +15,7 @@
 
 ;;;;; Deflistens ;;;;;
 (deflisten music :initial "" "playerctl --player=ncspot --follow metadata --format '{{ title }}' || true")
+(deflisten artist :initial "" "playerctl --player=ncspot --follow metadata --format '{{ artist }}' || true")
 (deflisten current-music-cover :initial "" "playerctl --player=ncspot --follow metadata --format {{mpris:artUrl}}")
 ;;;;;;;;;;;;;;;;;;;;;;
 
@@ -60,3 +61,5 @@
 (include "widgets/resource-monitor.yuck")
 (include "widgets/device-control.yuck")
 (include "widgets/notifications.yuck")
+(include "widgets/custom-calendar.yuck")
+(include "widgets/music-control.yuck")

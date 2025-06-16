@@ -34,7 +34,6 @@
   background-color: mix($background, $color1, 80%);
 }
 
-// Icon control margin standardization
 .screenshot-icon-control,
 .wifi-icon-control,
 .idle-icon-control {
@@ -42,8 +41,7 @@
 }
 
 .volume-icon-control,
-.brightness-icon-control,
-.microphone-icon-control{
+.brightness-icon-control{
   margin: 0 10px 0 6px;
 }
 
@@ -51,19 +49,15 @@
   margin: 0;
 }
 
-// Control bars
-.microphone-control-bar trough,
 .brightness-control-bar trough,
 .volume-control-bar trough {
   background-color: mix($background, $foreground, 80%);
   border-radius: 5px;
-  min-height: 12px;
+  min-height: 8px;
   min-width: 170px;
   margin: 6px 0;
 }
 
-// Highlight inside control bars
-.microphone-control-bar trough highlight,
 .brightness-control-bar trough highlight,
 .volume-control-bar trough highlight {
   min-height: 8px;

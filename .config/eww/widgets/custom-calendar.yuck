@@ -1,0 +1,14 @@
+(defpoll custom-calendar :interval "1h" "~/.config/eww/scripts/custom-calendar.sh")
+
+(defwidget calendar-widget []
+  (box :orientation "vertical" :class "calendar-container"
+    (literal :content custom-calendar)
+  ))
+
+(defwindow custom-calendar
+  :monitor 0
+  :geometry (geometry :x "0.8%" :y "62%" :anchor "top right")
+  :stacking "bg"
+  :focusable false
+  (calendar-widget))
+
