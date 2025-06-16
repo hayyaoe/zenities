@@ -28,7 +28,10 @@
                   :onclick "reboot" "")
           (button :class "suspend"
                   :tooltip "Suspend"
-                  :onclick "systemctl suspend" ""))))))
+                  :onclick "systemctl suspend" "")
+          (button :class "exit"
+                  :tooltip "exit Hyprland"
+                  :onclick "hyprctl dispatch exit" ""))))))
 
 ;; Workspaces ;;
 (defwidget workspaces-vert []

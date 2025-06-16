@@ -34,12 +34,12 @@ def print_state():
   (image :image-width 20 :image-height 20 :path "{item.icon or ''}")
   (box :orientation "vertical"
     (label :class "notif-summary"
-           :width 120
+           :width 180
            :truncate true
            :halign "start"
            :justify "left"
            :text "{item.summary or ''}")
-    (label :width 120
+    (label :width 180
            :truncate true
            :halign "start"
            :justify "left"

@@ -20,7 +20,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot
+yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluetuith rtw88-dkms-git
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git

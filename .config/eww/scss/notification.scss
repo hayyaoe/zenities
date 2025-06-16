@@ -4,7 +4,7 @@
 }
 
 .notif {
-    background-color: $background;
+    background-color: mix($color1, $background, 20%);
     margin-bottom: 10px;
     padding: 12px;
     border-radius: 12px;
