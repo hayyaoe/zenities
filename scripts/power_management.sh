@@ -1,4 +1,4 @@
-CHOICE=$(printf "\n\n\n\n" | rofi -dmenu -replace -config ~/.config/rofi/config-power.rasi)
+CHOICE=$(printf "\n\n\n\n" | rofi -dmenu -replace -config ~/.config/rofi/config-power.rasi)
 
 case "$CHOICE" in
   "")
@@ -15,14 +15,15 @@ case "$CHOICE" in
     sleep 1
     hyprlock
   ;;
-  "") 
-    sleep 1
-    killall Hyprland
-  ;;
-  "")
+  "")
     cd /$HOME
     sleep 1
     systemctl suspend
+  ;;
+  "")
+    cd /$HOME
+    sleep 1
+    hyprctl dispatch exit
   ;;
   *) 
     exit 1

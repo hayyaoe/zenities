@@ -1,0 +1,32 @@
+.calendar-container {
+  padding: 4px;
+  border-radius: 12px;
+  background-color: $background;
+  color: $foreground;
+  min-width: 218px;
+}
+
+
+.calendar-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: $color1;
+}
+
+.weekdays .label {
+  color: $color3;
+}
+
+.calendar-grid .day {
+  min-width: 22px;
+  margin: 2px;
+}
+
+.calendar-grid .today {
+  color: $background;
+  background-color: $color2;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 2px;
+}
+
