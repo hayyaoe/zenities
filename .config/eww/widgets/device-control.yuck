@@ -14,7 +14,7 @@
         :orientation "horizontal"
         :space-evenly "false"
     (button :class "volume-icon-control"
-            :onclick "~/.config/eww/scripts/wifi-menu.sh" volume-icon))))
+            :onclick "~/.config/eww/scripts/pavucontrol.sh" volume-icon))))
 
 ;; Volume Bar ;;
 (defwidget volume-control-bar []
@@ -34,7 +34,7 @@
         :orientation "horizontal"
         :space-evenly "false"
     (button :class "brightness-icon-control"
-            :onclick "~/.config/eww/scripts/wifi-menu.sh" "󰖨"))))
+            :onclick "" "󰖨"))))
 
 ;; Brightness Bar ;;
 (defwidget brightness-control-bar []
@@ -46,25 +46,6 @@
                :min 0
                :onchange "brightnessctl s {}%")))
 
-;; Microphone ;;
-(defwidget microphone-control []
-  (eventbox :cursor "pointer"
-  (box  :class "microphone-control"
-        :orientation "horizontal"
-        :space-evenly "false"
-    (button :class "microphone-icon-control"
-            :onclick "~/.config/eww/scripts/wifi-menu.sh" {microphone-status ? "" : "" }))))
-
-;; Microphone Bar ;;
-(defwidget microphone-control-bar []
-  (eventbox :cursor "pointer"
-        (scale :class "microphone-control-bar"
-               :value current-microphone
-               :orientation "horizontal"
-               :max 101
-               :min 0
-               :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%")))
-
 ;; Bluetooth ;;
 (defwidget bluetooth-control []
   (eventbox :cursor "pointer"
@@ -72,7 +53,7 @@
         :orientation "vertical"
         :space-evenly "false"
     (button :class "bluetooth-icon-control"
-            :onclick "~/.config/eww/scripts/wifi-menu.sh" bluetooth-status))))
+            :onclick "~/.config/eww/scripts/bluetuith.sh" bluetooth-status))))
 
 ;; Idle ;;
 (defwidget idle-control []
@@ -90,7 +71,7 @@
         :orientation "vertical"
         :space-evenly "false"
     (button :class "screenshot-icon-control"
-            :onclick "~/.config/eww/scripts/toggle-idle.sh" ""))))
+            :onclick "sh ~/scripts/screenshot.sh &" ""))))
 
 ;; Volume Group ;;
 (defwidget volume-controls []
@@ -115,18 +96,6 @@
         :hexpand "false"
         (brightness-control)
         (brightness-control-bar)))
-
-;; Microphone Group ;;
-(defwidget microphone-controls []
-  (box  :class "microphone-controls"
-        :orientation "horizontal"
-        :space-evenly "false"
-        :spacing 10
-        :halign "start"
-        :vexpand "false"
-        :hexpand "false"
-        (microphone-control)
-        (microphone-control-bar)))
 
 ;; Grid Control Group ;;
 (defwidget toprow-controls []
@@ -164,14 +133,13 @@
        :vexpand "false"
        :hexpand "false"
        (volume-controls)
-       (microphone-controls)
        (brightness-controls)))
 
 ;; device-control ;;
 (defwindow device-control
   :monitor '[1, 0]'
-  :geometry (geometry :x "0.5%"
-                      :y "1%"
+  :geometry (geometry :x "0.8%"
+                      :y "1.5%"
                       :width "10%"
                       :height "0%"
                       :anchor "top right")

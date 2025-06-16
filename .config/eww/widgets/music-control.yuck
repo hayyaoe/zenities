@@ -1,0 +1,43 @@
+(defvar music-placeholder "~/.config/eww/icons/music-solid.png")
+
+(defwidget music-widget []
+  (eventbox :cursor "pointer"
+    (box :class "music-widget"
+         :orientation "horizontal"
+         :space-evenly "false"
+         :halign "center"
+      (box :class "song-cover-art-widget"
+           :vexpand "false"
+           :hexpand "false"
+           :style { "background-image: url('" + (current-music-cover != "" ? current-music-cover : music-placeholder) + "');" });
+      (box :class "parentbox-widget"
+           :orientation "vertical"
+        (label :text {music != "" ? "${music}" : "No music playing"}
+               :truncate "true"
+               :limit-width "25")
+        (label :text {artist != "" ? "${artist}" : "No artist"}
+               :truncate "true"
+               :class "artist-widget"
+               :limit-width "25")
+        (scale :class "musicbar-widget"
+               :value {current-music-seek != '' ? "${current-music-seek}" : "0"}
+               :orientation "horizontal"
+               :max 101
+               :min 0
+               :onchange "~/.config/eww/scripts/set-music-seek.sh {}")
+      (box :class "music-control-widget"
+           :space-evenly "true"
+           :spacing "24"
+        (button :class "prev-widget"
+                :onclick "playerctl --player=ncspot previous" "")
+        (button :class "pause-widget"
+                :onclick "playerctl --player=ncspot play-pause" "")
+        (button :class "next-widget"
+                :onclick "playerctl --player=ncspot next" ""))))))
+
+(defwindow music-window
+  :monitor 0
+  :geometry (geometry :x "0.8%" :y "46%" :anchor "top right")
+  :stacking "bg"
+  (music-widget))
+

@@ -8,7 +8,7 @@
 
 configuration {
     modi:                       "drun,run";
-    font:                       "Mononoki 24";
+    font:                       "Font Awesome 6 Free 24";
 }
 
 window {
@@ -63,7 +63,7 @@ listview {
 element {
     spacing: 8px;
     margin: 0;
-    padding: 20px 25px 20px 30px;
+    padding: 30px 25px 25px 30px;
     border: 0px solid;
     border-radius: 8px;
     background-color: transparent;

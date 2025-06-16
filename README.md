@@ -1,6 +1,7 @@
 
 # Zenities Hyprland 💧
-![](screenshots/hero.png)
+![](screenshots/new-hero.png)
+![](screenshots/tmux-ncspot-cava.png)
 
 Thank you so much for visiting my Hyprland rice. I'm relatively new to ricing, and while it's no where near perfect, I've put a lot of care into it. This rice is inspired by so many awesome people's work, though I regret I can't list everyone by name
 
@@ -79,14 +80,105 @@ This installation script **only works on Arch Linux** and requires **Hyprland** 
     sh INSTALL.sh
     ```
 
-### Note
-After installing this rice, the system will automatically reboot. On the first load, the colors may appear incorrect because the cache from Pywal is not available yet. To fix this, you will need to reload the wallpaper 2-3 times by using the key combination `SUPER + SHIFT + W` to open the wallpaper picker then pick a wallpaper so pywal reloads.  
-- On macOS, the `SUPER` key refers to the **Command** key.
-- On most other keyboards, `SUPER` refers to the **Windows** key.
-
 ---
 
 For more details or issues, please visit the repository’s [issues page](https://github.com/hayyaoe/zenities/issues).
+
+---
+
+## Keybinds
+
+### ⚡ Launch Applications
+
+| Action                 | Keybind                    | Description                          |
+|------------------------|----------------------------|--------------------------------------|
+| Terminal (tiled)       | `SUPER + RETURN`           | Launch terminal with `tmux`          |
+| Terminal (floating)    | `SUPER + SHIFT + RETURN`   | Launch floating terminal             |
+| File Manager (Yazi)    | `SUPER + M`                | Launch Yazi via custom script        |
+| Yazi (floating)        | `SUPER + SHIFT + M`        | Launch Yazi in floating window       |
+| Browser                | `SUPER + B`                | Launch your default browser          |
+| App Launcher / Menu    | `SUPER + SPACE`            | Launch application menu (`$menu`)    |
+
+---
+
+### 🧰 System Scripts
+
+| Action                  | Keybind                  | Description                            |
+|-------------------------|--------------------------|----------------------------------------|
+| Reload Wallpaper        | `SUPER + A`              | Reload Hyprpaper config                |
+| Power Menu              | `SUPER + P`              | Launch power management script         |
+| Select Wallpaper        | `SUPER + SHIFT + W`      | Run wallpaper selector script          |
+| Launch Widgets          | `SUPER + H`              | Run Eww or custom widget script        |
+| Reload Waybar           | `SUPER + R`              | Run Eww reload waybar script           |
+
+---
+
+### 🪟 Window Actions
+
+| Action            | Keybind           | Description                           |
+|-------------------|-------------------|---------------------------------------|
+| Kill Window       | `SUPER + Q`       | Close the currently focused window    |
+| Toggle Floating   | `SUPER + V`       | Toggle floating mode for active window|
+| Toggle Split      | `SUPER + J`       | Toggle split orientation (vertical/horizontal) |
+| Fullscreen        | `SUPER + F`       | Toggle fullscreen mode                |
+
+---
+
+### 📌 Window Focus
+Use `ALT + [key]` to change focus between tiled windows:
+
+| Direction | Keybind     |
+|-----------|-------------|
+| Left      | `ALT + h`   |
+| Right     | `ALT + l`   |
+| Up        | `ALT + k`   |
+| Down      | `ALT + j`   |
+
+---
+
+### 🪟 Move Tiled Window
+Use `ALT + SHIFT + [key]` to move a focused window in the specified direction:
+
+| Direction | Keybind         |
+|-----------|-----------------|
+| Left      | `ALT + SHIFT + h` |
+| Right     | `ALT + SHIFT + l` |
+| Up        | `ALT + SHIFT + k` |
+| Down      | `ALT + SHIFT + j` |
+
+---
+
+### 📏 Resize Tiled Window
+Use `SUPER + ALT + [key]` to resize the focused window:
+
+| Direction | Keybind              | Action       |
+|-----------|----------------------|--------------|
+| Shrink ←  | `SUPER + ALT + h`    | Resize left  |
+| Expand →  | `SUPER + ALT + l`    | Resize right |
+| Shrink ↑  | `SUPER + ALT + k`    | Resize up    |
+| Expand ↓  | `SUPER + ALT + j`    | Resize down  |
+
+---
+
+### 🧲 Move Floating Window
+Use `SUPER + CTRL + [key]` to move floating windows:
+
+| Direction | Keybind              |
+|-----------|----------------------|
+| Left      | `SUPER + CTRL + h`   |
+| Right     | `SUPER + CTRL + l`   |
+| Up        | `SUPER + CTRL + k`   |
+| Down      | `SUPER + CTRL + j`   |
+
+---
+
+## Notes
+- Most of the keybinds here are designed with colemak as the default layout so feel free to customize.
+- `SUPER` typically refers to the Windows key or Command key, depending on your keyboard.
+- These keybindings follow a HJKL (Left-Down-Up-Right) layout, inspired by VIM-style ergonomics for faster directional control.
+- You can customize these further to suit your workflow or preferred keyboard layout.
+
+---
 
 ## Details
 
@@ -104,10 +196,10 @@ This rice utilized pywal to create custom colorscemes depending on the wallpaper
 
 ## Screenshots
 
-![](screenshots/hero.png)
-![](screenshots/someapps.png)
-
-
+![](screenshots/new-hero.png)
+![](screenshots/tmux-ncspot-cava.png)
+![](screenshots/wallpaper-switcher.png)
+![](screenshots/nvim.png)
 
 ## Credits
 - **[Rxyhn](https://github.com/rxyhn/tokyo)**
