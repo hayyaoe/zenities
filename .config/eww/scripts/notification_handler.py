@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import dbus
 import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
@@ -5,6 +6,7 @@ from gi.repository import GLib
 import threading
 import time
 import os
+import sys
 
 class Notification:
     def __init__(self, summary, body, icon):
@@ -16,19 +18,21 @@ notifications = []
 
 def remove_object(notif):
     time.sleep(10)
-    notifications.remove(notif)
-    print_state()
+    if notif in notifications:
+        notifications.remove(notif)
+        print_state()
 
 def add_object(notif):
     notifications.insert(0, notif)
     print_state()
     timer_thread = threading.Thread(target=remove_object, args=(notif,))
+    timer_thread.daemon = True
     timer_thread.start()
 
-def print_state():    
+def print_state():
     string = ""
     for item in notifications:
-        string = string + f"""
+        string += f"""
 (button :class "notif"
  (box :orientation "horizontal" :space-evenly false
   (image :image-width 20 :image-height 20 :path "{item.icon or ''}")
@@ -44,9 +48,13 @@ def print_state():
            :halign "start"
            :justify "left"
            :text "{item.body or ''}"))))
-                  """
+"""
     string = string.replace('\n', ' ')
-    print(fr"""(box :orientation 'vertical' {string or ''})""", flush=True)
+    try:
+        print(fr"""(box :orientation 'vertical' {string or ''})""", flush=True)
+    except BrokenPipeError:
+        # Eww has closed the pipe, ignore and move on
+        pass
 
 class NotificationServer(dbus.service.Object):
     def __init__(self):
@@ -71,3 +79,4 @@ if __name__ == '__main__':
     server = NotificationServer()
     mainloop = GLib.MainLoop()
     mainloop.run()
+
