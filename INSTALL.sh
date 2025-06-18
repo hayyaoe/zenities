@@ -60,7 +60,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluetuith python-gobject 
+yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
@@ -83,6 +83,8 @@ sudo systemctl disable systemd-resolved
 sudo systemctl disable systemd-networkd
 sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
 
 # Change shell to zsh
 chsh -s /usr/bin/zsh
