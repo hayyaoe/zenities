@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Get the wallpaper filename passed as an argument
 SELECTED_WALLPAPER=$1
 WALLPAPER_DIR="$HOME/wallpapers"
@@ -12,9 +10,9 @@ if [ -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
     TARGET_FILE=$(readlink -f "$SYMLINK_CONFIG_FILE")
     TARGET_FILE2=$(readlink -f "$SYMLINK_LOCK_CONFIG")
 
-    sed -i -e "s|preload = .*|preload = $HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" \
-           -e "s|wallpaper = ,.*|wallpaper = ,$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE"
-    sed -i -e "s|path = .*|path = $HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE2"
+    sed -i -e "s|preload = .*|preload = \$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" \
+          -e "s|wallpaper = ,.*|wallpaper = ,\$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE"
+    sed -i -e "s|path = .*|path = \$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE2"
 
     # Call the separate script to reload pywal, eww, and hyprpaper
     ~/zenities/.config/eww/scripts/update-color.sh "$SELECTED_WALLPAPER"
