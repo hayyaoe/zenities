@@ -189,7 +189,7 @@
                :orientation "vertical"
                :max 101
                :min 0
-               :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"))
+               :onchange "pactl set-sink-volume $(pactl get-default-sink) {}%"))
       (button :class "volume-icon-vert" volume-icon))))
 
 ;; Idle Toggle ;;
