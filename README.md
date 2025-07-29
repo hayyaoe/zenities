@@ -205,3 +205,7 @@ This rice utilized pywal to create custom colorscemes depending on the wallpaper
 - **[Rxyhn](https://github.com/rxyhn/tokyo)**
 - **[saimoomedits](https://github.com/saimoomedits/eww-widgets/tree/main)**
 - **[Vimjoyer](https://www.youtube.com/@vimjoyer)**
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hayyaoe/zenities&type=Date)](https://www.star-history.com/#hayyaoe/zenities&Date)
