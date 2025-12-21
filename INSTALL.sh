@@ -36,17 +36,6 @@ for file in "${FILES[@]}"; do
   fi
 done
 
-CACHE_WAL="$HOME/.cache/wal"
-CACHE_WAL_BAK="$HOME/.cache/wal.bak"
-
-echo "Checking for $CACHE_WAL..."
-if [ -d "$CACHE_WAL" ]; then
-  echo "Backing up $CACHE_WAL to $CACHE_WAL_BAK"
-  mv "$CACHE_WAL" "$CACHE_WAL_BAK"
-else
-  echo "$CACHE_WAL not found; skipping..."
-fi
-
 echo "Applying dotfiles with stow"
 cd "$HOME/zenities" || { echo "Could not access $HOME/zenities"; exit 1; }
 stow .
