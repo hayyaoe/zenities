@@ -1,4 +1,4 @@
-source ~/.cache/wal/colors-wal.vim
+source vim-colors.vim
 
 let g:colors_name = "color"
 

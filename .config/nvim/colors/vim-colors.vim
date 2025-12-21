@@ -1,0 +1,22 @@
+" Special
+let background= #161415;
+let foreground= #FBF9EF;
+let cursor= #989978;
+
+" Colors
+let color0= #3D3B3D;
+let color1= #150D13;
+let color2= #282B01;
+let color3= #635255;
+let color4= #696834;
+let color5= #BC999E;
+let color6= #B6B39E;
+let color7= #F1EFE0;
+let color8= #A8A79D;
+let color9= #1C1119;
+let color10= #353901;
+let color11= #846D71;
+let color12= #8C8B45;
+let color13= #FBCCD2;
+let color14= #F3EFD2;
+let color15= #F1EFE0;
