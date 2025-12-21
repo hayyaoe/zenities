@@ -33,7 +33,7 @@ hi Visual guibg=s:color1 guifg=s:foreground
 hi Search guifg=s:background guibg=s:color5
 
 " Status line
-hi StatusLine guifg=s:foreground guibg=s:color3
+hi StatusLine guifg=s:foreground guibg=s:background
 
 " VertSplit
 hi VertSplit guifg=s:color3 guibg=s:background
