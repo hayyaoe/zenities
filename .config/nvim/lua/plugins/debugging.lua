@@ -10,17 +10,6 @@ return {
 
     require("dapui").setup()
 
-    dap.adapters.dart = {
-      type = "executable",
-      command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
-      args = { "dart" },
-    }
-    dap.adapters.flutter = {
-      type = "executable",
-      command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
-      args = { "flutter" },
-    }
-
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
