@@ -43,3 +43,4 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
