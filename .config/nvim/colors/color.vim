@@ -1,4 +1,4 @@
-source vim-colors.vim
+source ~/.config/nvim/colors/vim-colors.vim
 
 let g:colors_name = "color"
 
