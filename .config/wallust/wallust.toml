@@ -1,4 +1,6 @@
 palette = 'dark16'
+theshold = 70
+check_contrast = true
 
 [templates]
 eww.template = 'eww-colors.scss'
