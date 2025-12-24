@@ -1,23 +1,51 @@
 return {
   "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    local theme = require("lualine.themes.auto")
-    local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-    local modes = { "normal", "insert", "visual", "replace", "command", "inactive", "terminal" }
+    local function get_colors()
+      local json_path = vim.fn.stdpath("config") .. "/colors/lush-colors.json"
+      local file = io.open(json_path, "r")
+      local fallback = { background = "#1a1b26", foreground = "#c0caf5", color1 = "#f7768e", color4 = "#7aa2f7", color8 =
+      "#414868" }
 
-    for _, m in ipairs(modes) do
-      if theme[m] then
-        if theme[m].c then theme[m].c.bg = normal_bg end
-        if theme[m].x then theme[m].x.bg = normal_bg end
-      end
+      if not file then return fallback end
+      local content = file:read("*a")
+      file:close()
+      local ok, data = pcall(vim.fn.json_decode, content)
+      return ok and data or fallback
     end
+
+    local c = get_colors()
+
+    local wallust_lualine = {
+      normal = {
+        a = { bg = c.color4, fg = c.background, gui = "bold" },
+        b = { bg = c.color8, fg = c.foreground },
+        c = { bg = "NONE", fg = c.foreground }, -- Matches transparent background
+      },
+      insert = {
+        a = { bg = c.color2, fg = c.background, gui = "bold" },
+      },
+      visual = {
+        a = { bg = c.color1, fg = c.background, gui = "bold" },
+      },
+      replace = {
+        a = { bg = c.color3, fg = c.background, gui = "bold" },
+      },
+      inactive = {
+        a = { bg = c.background, fg = c.color8 },
+        b = { bg = c.background, fg = c.color8 },
+        c = { bg = "NONE", fg = c.color8 },
+      },
+    }
 
     require("lualine").setup({
       options = {
-        theme = theme,
+        theme = wallust_lualine,
         component_separators = "",
         section_separators = "",
         globalstatus = true,
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
       sections = {
         lualine_a = { { "mode", fmt = function(str) return str:sub(1, 1) end } },

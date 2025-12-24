@@ -14,3 +14,6 @@ vim.target = '~/.config/nvim/colors/vim-colors.vim'
 
 kitty.template = 'kitty-colors.conf'
 kitty.target = '~/.config/kitty/kitty-colors.conf'
+
+lush.template = 'lush-colors.json'
+lush.target = '~/.config/nvim/colors/lush-colors.json'
