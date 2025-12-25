@@ -30,8 +30,8 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # change cd to Z using zoxide
 eval "$(zoxide init zsh)"
 
-# run neofetch on launch
-neofetch
+# run fastfetch on launch
+fastfetch
 
 eval $(thefuck --alias)
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
