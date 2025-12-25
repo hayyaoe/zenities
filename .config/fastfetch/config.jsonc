@@ -17,16 +17,16 @@
     "source": "~/.config/fastfetch/logos/zenities.txt",
     "padding": {
       "top": 2,
-      "left": 2,
-      "right": 4
+      "left": 4,
+      "right": 6
     }
   },
   "modules": [
     {
-      "type": "title"
+      "type": "break"
     },
     {
-      "type": "separator"
+      "type": "break"
     },
     {
       "type": "os",
@@ -34,31 +34,17 @@
       "format": "{2}"
     },
     {
-      "type": "kernel",
+      "type": "command",
       "key": "KERN",
-      "format": "{2}"
+      "text": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+).*/\\1/'"
     },
     {
       "type": "uptime",
-      "key": "UP"
+      "key": "UP",
+      "format": "{?1}{1}d {?}{?2}{2}h {?}{3}m"
     },
     {
       "type": "break"
-    },
-    {
-      "type": "wm",
-      "key": "WM",
-      "format": "{2}"
-    },
-    {
-      "type": "disk",
-      "key": "DISK",
-      "format": "{1} / {2}"
-    },
-    {
-      "type": "memory",
-      "key": "MEM",
-      "format": "{used} / {total}"
     }
   ]
 }
