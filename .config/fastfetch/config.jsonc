@@ -35,12 +35,12 @@
     },
     {
       "type": "kernel",
-      "key": "Kern",
+      "key": "KERN",
       "format": "{2}"
     },
     {
       "type": "uptime",
-      "key": "Up"
+      "key": "UP"
     },
     {
       "type": "break"
@@ -57,7 +57,7 @@
     },
     {
       "type": "memory",
-      "key": "Mem",
+      "key": "MEM",
       "format": "{used} / {total}"
     }
   ]
