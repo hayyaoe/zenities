@@ -1,46 +1,38 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# If you want to disable instant prompt, do it BEFORE sourcing p10k
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+# (Optional) Instant prompt block: if you OFF it, you can remove this entirely.
+# If you keep it, keep it at the very top.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 export PATH="/eww/target/release:$PATH"
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# source /share/powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-
-# use FZF
+# fzf
 eval "$(fzf --zsh)"
-# use the fuck
+
+# thefuck (ONLY ONCE)
 eval "$(thefuck --alias fuck)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# zoxide
+eval "$(zoxide init zsh)"
 
+# nvm
+source /usr/share/nvm/init-nvm.sh
+
+# powerlevel10k (ONLY ONCE)
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# aliases
 alias ls="eza --color=always --long --git --no-permissions --icons=always"
 alias speed="speedtest-cli"
 alias spot="ncspot"
 alias y="yazi"
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-
-# change cd to Z using zoxide
-eval "$(zoxide init zsh)"
-
-# run fastfetch on launch
-fastfetch
-
-eval $(thefuck --alias)
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/nvm/init-nvm.sh
-
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# fastfetch only in interactive shells, and only once per session
+if [[ -o interactive && -z "$FASTFETCH_RAN" ]]; then
+  export FASTFETCH_RAN=1
+  fastfetch
+fi
