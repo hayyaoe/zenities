@@ -1,4 +1,4 @@
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "rofi-dark-colors.rasi"
 
 /**
  * Abuku Color Theme

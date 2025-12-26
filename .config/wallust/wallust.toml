@@ -1,0 +1,19 @@
+palette = 'dark16'
+theshold = 70
+check_contrast = true
+
+[templates]
+eww.template = 'eww-colors.scss'
+eww.target = '~/.config/eww/colors.scss'
+
+rofi.template = 'rofi-dark-colors.rasi'
+rofi.target = '~/.config/rofi/rofi-dark-colors.rasi'
+
+vim.template = 'vim-colors.vim'
+vim.target = '~/.config/nvim/colors/vim-colors.vim'
+
+kitty.template = 'kitty-colors.conf'
+kitty.target = '~/.config/kitty/kitty-colors.conf'
+
+lush.template = 'lush-colors.json'
+lush.target = '~/.config/nvim/colors/lush-colors.json'

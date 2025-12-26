@@ -1,0 +1,50 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "display": {
+    "separator": "  ",
+    "key": {
+      "width": 6
+    },
+    "color": {
+      "title": "cyan",
+      "keys": "cyan",
+      "separator": "dim_white",
+      "output": "default"
+    }
+  },
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logos/zenities.txt",
+    "padding": {
+      "top": 2,
+      "left": 4,
+      "right": 6
+    }
+  },
+  "modules": [
+    {
+      "type": "break"
+    },
+    {
+      "type": "break"
+    },
+    {
+      "type": "os",
+      "key": "OS",
+      "format": "{2}"
+    },
+    {
+      "type": "command",
+      "key": "KERN",
+      "text": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+).*/\\1/'"
+    },
+    {
+      "type": "uptime",
+      "key": "UP",
+      "format": "{?1}{1}d {?}{?2}{2}h {?}{3}m"
+    },
+    {
+      "type": "break"
+    }
+  ]
+}
