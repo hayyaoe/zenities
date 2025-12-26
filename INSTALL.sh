@@ -36,17 +36,6 @@ for file in "${FILES[@]}"; do
   fi
 done
 
-CACHE_WAL="$HOME/.cache/wal"
-CACHE_WAL_BAK="$HOME/.cache/wal.bak"
-
-echo "Checking for $CACHE_WAL..."
-if [ -d "$CACHE_WAL" ]; then
-  echo "Backing up $CACHE_WAL to $CACHE_WAL_BAK"
-  mv "$CACHE_WAL" "$CACHE_WAL_BAK"
-else
-  echo "$CACHE_WAL not found; skipping..."
-fi
-
 echo "Applying dotfiles with stow"
 cd "$HOME/zenities" || { echo "Could not access $HOME/zenities"; exit 1; }
 stow .
@@ -60,7 +49,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm neofetch cmatrix cava python-pywal ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
+yay -S --noconfirm fastfetch cmatrix cava wallust ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
