@@ -36,3 +36,4 @@ if [[ -o interactive && -z "$FASTFETCH_RAN" ]]; then
   export FASTFETCH_RAN=1
   fastfetch
 fi
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
