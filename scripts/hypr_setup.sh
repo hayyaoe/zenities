@@ -52,7 +52,7 @@ for FILE in "${FILES[@]}"; do
     fi
 done
 
-FILES=("hyprpaper.conf", "hyprlock.conf")
+FILES=("hyprpaper.conf" "hyprlock.conf")
 
 for FILE in "${FILES[@]}"; do
     TARGET_FILE="$SERVICE_DIR/$FILE"
