@@ -52,10 +52,10 @@ cd yay
 makepkg -si --noconfirm
 
 # Install additional packages via yay
-yay -S --noconfirm fastfetch cmatrix cava wallust ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
+yay -S --needed --noconfirm fastfetch cmatrix cava wallust ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
 
 # Install Powerlevel10k for zsh
-yay -S --noconfirm zsh-theme-powerlevel10k-git
+yay -S --needed --noconfirm zsh-theme-powerlevel10k-git
 echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
 # Eww installation
@@ -67,6 +67,12 @@ cargo build --release --no-default-features --features=wayland
 cd target/release
 chmod +x ./eww
 sudo cp ./eww /usr/local/bin/
+
+# Run hypr-setup script
+bash $HOME/scripts/hypr_setup.sh
+
+#Run Wallpaper and Color Initialization
+bash $HOME/.config/eww/scripts/change-wallpaper.sh 29  
 
 # Network Manager setup
 sudo systemctl disable systemd-resolved
