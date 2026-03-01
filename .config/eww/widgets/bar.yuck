@@ -274,7 +274,7 @@
 
 ;; bar ;;
 (defwindow bar
-          :monitor '[1, 0]'
+          :monitor '[0]'
           :geometry (geometry :x "10px"
                               :y "10px"
                               :width "99%"
@@ -286,11 +286,10 @@
           (bar))
 
 (defwindow calendar
-          :monitor '[1, 0]'
+          :monitor '[0]'
           :geometry (geometry :x "10px"
                               :y "5px"
                               :width "270px"
                               :height "60px"
                               :anchor "top right")
           (cal))
-

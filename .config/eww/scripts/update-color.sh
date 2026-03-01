@@ -19,5 +19,5 @@ eww open-many side-bar notifications
 
 # Restart hyprpaper
 killall hyprpaper || echo "Warning: No hyprpaper process found"
-hyprpaper &
+hyprpaper -c $HOME/.config/hypr/service/hyprpaper.conf &
 
