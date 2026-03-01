@@ -1,6 +1,6 @@
 wallpaper {
     monitor =
-    path = $HOME/wallpapers/29.jpg
+    path = 
     fit_mode = cover
 }
 
