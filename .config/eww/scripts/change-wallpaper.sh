@@ -7,8 +7,8 @@ MONITOR=$(hyprctl monitors | grep '^Monitor' | awk 'NR==1 {print $2}')
 
 if [ -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
  
-    SYMLINK_CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
-    SYMLINK_LOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
+    SYMLINK_CONFIG_FILE="$HOME/.config/hypr/service/hyprpaper.conf"
+    SYMLINK_LOCK_CONFIG="$HOME/.config/hypr/service/hyprlock.conf"
     TARGET_FILE=$(readlink -f "$SYMLINK_CONFIG_FILE")
     TARGET_FILE2=$(readlink -f "$SYMLINK_LOCK_CONFIG")
 

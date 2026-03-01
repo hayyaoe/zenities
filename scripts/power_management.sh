@@ -13,7 +13,7 @@ case "$CHOICE" in
   ;;
   "") 
     sleep 1
-    hyprlock
+    hyprlock -c $HOME/.config/hypr/service/hyprlock.conf
   ;;
   "")
     cd /$HOME
