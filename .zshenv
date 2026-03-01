@@ -21,4 +21,3 @@ export PATH="$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin"
 if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
     . "$HOME/miniconda3/etc/profile.d/conda.sh"
 fi
-. "$HOME/.cargo/env"
