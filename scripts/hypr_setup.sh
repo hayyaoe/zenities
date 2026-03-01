@@ -3,7 +3,7 @@
 # Path Setup
 USER_DIR="$HOME/.config/hypr/user"
 SERVICE_DIR="$SERVICE/.config/hypr/service"
-TEMPLATE_DIR="$HOME/.config/hypr/templates"
+TEMPLATE_DIR="$HOME/.config/hypr/template"
 MONITORS_CONF="$USER_DIR/monitors.conf"
 
 mkdir -p "$USER_DIR"
