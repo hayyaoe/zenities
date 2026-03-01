@@ -1,0 +1,8 @@
+wallpaper {
+    monitor =
+    path = 
+    fit_mode = cover
+}
+
+splash = false
+ipc = false
