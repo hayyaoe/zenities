@@ -65,7 +65,7 @@ This installation script **only works on Arch Linux** and requires **Hyprland** 
 
     ```bash
     cd $HOME
-    git clone https://github.com/hayyaoe/zenities
+    git clone --depth 1 https://github.com/hayyaoe/zenities
     ```
 
 3. Navigate to the project directory:
