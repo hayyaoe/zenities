@@ -56,7 +56,6 @@ yay -S --needed --noconfirm fastfetch cmatrix cava wallust ttf-iosevka otf-hermi
 
 # Install Powerlevel10k for zsh
 yay -S --needed --noconfirm zsh-theme-powerlevel10k-git
-echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
 # Eww installation
 cd $HOME
@@ -70,6 +69,9 @@ sudo cp ./eww /usr/local/bin/
 
 # Run hypr-setup script
 bash $HOME/scripts/hypr_setup.sh
+
+# Run zsh-setup scriptt
+bash $HOME/scripts/zsh_setup.sh
 
 #Run Wallpaper and Color Initialization
 bash $HOME/.config/eww/scripts/change-wallpaper.sh 29  
