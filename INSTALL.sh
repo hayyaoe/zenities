@@ -70,11 +70,14 @@ sudo cp ./eww /usr/local/bin/
 # Run hypr-setup script
 bash $HOME/scripts/hypr_setup.sh
 
-# Run zsh-setup scriptt
+# Run zsh-setup script
 bash $HOME/scripts/zsh_setup.sh
 
+# Run normalize wallpaper script for wallpaper selector preview
+bash $HOME/scripts/normalize_wallpaper.sh
+
 #Run Wallpaper and Color Initialization
-bash $HOME/.config/eww/scripts/change-wallpaper.sh 29  
+bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 
 
 # Network Manager setup
 sudo systemctl disable systemd-resolved
