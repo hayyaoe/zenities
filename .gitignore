@@ -12,3 +12,7 @@
 .config/nvim/colors/lush-colors.json
 .config/nvim/colors/vim-colors.vim
 .config/rofi/rofi-dark-colors.rasi
+
+# Zsh
+.zshrc
+.zshenv
