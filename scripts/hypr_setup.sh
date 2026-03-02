@@ -7,6 +7,7 @@ TEMPLATE_DIR="$HOME/.config/hypr/template"
 MONITORS_CONF="$USER_DIR/monitors.conf"
 
 mkdir -p "$USER_DIR"
+mkdir -p "$SERVICE_DIR"
 
 
 echo "# Auto-generated Config" > "$MONITORS_CONF"
