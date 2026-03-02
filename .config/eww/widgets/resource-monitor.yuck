@@ -91,7 +91,7 @@
 
 ;; resource-monitor ;;
 (defwindow resource-monitor
-  :monitor '[1, 0]'
+  :monitor '[0]'
   :geometry (geometry :x "0.8%"
                       :y "175px"
                       :width "10%"
