@@ -2,7 +2,7 @@
 
 # Path Setup
 USER_DIR="$HOME/.config/hypr/user"
-SERVICE_DIR="$SERVICE/.config/hypr/service"
+SERVICE_DIR="$HOME/.config/hypr/service"
 TEMPLATE_DIR="$HOME/.config/hypr/template"
 MONITORS_CONF="$USER_DIR/monitors.conf"
 
@@ -43,12 +43,12 @@ for FILE in "${FILES[@]}"; do
     if [ ! -f "$TARGET_FILE" ]; then
         if [ -f "$SOURCE_TEMPLATE" ]; then
             cp "$SOURCE_TEMPLATE" "$TARGET_FILE"
-            echo "   $FILE copied from template."
+            echo "  $FILE copied from template."
         else
-            echo "   Template $FILE.example cannot be found $TEMPLATE_DIR"
+            echo "  Template $FILE.example cannot be found $TEMPLATE_DIR"
         fi
     else
-        echo "     $FILE already exist, skipping."
+        echo "  $FILE already exist, skipping."
     fi
 done
 
@@ -61,12 +61,12 @@ for FILE in "${FILES[@]}"; do
     if [ ! -f "$TARGET_FILE" ]; then
         if [ -f "$SOURCE_TEMPLATE" ]; then
             cp "$SOURCE_TEMPLATE" "$TARGET_FILE"
-            echo "   $FILE copied from template."
+            echo "  $FILE copied from template."
         else
-            echo "   Template $FILE.example cannot be found $TEMPLATE_DIR"
+            echo "  Template $FILE.example cannot be found $TEMPLATE_DIR"
         fi
     else
-        echo "     $FILE already exist, skipping."
+        echo "  $FILE already exist, skipping."
     fi
 done
 
