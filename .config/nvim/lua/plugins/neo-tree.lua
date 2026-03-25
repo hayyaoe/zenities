@@ -5,7 +5,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "muniftanjim/nui.nvim",
-    "3rd/image.nvim",
   },
   config = function()
     -- Neotree Keymap
