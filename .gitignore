@@ -13,6 +13,9 @@
 .config/nvim/colors/vim-colors.vim
 .config/rofi/rofi-dark-colors.rasi
 
+# Wallpaper Preview
+wallpapers/preview-*.jpg
+
 # Zsh
 .zshrc
 .zshenv
