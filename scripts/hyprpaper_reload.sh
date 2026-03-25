@@ -6,4 +6,4 @@
 killall hyprpaper
 
 # Reload hyprpaper
-hyprpaper 
+hyprpaper -c $HOME/.config/hypr/service/hyprpaper.conf

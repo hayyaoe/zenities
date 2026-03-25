@@ -1,0 +1,26 @@
+[config]
+
+[templates.eww]
+input_path = '~/.config/matugen/templates/eww-colors.scss'
+output_path = '~/.config/eww/colors.scss'
+
+[templates.ags]
+input_path = '~/.config/matugen/templates/ags-colors.scss'
+output_path = '~/ags/colors.scss'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/kitty-colors.conf'
+post_hook = 'kitty @ set-colors -a -c /home/zenities/.config/kitty/kitty-colors.conf'
+
+[templates.lush]
+input_path = '~/.config/matugen/templates/lush-colors.json'
+output_path = '~/.config/nvim/colors/lush-colors.json'
+
+[templates.vim]
+input_path = '~/.config/matugen/templates/vim-colors.vim'
+output_path = '~/.config/nvim/colors/vim-colors.vim'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-dark-colors.rasi'
+output_path = '~/.config/rofi/rofi-dark-colors.rasi'

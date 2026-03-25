@@ -1,0 +1,11 @@
+# Files
+README\.md
+INSTALL\.sh
+UNINSTALL\.sh
+
+# Dot Files
+\.gitignore
+\.git
+
+# Directories
+screenshots

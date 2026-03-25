@@ -1,48 +1,42 @@
 #!/bin/bash
 
-# Define the target directory
-DIRECTORY=~/zenities/wallpapers/  # Change this to your target directory
+DIRECTORY="$HOME/wallpapers"
 
-# Ensure the directory exists
-DIRECTORY=$(eval echo "$DIRECTORY")
 if [ ! -d "$DIRECTORY" ]; then
   echo "Directory does not exist: $DIRECTORY"
   exit 1
 fi
 
-# Convert and skip existing previews
-shopt -s nullglob  # Prevent errors if no matching files
-for file in "$DIRECTORY"/*.{png,jpeg,jpg}; do
-  if [ -f "$file" ]; then
-    # Get the base name of the file without extension
-    base_name=$(basename "${file%.*}")
+shopt -s nullglob
 
-    # Skip files that already start with 'preview-'
+for file in "$DIRECTORY"/*.{png,jpeg,jpg,webp,PNG,JPG,JPEG,WEBP}; do
+  if [ -f "$file" ]; then
+    
+    filename=$(basename "$file")
+    base_name="${filename%.*}"
+
     if [[ "$base_name" == preview-* ]]; then
       continue
     fi
 
-    # Define the preview file name
-    preview="${DIRECTORY}/preview-${base_name}.jpg"
+    target_jpg="${DIRECTORY}/${base_name}.jpg"
+    preview_file="${DIRECTORY}/preview-${base_name}.jpg"
 
-    # Skip if the preview already exists
-    if [ -f "$preview" ]; then
-      continue
+    if [[ "$file" != *.jpg && "$file" != *.JPG ]]; then
+       if [ ! -f "$target_jpg" ]; then
+          magick "$file" "$target_jpg" && echo "Converted: $filename -> ${base_name}.jpg"
+       fi
+       source_for_preview="$target_jpg"
+    else
+       source_for_preview="$file"
     fi
 
-    # Define the output file name for the converted .jpg
-    output="${file%.*}.jpg"
-
-    # Convert the file to JPG format if needed
-    if [[ "$file" != *.jpg ]]; then
-      magick "$file" "$output" && echo "Converted: $file -> $output"
-      rm "$file" && echo "Removed original: $file"
+    if [ ! -f "$preview_file" ]; then
+      magick "$source_for_preview" -resize 800x600 -quality 50 "$preview_file" \
+      && echo "Created preview: $preview_file"
     fi
 
-    # Create a lower-quality, lower-resolution preview image
-    magick "$output" -resize 800x600 -quality 50 "$preview" && echo "Created preview: $preview"
   fi
 done
 
 echo "Processing completed."
-

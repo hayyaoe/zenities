@@ -8,12 +8,12 @@
           (box :orientation "vertical"
                (for wallpaper in wallpapers
                  (eventbox  :class "image-container"
-                            :onclick "~/zenities/.config/eww/scripts/change-wallpaper.sh ${wallpaper}"
+                            :onclick "~/.config/eww/scripts/change-wallpaper.sh ${wallpaper}"
                             (box  :class "image-list-preview"
                                   :width 300;
                                   :height 200;
                                   :orientation "vertical"
-                                  :style "background-image: url('../../../zenities/wallpapers/preview-${wallpaper}.jpg');")))))))
+                                  :style "background-image: url('../../../wallpapers/preview-${wallpaper}.jpg');")))))))
 
 (defwidget win []
   (box :class "window"

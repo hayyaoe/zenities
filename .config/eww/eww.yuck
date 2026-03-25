@@ -23,7 +23,7 @@
 (defpoll hour :interval "10s" "date '+%H'")
 (defpoll minute :interval "10s" "date '+%M'")
 (defpoll adjustable-brightness :interval "24h" :initial "false" "~/.config/eww/scripts/is-brightness.sh")
-(defpoll wallpapers :interval "10m" :initial "[1,7,8,9,12]" "~/zenities/.config/eww/scripts/get-wallpapers.sh")
+(defpoll wallpapers :interval "10m" :initial "[]" "~/.config/eww/scripts/get-wallpapers.sh")
 (defpoll has-battery :interval "24h" :initial "false" "~/.config/eww/scripts/is-battery.sh")
 (defpoll clock :interval "10s" "date '+%H:%M'")
 (defpoll current-volume :interval "1s" :initial "0" "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
