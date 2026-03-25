@@ -80,10 +80,19 @@ bash $HOME/scripts/normalize_wallpaper.sh
 bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 
 
 # Network Manager setup
-sudo systemctl disable systemd-resolved
+sudo systemctl disable --now systemd-resolved 2>/dev/null
 sudo systemctl disable systemd-networkd
-sudo systemctl enable NetworkManager
-sudo systemctl start NetworkManager
+
+sudo rm -f /etc/resolv.conf
+
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
+
+sudo chattr +i /etc/resolv.conf 
+
+sudo systemctl enable --now NetworkManager
+
+# Bluetooth Setup
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 
