@@ -76,9 +76,6 @@ bash $HOME/scripts/zsh_setup.sh
 # Run normalize wallpaper script for wallpaper selector preview
 bash $HOME/scripts/normalize_wallpaper.sh
 
-#Run Wallpaper and Color Initialization
-bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 
-
 # Network Manager setup
 sudo systemctl disable --now systemd-resolved 2>/dev/null
 sudo systemctl disable systemd-networkd
@@ -98,6 +95,9 @@ sudo systemctl start bluetooth.service
 
 # Change shell to zsh
 chsh -s /usr/bin/zsh
+
+#Run Wallpaper and Color Initialization
+bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 
 
 # Reboot the system
 echo "Installation complete. The system will now reboot."

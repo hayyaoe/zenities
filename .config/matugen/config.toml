@@ -4,9 +4,9 @@
 input_path = '~/.config/matugen/templates/eww-colors.scss'
 output_path = '~/.config/eww/colors.scss'
 
-[templates.ags]
-input_path = '~/.config/matugen/templates/ags-colors.scss'
-output_path = '~/ags/colors.scss'
+#[templates.ags]
+#input_path = '~/.config/matugen/templates/ags-colors.scss'
+#output_path = '~/ags/colors.scss'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
