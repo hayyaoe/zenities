@@ -82,8 +82,15 @@ bash $HOME/.config/eww/scripts/change-wallpaper.sh 7
 # Network Manager setup
 sudo systemctl disable systemd-resolved
 sudo systemctl disable systemd-networkd
+
+# DNS Symlink Setup
+sudo rm -f /etc/resolv.conf
+sudo touch /etc/resolv.conf
+
 sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
+
+# Bluetooth Setup
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 
