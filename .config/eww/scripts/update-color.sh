@@ -1,31 +1,56 @@
 #!/bin/bash
 
+# --- Helper Function: Run only if command exists ---
+run_if_exists() {
+    if command -v "$1" >/dev/null 2>&1; then
+        shift
+        "$@"
+    else
+        echo "Skip: Command $1 not found."
+    fi
+}
+
+# --- Helper Function: Kill only if process is running ---
+safe_kill() {
+    if pgrep -x "$1" >/dev/null; then
+        killall "$1"
+    else
+        echo "Skip: $1 is not running."
+    fi
+}
+
 # Variables
 SELECTED_WALLPAPER=$1
 WALLPAPER_DIR="$HOME/wallpapers"
+WP_PATH="$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg"
 
-# Ensure the wallpaper exists
-if [ ! -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
+if [ ! -f "$WP_PATH" ]; then
     echo "Error: Wallpaper not found: $SELECTED_WALLPAPER"
     exit 1
 fi
 
-# Apply pywal colors
-matugen --source-color-index 0 -m dark image "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" || { echo "Error: wallust failed"; exit 1; }
+run_if_exists matugen --source-color-index 0 -m dark image "$WP_PATH"
 
-# Reload eww
-killall eww || echo "Warning: No eww process found"
-eww open-many side-bar notifications
+if pgrep -x "eww" >/dev/null; then
+    killall eww
+    eww open-many side-bar notifications
+else
+    eww open-many side-bar notifications
+fi
 
-# Restart hyprpaper
-killall hyprpaper || echo "Warning: No hyprpaper process found"
-hyprpaper -c $HOME/.config/hypr/service/hyprpaper.conf &
+if command -v hyprpaper >/dev/null 2>&1; then
+    safe_kill hyprpaper
+    hyprpaper -c "$HOME/.config/hypr/service/hyprpaper.conf" &
+fi
 
-# Apply Kitty Colors
-SOCKET=$(ls /tmp | grep kitty | head -n 1)
-kitty @ --to unix:/tmp/$SOCKET set-colors -a -c ~/.config/kitty/kitty-colors.conf
+for SOCKET in /tmp/kitty-*; do
+    if [ -S "$SOCKET" ]; then
+        run_if_exists kitty @ --to "unix:$SOCKET" set-colors -a -c ~/.config/kitty/kitty-colors.conf
+    fi
+done
 
-# Apply Nvim Colors if Exist
 for sock in /tmp/nvim*; do
-  nvim --server "$sock" --remote-send "<cmd>colorscheme lush-colors<CR>"
+    if [ -S "$sock" ]; then
+        run_if_exists nvim --server "$sock" --remote-send "<cmd>colorscheme lush-colors<CR>"
+    fi
 done

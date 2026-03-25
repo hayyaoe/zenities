@@ -11,7 +11,6 @@ output_path = '~/.config/eww/colors.scss'
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/kitty-colors.conf'
-post_hook = 'kitty @ set-colors -a -c /home/zenities/.config/kitty/kitty-colors.conf'
 
 [templates.lush]
 input_path = '~/.config/matugen/templates/lush-colors.json'
