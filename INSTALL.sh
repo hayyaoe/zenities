@@ -24,11 +24,11 @@ echo -e "${NC}"
 
 while true; do
     echo -n "Input sudo password: "
-    read -s MY_PASS
+    read -s PASSWORD
     echo ""
 
     # Cek apakah password valid dengan mencoba command sudo sederhana (sudo -k untuk reset timestamp)
-    if echo "$MY_PASS" | sudo -S -k -v > /dev/null 2>&1; then
+    if echo "$PASSWORD" | sudo -S -k -v > /dev/null 2>&1; then
         echo -e "${GREEN}[ OK ] Password confirmed. Deployment started...${NC}\n"
         break
     else
