@@ -2,14 +2,51 @@
 
 exec > >(tee -a install-log.txt) 2>&1
 
+# Hearder Configuuration
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+header() {
+    echo -e "${BLUE}================================================================${NC}"
+    echo -e "${CYAN}TASK: $1${NC}"
+    echo -e "${BLUE}================================================================${NC}"
+    
+    echo -ne "${GREEN}Running"
+    for i in {1..3}; do
+        echo -ne "."
+        sleep 0.4
+    done
+    echo -e "${NC}\n"
+}
+
+# Password Initialization for Sudo
+clear
+echo "     • •"
+echo "┓┏┓┏┓┓╋┓┏┓┏"
+echo "┗┗ ┛┗┗┗┗┗ ┛"
+echo -e "${NC}"
+
+echo -n "Input sudo password:"
+read -s PASSWORD
+echo -e "\n"
+
+run_sudo() {
+  echo "$PASSWORD" | sudo -S $@
+}
+
 # Install necessary packages via pacman
 cd $HOME
-sudo pacman -S --needed --noconfirm base-devel rustup github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim bottom networkmanager rustup zsh imagemagick acpi pavucontrol lua51 lua51-luarocks xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gtk4 gtk3 qt6ct kvantum noto-fonts matugen
+header "Syncing mirror & Installing base packages"
+run_sudo pacman -Syu --needed --noconfirm base-devel rustup github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim bottom networkmanager rustup zsh imagemagick acpi pavucontrol lua51 lua51-luarocks xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gtk4 gtk3 qt6ct kvantum noto-fonts matugen
 
 # Install Rust toolchain
+header "Setting up Rust Toolchain"
 rustup default stable
 
 # Backup Existing Config
+header "Backing up existing Configurations"
 CONFIG_DIR="$HOME/.config"
 DOTFILES_CONFIG="$HOME/zenities/.config"
 BACKUP_SUFFIX=".bak"
@@ -31,7 +68,6 @@ done
 
 FILES=(.zshrc .zshenv .tmux.conf .p10k.zsh wallpapers scripts screenshots)
 
-echo "Backing up individual files in $HOME"
 for file in "${FILES[@]}"; do
   if [ -f "$HOME/$file" ]; then
     echo "Backing up file: $file"
@@ -41,25 +77,28 @@ for file in "${FILES[@]}"; do
   fi
 done
 
-echo "Applying dotfiles with stow"
+header "Applying zenities dotfiles via Stow"
 cd "$HOME/zenities" || { echo "Could not access $HOME/zenities"; exit 1; }
 stow .
 
 # Go back to home directory
 cd $HOME
 
+header "Installing yay (AUR Helper)"
 # Install yay (AUR helper)
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
+if ! command -v yay >/dev/null; then
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  
+  makepkg -s --noconfirm
+fi 
 
 # Install additional packages via yay
-yay -S --needed --noconfirm fastfetch cmatrix cava ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject 
-
-# Install Powerlevel10k for zsh
-yay -S --needed --noconfirm zsh-theme-powerlevel10k-git
+header "Installing AUR Packages"
+yay -S --needed --noconfirm fastfetch cmatrix cava ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject zsh-theme-powerlevel10k-git
 
 # Eww installation
+header "Building EWW (Elkowar's Wacky Widgets"
 cd $HOME
 
 git clone https://github.com/elkowar/eww
@@ -67,8 +106,9 @@ cd eww
 cargo build --release --no-default-features --features=wayland
 cd target/release
 chmod +x ./eww
-sudo cp ./eww /usr/local/bin/
+run_sudo cp ./eww /usr/local/bin/
 
+header "Running cconfiguration scripts"
 # Run hypr-setup script
 bash $HOME/scripts/hypr_setup.sh
 
@@ -78,30 +118,39 @@ bash $HOME/scripts/zsh_setup.sh
 # Run normalize wallpaper script for wallpaper selector preview
 bash $HOME/scripts/normalize_wallpaper.sh
 
+header "Configuring Network & DNS"
 # Network Manager setup
-sudo systemctl disable --now systemd-resolved 2>/dev/null
-sudo systemctl disable systemd-networkd
+run_sudo systemctl disable --now systemd-resolved 2>/dev/null
+run_sudo systemctl disable systemd-networkd
 
-sudo rm -f /etc/resolv.conf
+run_sudo rm -f /etc/resolv.conf
 
-echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
-echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
+echo "nameserver 8.8.8.8" | run_sudo tee /etc/resolv.conf
+echo "nameserver 1.1.1.1" | run_sudo tee -a /etc/resolv.conf
 
-sudo chattr +i /etc/resolv.conf 
+run_sudo chattr +i /etc/resolv.conf 
 
-sudo systemctl enable --now NetworkManager
+run_sudo systemctl enable --now NetworkManager
 
+header "Finalizing Services"
 # Bluetooth Setup
-sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
+run_sudo systemctl enable bluetooth.service
+run_sudo systemctl start bluetooth.service
 
 # Change shell to zsh
-chsh -s /usr/bin/zsh
 
+if ! grep -q "/usr/bin/zsh" /etc/shells; then
+    echo "/usr/bin/zsh" | run_sudo tee -a /etc/shells
+fi
+
+run_sudo chsh -s /usr/bin/zsh $USER
+
+header "Initializing Wallpaper & Colors"
 #Run Wallpaper and Color Initialization
 bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 
 
 # Reboot the system
-echo "Installation complete. The system will now reboot."
-sudo reboot
+echo "\n${GREEN}Installation complete. The system will now reboot. ${NC}"
+sleep 3 
+run_sudo reboot
 
