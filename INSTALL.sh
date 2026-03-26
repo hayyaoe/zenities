@@ -12,25 +12,29 @@ header() {
     echo -e "${BLUE}================================================================${NC}"
     echo -e "${CYAN}TASK: $1${NC}"
     echo -e "${BLUE}================================================================${NC}"
-    
-    echo -ne "${GREEN}Running"
-    for i in {1..3}; do
-        echo -ne "."
-        sleep 0.4
-    done
     echo -e "${NC}\n"
 }
 
 # Password Initialization for Sudo
 clear
-echo "     • •"
-echo "┓┏┓┏┓┓╋┓┏┓┏"
-echo "┗┗ ┛┗┗┗┗┗ ┛"
+echo "         • •"
+echo "    ┓┏┓┏┓┓╋┓┏┓┏"
+echo "    ┗┗ ┛┗┗┗┗┗ ┛"
 echo -e "${NC}"
 
-echo -n "Input sudo password:"
-read -s PASSWORD
-echo -e "\n"
+while true; do
+    echo -n "Input sudo password: "
+    read -s MY_PASS
+    echo ""
+
+    # Cek apakah password valid dengan mencoba command sudo sederhana (sudo -k untuk reset timestamp)
+    if echo "$MY_PASS" | sudo -S -k -v > /dev/null 2>&1; then
+        echo -e "${GREEN}[ OK ] Password confirmed. Deployment started...${NC}\n"
+        break
+    else
+        echo -e "${RED}[ ERROR ] Wrong password! Please try again.${NC}"
+    fi
+done
 
 run_sudo() {
   echo "$PASSWORD" | sudo -S $@
