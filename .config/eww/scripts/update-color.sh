@@ -3,7 +3,6 @@
 # --- Helper Function: Run only if command exists ---
 run_if_exists() {
     if command -v "$1" >/dev/null 2>&1; then
-        shift
         "$@"
     else
         echo "Skip: Command $1 not found."
