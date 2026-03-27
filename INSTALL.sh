@@ -190,7 +190,7 @@ while true; do
     echo ""
 
     if echo "$PASSWORD" | sudo -S -k -v > /dev/null 2>&1; then
-        echo -e "${GREEN}[ OK ] Password confirmed. Deployment started...${NC}\n"
+        echo -e "${GREEN}[ OK ] Password confirmed. Installation started...${NC}\n"
         break
     else
         echo -e "${RED}[ ERROR ] Wrong password! Please try again.${NC}"
@@ -199,7 +199,7 @@ done
 
 
 # Install necessary packages via pacman
-run_network "Syncing mirror & Installing base packages" "run_sudo pacman -Syu --needed --noconfirm base-devel rustup github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim bottom networkmanager rustup zsh imagemagick acpi pavucontrol lua51 lua51-luarocks xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gtk4 gtk3 qt6ct kvantum noto-fonts matugen"
+run_network "Syncing mirror & Installing base packages" "run_sudo pacman -Syu --needed --noconfirm base-devel rustup github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim bottom networkmanager rustup zsh imagemagick acpi pavucontrol lua51 lua51-luarocks xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gtk4 gtk3 qt6ct kvantum noto-fonts go matugen"
 
 # Install Rust toolchain
 run_network "Setting up Rust Toolchain" "rustup default stable"
