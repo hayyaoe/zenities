@@ -2,6 +2,7 @@
 README\.md
 INSTALL\.sh
 UNINSTALL\.sh
+install-log\.txt
 
 # Dot Files
 \.gitignore
