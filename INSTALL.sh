@@ -154,9 +154,11 @@ setup_scripts() {
 setup_network() {
     run_loader "Disabling systemd-resolved & networkd" "echo '$PASSWORD' | sudo -S systemctl disable --now systemd-resolved 2>/dev/null; echo '$PASSWORD' | sudo -S systemctl disable --now systemd-networkd"
 
+    run_loader "Unlocking resolv.conf" "echo '$PASSWORD' | sudo -S chattr -i /etc/resolv.conf 2>/dev/null || true"
+
     run_loader "Cleaning existing resolv.conf" "echo '$PASSWORD' | sudo -S rm -f /etc/resolv.conf"
 
-    run_loader "Configuring DNS (8.8.8.8 & 1.1.1.1)" "echo 'nameserver 8.8.8.8' | echo '$PASSWORD' | sudo -S tee /etc/resolv.conf; echo 'nameserver 1.1.1.1' | echo '$PASSWORD' | sudo -S tee -a /etc/resolv.conf"
+    run_loader "Configuring DNS (8.8.8.8 & 1.1.1.1)" "printf 'nameserver 8.8.8.8\nnameserver 1.1.1.1\n' | echo '$PASSWORD' | sudo -S tee /etc/resolv.conf"
 
     run_loader "Locking DNS settings (chattr +i)" "echo '$PASSWORD' | sudo -S chattr +i /etc/resolv.conf"
 
