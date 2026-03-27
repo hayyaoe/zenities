@@ -134,6 +134,11 @@ install_yay() {
 }
 
 install_eww() {
+    if command -v eww >/dev/null; then
+        echo "Eww is already installed. Skipping build..."
+        return 0
+    fi
+
     run_network "Cloning Eww Repository" "cd $HOME && [ -d eww ] && rm -rf eww; git clone https://github.com/elkowar/eww"
 
     run_loader "Compiling Eww (Cargo Build)" "cd $HOME/eww && cargo build --release --no-default-features --features=wayland"
@@ -154,9 +159,11 @@ setup_scripts() {
 setup_network() {
     run_loader "Disabling systemd-resolved & networkd" "echo '$PASSWORD' | sudo -S systemctl disable --now systemd-resolved 2>/dev/null; echo '$PASSWORD' | sudo -S systemctl disable --now systemd-networkd"
 
+    run_loader "Unlocking resolv.conf" "echo '$PASSWORD' | sudo -S chattr -i /etc/resolv.conf 2>/dev/null || true"
+
     run_loader "Cleaning existing resolv.conf" "echo '$PASSWORD' | sudo -S rm -f /etc/resolv.conf"
 
-    run_loader "Configuring DNS (8.8.8.8 & 1.1.1.1)" "echo 'nameserver 8.8.8.8' | echo '$PASSWORD' | sudo -S tee /etc/resolv.conf; echo 'nameserver 1.1.1.1' | echo '$PASSWORD' | sudo -S tee -a /etc/resolv.conf"
+    run_loader "Configuring DNS" 'echo "$PASSWORD" | sudo -S sh -c "echo nameserver 8.8.8.8 > /etc/resolv.conf && echo nameserver 1.1.1.1 >> /etc/resolv.conf"'
 
     run_loader "Locking DNS settings (chattr +i)" "echo '$PASSWORD' | sudo -S chattr +i /etc/resolv.conf"
 
@@ -232,7 +239,7 @@ setup_bluetooth
 setup_shell
 
 #Run Wallpaper and Color Initialization
-run_loader "Initializing Wallpaper & Colors" "bash $HOME/.config/eww/scripts/change-wallpaper.sh 7" 
+run_loader "Initializing Wallpaper & Colors" "bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 -g" 
 
 # Reboot the system
 echo -e "\n${GREEN}Installation complete. The system will now reboot. ${NC}"

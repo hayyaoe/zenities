@@ -32,51 +32,53 @@ def add_object(notif):
 def print_state():
     string = ""
     for item in notifications:
+        s = str(item.summary).replace('"', '\\"')
+        b = str(item.body).replace('"', '\\"')
+        i = str(item.icon) if item.icon else ""
+        
         string += f"""
 (button :class "notif"
  (box :orientation "horizontal" :space-evenly false
-  (image :image-width 20 :image-height 20 :path "{item.icon or ''}")
+  (image :image-width 20 :image-height 20 :path "{i}")
   (box :orientation "vertical"
-    (label :class "notif-summary"
-           :width 180
-           :truncate true
-           :halign "start"
-           :justify "left"
-           :text "{item.summary or ''}")
-    (label :width 180
-           :truncate true
-           :halign "start"
-           :justify "left"
-           :text "{item.body or ''}"))))
+    (label :class "notif-summary" :width 180 :truncate true :halign "start" :text "{s}")
+    (label :width 180 :truncate true :halign "start" :text "{b}"))))
 """
     string = string.replace('\n', ' ')
     try:
-        print(fr"""(box :orientation 'vertical' {string or ''})""", flush=True)
+        print(f"(box :orientation 'vertical' {string})", flush=True)
     except BrokenPipeError:
-        # Eww has closed the pipe, ignore and move on
         pass
 
 class NotificationServer(dbus.service.Object):
     def __init__(self):
-        bus_name = dbus.service.BusName('org.freedesktop.Notifications', bus=dbus.SessionBus())
+        bus = dbus.SessionBus()
+        bus_name = dbus.service.BusName(
+            'org.freedesktop.Notifications', 
+            bus=bus,
+            replace_existing=True, 
+            do_not_queue=True
+        )
         dbus.service.Object.__init__(self, bus_name, '/org/freedesktop/Notifications')
 
     @dbus.service.method('org.freedesktop.Notifications', in_signature='susssasa{ss}i', out_signature='u')
     def Notify(self, app_name, replaces_id, app_icon, summary, body, actions, hints, timeout):
         if not app_icon:
             app_icon = os.path.expanduser("~/.config/eww/icons/bell-solid.svg")
-
         add_object(Notification(summary, body, app_icon))
         return 0
 
     @dbus.service.method('org.freedesktop.Notifications', out_signature='ssss')
     def GetServerInformation(self):
-        return ("Custom Notification Server", "ExampleNS", "1.0", "1.2")
+        return ("Zentities-Notif", "Zen", "1.0", "1.2")
 
 DBusGMainLoop(set_as_default=True)
 
 if __name__ == '__main__':
-    server = NotificationServer()
-    mainloop = GLib.MainLoop()
-    mainloop.run()
-
+    try:
+        server = NotificationServer()
+        mainloop = GLib.MainLoop()
+        mainloop.run()
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)

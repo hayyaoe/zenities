@@ -20,6 +20,7 @@ safe_kill() {
 
 # Variables
 SELECTED_WALLPAPER=$1
+RELOAD_APPS=$2
 WALLPAPER_DIR="$HOME/wallpapers"
 WP_PATH="$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg"
 
@@ -30,8 +31,14 @@ fi
 
 run_if_exists matugen --source-color-index 0 -m dark image "$WP_PATH"
 
+if [[ "$RELOAD_APPS" == "--generate-only" || "$RELOAD_APPS" == "-g" ]]; then
+    echo "Generate only. Skipping app reload."
+    exit 0
+fi
+
 if pgrep -x "eww" >/dev/null; then
     killall eww
+    sleep 1
     eww open-many side-bar notifications
 else
     eww open-many side-bar notifications

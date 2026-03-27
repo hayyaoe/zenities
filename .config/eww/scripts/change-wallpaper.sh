@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SELECTED_WALLPAPER=$1
+MODE=$2
 WALLPAPER_DIR="$HOME/wallpapers"
 
 # MONITOR=$(hyprctl monitors | grep '^Monitor' | awk 'NR==1 {print $2}')
@@ -16,7 +17,7 @@ if [ -f "$WALLPAPER_DIR/$SELECTED_WALLPAPER.jpg" ]; then
     sed -i -e "s|path = .*|path = \$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE"
     sed -i -e "s|path = .*|path = \$HOME/wallpapers/$SELECTED_WALLPAPER.jpg|" "$TARGET_FILE2"
 
-    ~/zenities/.config/eww/scripts/update-color.sh "$SELECTED_WALLPAPER"
+    ~/.config/eww/scripts/update-color.sh "$SELECTED_WALLPAPER" "$MODE"
 else
     echo "Wallpaper not found: $SELECTED_WALLPAPER"
 fi
