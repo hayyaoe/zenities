@@ -25,7 +25,7 @@ run_network() {
     echo -e "${BLUE}================================================================${NC}"
 
     while true; do
-        eval "$cmd" > /dev/null 2>&1 &
+        eval "$cmd" >> install-log.txt 2>&1 &
         local pid=$!
 
         while kill -0 $pid 2>/dev/null; do
@@ -56,7 +56,7 @@ run_loader() {
     echo -e "${CYAN}TASK: $task_name${NC}"
     echo -e "${BLUE}================================================================${NC}"
 
-    eval "$cmd" > /dev/null 2>&1 &
+    eval "$cmd" >> install-log.txt 2>&1 &
     local pid=$!
 
     while kill -0 $pid 2>/dev/null; do
@@ -124,7 +124,7 @@ install_yay() {
         return 0
     fi
 
-    run_network "Cloning Yay (Yet Another Yogurt)" "cd $HOME && git clone https://aur.archlinux.org/yay.git"
+    run_network "Cloning Yay (Yet Another Yogurt)" "cd $HOME && rm -rf yay; git clone https://aur.archlinux.org/yay.git"
 
     run_loader "Building Yay" "cd $HOME/yay && makepkg -s --noconfirm"
 
@@ -214,7 +214,7 @@ run_loader  "Applying zenities dotfiles via Stow" "apply_dotfiles"
 install_yay
 
 # Install additional packages via yay
-run_network "Installing AUR Packages" "yay -S --needed --noconfirm fastfetch cmatrix cava ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject zsh-theme-powerlevel10k-git"
+run_network "Installing AUR Packages" "echo '$PASSWORD' | yay -S --needed --noconfirm --sudoloop fastfetch cmatrix cava ttf-iosevka otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat tmux nvm btop hyprshot bluez bluez-utils bluez-obex bluetuith python-gobject zsh-theme-powerlevel10k-git"
 
 # Eww installation
 install_eww
