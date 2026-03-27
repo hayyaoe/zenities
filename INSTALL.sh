@@ -126,7 +126,7 @@ install_yay() {
 
     run_network "Cloning Yay (Yet Another Yogurt)" "cd $HOME && rm -rf yay; git clone https://aur.archlinux.org/yay.git"
 
-    run_loader "Building Yay" "cd $HOME/yay && makepkg -s --noconfirm"
+    run_loader "Building Yay" "cd $HOME/yay && echo '$PASSWORD' | sudo -S -v && makepkg -s --noconfirm"
 
     run_loader "Installing Yay Package" "cd $HOME/yay && echo '$PASSWORD' | sudo -S pacman -U --noconfirm *.pkg.tar.zst"
 
