@@ -21,7 +21,7 @@ run_network() {
     local attempt=1
 
     echo -e "${BLUE}================================================================${NC}"
-    echo -e "${CYAN}TASK: $task_name${NC}"
+    echo -e "${CYAN}  TASK: $task_name${NC}"
     echo -e "${BLUE}================================================================${NC}"
 
     while true; do
@@ -30,17 +30,17 @@ run_network() {
 
         while kill -0 $pid 2>/dev/null; do
             for i in {0..3}; do
-                printf "\r${GREEN} [%c] Attempt $attempt: Working...${NC}" "${SPIN:$i:1}"
+                printf "\r${GREEN}  [%c] Attempt $attempt: Working...${NC}" "${SPIN:$i:1}"
                 sleep 0.1
             done
         done
 
         wait $pid
         if [ $? -eq 0 ]; then
-            printf "\r${GREEN} [OK] Task completed!                          ${NC}\n\n"
+            printf "\r${GREEN}  [OK] Task completed!                          ${NC}\n\n"
             break
         else
-            printf "\r${RED} [!] Attempt $attempt failed. Retrying...      ${NC}"
+            printf "\r${RED}  [!] Attempt $attempt failed. Retrying...      ${NC}"
             ((attempt++))
             sleep 10
         fi
@@ -53,7 +53,7 @@ run_loader() {
     local cmd="$@"
 
     echo -e "${BLUE}================================================================${NC}"
-    echo -e "${CYAN}TASK: $task_name${NC}"
+    echo -e "${CYAN}  TASK: $task_name${NC}"
     echo -e "${BLUE}================================================================${NC}"
 
     eval "$cmd" >> install-log.txt 2>&1 &
@@ -61,7 +61,7 @@ run_loader() {
 
     while kill -0 $pid 2>/dev/null; do
         for i in {0..3}; do
-            printf "\r${GREEN} [%c] Processing...${NC}" "${SPIN:$i:1}"
+            printf "\r${GREEN}  [%c] Processing...${NC}" "${SPIN:$i:1}"
             sleep 0.1
         done
     done
@@ -70,10 +70,10 @@ run_loader() {
     local status=$?
 
     if [ $status -eq 0 ]; then
-        printf "\r${GREEN} [OK] Task completed successfully!                    ${NC}\n\n"
+        printf "\r${GREEN}  [OK] Task completed successfully!                    ${NC}\n\n"
     else
-        printf "\r${RED} [!] FATAL ERROR: Task '$task_name' failed!           ${NC}\n"
-        echo -e "${RED}Check 'install-log.txt' for details.${NC}"
+        printf "\r${RED}  [!] FATAL ERROR: Task '$task_name' failed!           ${NC}\n"
+        echo -e "${RED} Check 'install-log.txt' for details.${NC}"
         exit 1
     fi
 }
@@ -192,15 +192,15 @@ echo "    ┗┗ ┛┗┗┗┗┗ ┛"
 echo -e "${NC}"
 
 while true; do
-    echo -n "Input sudo password: "
+    echo -n "  Input sudo password: "
     read -s PASSWORD
     echo ""
 
     if echo "$PASSWORD" | sudo -S -k -v > /dev/null 2>&1; then
-        echo -e "${GREEN}[ OK ] Password confirmed. Installation started...${NC}\n"
+        echo -e "${GREEN}  [OK] Password confirmed. Installation started...${NC}\n"
         break
     else
-        echo -e "${RED}[ ERROR ] Wrong password! Please try again.${NC}"
+        echo -e "${RED}  [ERROR] Wrong password! Please try again.${NC}"
     fi
 done
 
