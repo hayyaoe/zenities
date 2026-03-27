@@ -36,17 +36,17 @@ if [[ "$RELOAD_APPS" == "--generate-only" || "$RELOAD_APPS" == "-g" ]]; then
     exit 0
 fi
 
+if command -v hyprpaper >/dev/null 2>&1; then
+    safe_kill hyprpaper
+    hyprpaper -c "$HOME/.config/hypr/service/hyprpaper.conf" &
+fi
+
 if pgrep -x "eww" >/dev/null; then
     killall eww
     sleep 1
     eww open-many side-bar notifications
 else
     eww open-many side-bar notifications
-fi
-
-if command -v hyprpaper >/dev/null 2>&1; then
-    safe_kill hyprpaper
-    hyprpaper -c "$HOME/.config/hypr/service/hyprpaper.conf" &
 fi
 
 for SOCKET in /tmp/kitty-*; do
