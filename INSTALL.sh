@@ -232,7 +232,7 @@ setup_bluetooth
 setup_shell
 
 #Run Wallpaper and Color Initialization
-run_loader "Initializing Wallpaper & Colors" "bash $HOME/.config/eww/scripts/change-wallpaper.sh 7" 
+run_loader "Initializing Wallpaper & Colors" "bash $HOME/.config/eww/scripts/change-wallpaper.sh 7 -g" 
 
 # Reboot the system
 echo -e "\n${GREEN}Installation complete. The system will now reboot. ${NC}"
