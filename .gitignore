@@ -19,3 +19,6 @@ wallpapers/preview-*.jpg
 # Zsh
 .zshrc
 .zshenv
+
+# Install Log
+install-log.txt
