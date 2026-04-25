@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ZSHRC="$HOME/.zshrc"
 ZSHENV="$HOME/.zshenv"
 

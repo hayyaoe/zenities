@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CHOICE=$(printf "\n\n\n\n" | rofi -dmenu -replace -config ~/.config/rofi/config-power.rasi)
 
 case "$CHOICE" in

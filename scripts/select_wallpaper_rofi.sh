@@ -1,3 +1,5 @@
+#!/bin/bash
+
 WALLPAPER_DIR="$HOME/wallpapers"
 
 SELECTED_WALLPAPER=$(ls "$WALLPAPER_DIR" | rofi -dmenu -replace -config ~/.config/rofi/config-wallpaper.rasi -p "∂" )
