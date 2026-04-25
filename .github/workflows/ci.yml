@@ -1,0 +1,58 @@
+name: zenities CI/CD
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main ]
+  create:
+    tags:
+      - 'v*'
+
+jobs:
+  lint:
+    name: ShellCheck Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        run: |
+          # Dijalankan di Ubuntu karena ShellCheck sudah tersedia secara native
+          find . -name "*.sh" | xargs shellcheck
+
+  test:
+    name: Installation Test
+    needs: lint
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+      - name: System Init
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm base-devel git sudo stow
+      - name: Setup Non-Root User
+        run: |
+          useradd -m tester
+          echo "tester ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown -R tester:tester ./
+      - name: Execute Install Script
+        run: |
+          # GITHUB_ACTIONS otomatis true dari runner
+          su tester -c "chmod +x install.sh && ./install.sh"
+
+  release:
+    name: Production Release
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Bundle
+        run: tar -cvzf zenities-config.tar.gz .config/ scripts/
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: zenities-config.tar.gz
