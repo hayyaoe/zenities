@@ -10,7 +10,7 @@ stow -D .
 # Define paths and backup suffix
 CONFIG_DIR="$HOME/.config"
 BACKUP_SUFFIX=".bak"
-DOTFILES_CONFIG="$HOME/zenities/.config"
+export DOTFILES_CONFIG="$HOME/zenities/.config"
 
 echo "Restoring configuration directories from backups in $CONFIG_DIR"
 cd "$CONFIG_DIR" || { echo "Could not access $CONFIG_DIR"; exit 1; }
