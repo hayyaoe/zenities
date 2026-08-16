@@ -1,7 +1,12 @@
-#!/bin/bash
+#!/user/bin/env bash
+
+set -e
 
 # Debug Log
-exec > >(tee -a install-log.txt) 2>&1
+REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+LOG_FILE="$REPO_ROOT/install-log.txt"
+exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Wrapper Configuration
 BLUE='\033[0;34m'
@@ -11,9 +16,6 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 SPIN='|/-\'
-
-# Repo
-REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Packages
 CORE_PACKAGES=(
@@ -49,20 +51,15 @@ CORE_PACKAGES=(
   "go"
   "matugen"
   "hyprsunset"
-)
-
-AUR_PACKAGES=(
   "fastfetch"
-  "cmatrix"
   "cava"
   "ttf-iosevka"
-  "otf-hermit-nerd"
+  "ttf-nerd-fonts-symbols-mono"
   "gvfs"
   "dbus"
   "libdbusmenu-glib"
   "libdbusmenu-gtk3"
   "gtk-layer-shell"
-  "brave-bin"
   "zoxide"
   "eza"
   "fzf"
@@ -78,7 +75,7 @@ AUR_PACKAGES=(
   "bluez-obex"
   "bluetuith"
   "python-gobject"
-  "zsh-theme-powerlevel10k-git"
+  "zsh-theme-powerlevel10k"
 )
 
 
@@ -141,8 +138,6 @@ execute() {
 }
 
 install_pkgs() {
-    local manager=$1 # "pacman" or "yay"
-    shift
     local pkgs=("$@")
     local to_install=()
 
@@ -153,66 +148,76 @@ install_pkgs() {
     done
 
     if [ ${#to_install[@]} -gt 0 ]; then
-        if [ "$manager" == "pacman" ]; then
-            execute "Installing Repo Packages" "sudo pacman -S --noconfirm --needed ${to_install[*]}" true
-        else
-            execute "Installing AUR Packages" "yay -S --noconfirm --needed ${to_install[*]}" true
-        fi
+	execute "Installing Repo Packages" "sudo pacman -S --noconfirm --needed ${to_install[*]}" true
     else
         echo -e "${YELLOW}  [SKIP] All packages are already present.${NC}"
     fi
 }
 
+is_symlink_to_repo() {
+    local target="$1"
+    if [ -L "$target" ]; then
+        local link_target
+        link_target=$(readlink -f "$target")
+        if [[ "$link_target" == "$REPO_ROOT"* ]]; then
+            return 0
+        fi
+    fi
+    return 1
+}
 
 # Installation Functions
 backup_configs() {
+  echo -e "${CYAN}[INTERNAL TASK] Checking for pre-existing configurations to back up...${NC}"
   local TS=$(date +%Y%m%d_%H%M%S)
   local BACKUP_DIR="$HOME/.zenities_backups/backup_$TS"
   local CONFIG_DIR="$HOME/.config"
   local DOTFILES_CONFIG="$REPO_ROOT/.config"
-
-  echo -e "${YELLOW}Backing up current configs to: $BACKUP_DIR${NC}"
-  mkdir -p "$BACKUP_DIR"
+  local has_backups=false
 
   if [ -d "$DOTFILES_CONFIG" ]; then
     for dir in "$DOTFILES_CONFIG"/*/; do
       local folder_name=$(basename "$dir")
-      if [ -d "$CONFIG_DIR/$folder_name" ]; then
+      local target_path="$CONFIG_DIR/$folder_name"
+      if [ -d "$target_path" ]; then
+        if is_symlink_to_repo "$target_path"; then
+          continue
+        fi
+        mkdir -p "$BACKUP_DIR"
         echo "Backing up: $folder_name"
-        mv "$CONFIG_DIR/$folder_name" "$BACKUP_DIR/"
+        mv "$target_path" "$BACKUP_DIR/"
+        has_backups=true
       fi
     done
   fi
 
-  local FILES=(.zshrc .zshenv .tmux.conf .p10k.zsh wallpapers scripts screenshots)
-  for file in "${FILES[@]}"; do
-    if [ -e "$HOME/$file" ]; then
-      echo "Backing up file: $file"
-      mv "$HOME/$file" "$BACKUP_DIR/"
+  local ITEMS=(.zshrc .zshenv .tmux.conf .p10k.zsh wallpapers scripts screenshots)
+  for item in "${ITEMS[@]}"; do
+    local target_path="$HOME/$item"
+    if [ -e "$target_path" ]; then
+      if is_symlink_to_repo "$target_path"; then
+        continue
+      fi
+      mkdir -p "$BACKUP_DIR"
+      echo "Backing up: $item"
+      mv "$target_path" "$BACKUP_DIR/"
+      has_backups=true
     fi
   done
+  
+  if [ "$has_backups" = true ]; then
+    echo -e "${GREEN}[OK] Backup completed successfully. Pre-existing configs moved to $BACKUP_DIR.${NC}\n"
+  else
+    echo -e "${GREEN}[OK] No pre-existing configs to back up.${NC}\n"
+  fi
 }
 
 apply_dotfiles() {
-  echo -e "${YELLOW}Applying dotfiles from $REPO_ROOT...${NC}"
+  echo -e "${CYAN}[INTERNAL TASK] Applying dotfiles via Stow...${NC}"
   cd "$REPO_ROOT" || exit 1
-  
   stow .
-  
-  cd "$HOME"
-}
-
-install_yay() {
-    if command -v yay >/dev/null; then
-        echo "Yay is already installed. Skipping..."
-        return 0
-    fi
-
-    execute "Cloning Yay (Yet Another Yogurt)" 'cd "$HOME" && rm -rf yay; git clone https://aur.archlinux.org/yay.git' true
-
-    execute "Building Yay" 'cd "$HOME/yay" && makepkg -si --noconfirm'
-
-    execute "Cleaning up Yay build folder" 'rm -rf "$HOME/yay"'
+  cd "$HOME" || exit 1
+  echo -e "${GREEN}[OK] Dotfiles applied.${NC}\n"
 }
 
 install_eww() {
@@ -231,18 +236,18 @@ install_eww() {
 }
 
 setup_scripts() {
-    execute "Executing Hyprland Setup" 'bash "$HOME/scripts/hypr_setup.sh"'
+    execute "Executing Hyprland Setup" "bash ${REPO_ROOT}/.scripts/setup/hypr.sh"
 
-    execute "Executing Zsh Configuration" 'bash "$HOME/scripts/zsh_setup.sh"'
+    execute "Executing Zsh Configuration" "bash ${REPO_ROOT}/scripts/zsh_setup.sh"
 
-    execute "Normalizing Wallpapers" 'bash "$HOME/scripts/normalize_wallpaper.sh"'
+    execute "Normalizing Wallpapers" "bash ${REPO_ROOT}/scripts/normalize_wallpaper.sh"
 }
 
 setup_network() {
-    execute "Optimizing Services" "sudo systemctl disable --now systemd-resolved systemd-networkd 2>/dev/null || true"
-
-    execute "Configuring DNS" "sudo chattr -i /etc/resolv.conf 2>/dev/null; sudo sh -c 'echo nameserver 8.8.8.8 > /etc/resolv.conf && echo nameserver 1.1.1.1 >> /etc/resolv.conf'; sudo chattr +i /etc/resolv.conf"
-
+    execute "Disabling systemd-resolved to prevent conflicts" "sudo systemctl disable --now systemd-resolved 2>/dev/null || true"
+    
+    execute "Cleaning stale resolv.conf" "if [ -L /etc/resolv.conf ] && readlink /etc/resolv.conf | grep -q 'resolved'; then sudo rm -f /etc/resolv.conf; fi"
+    
     execute "Enabling NetworkManager" "sudo systemctl enable --now NetworkManager"
 }
 
@@ -253,11 +258,9 @@ setup_bluetooth() {
 }
 
 setup_shell() {
-    if ! grep -q "/usr/bin/zsh" /etc/shells; then
-        execute "Adding Zsh to Valid Shells" "echo '/usr/bin/zsh' | sudo tee -a /etc/shells"
-    fi
-
-    execute "Changing Default Shell to Zsh" "sudo chsh -s /usr/bin/zsh $USER"
+    execute "Adding Zsh to Valid Shells" "if ! grep -q '/usr/bin/zsh' /etc/shells; then echo '/usr/bin/zsh' | sudo tee -a /etc/shells; fi"
+    
+    execute "Changing Default Shell to Zsh" "if [ \"\$(getent passwd \$USER | cut -d: -f7)\" != '/usr/bin/zsh' ]; then sudo chsh -s /usr/bin/zsh \$USER; fi"
 }
 
 # Password Initialization for Sudo
@@ -276,22 +279,16 @@ keep_sudo_alive
 
 # Install necessary packages via pacman
 execute "System Update" "sudo pacman -Syu --noconfirm" true
-install_pkgs "pacman" "${CORE_PACKAGES[@]}"
+install_pkgs "${CORE_PACKAGES[@]}"
 
 # Install Rust toolchain
 execute "Setting up Rust Toolchain" "rustup default stable" true
 
 # Backup Existing Config
-execute "Backing up existing Configurations" "backup_configs"
+backup_configs
 
 # Apply Zenities Dotfiles
-execute  "Applying zenities dotfiles via Stow" "apply_dotfiles"
-
-# Install yay (AUR helper)
-install_yay
-
-# Install additional packages via yay
-install_pkgs "yay" "${AUR_PACKAGES[@]}"
+apply_dotfiles
 
 # Eww installation
 install_eww
