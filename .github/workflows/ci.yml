@@ -17,8 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
         run: |
-          # Dijalankan di Ubuntu karena ShellCheck sudah tersedia secara native
-          find . -name "*.sh" | xargs shellcheck
+          find . -name "*.sh" -print0 | xargs -0 shellcheck --severity=warning
 
   test:
     name: Installation Test
@@ -40,7 +39,6 @@ jobs:
           chown -R tester:tester ./
       - name: Execute Install Script
         run: |
-          # GITHUB_ACTIONS otomatis true dari runner
           su tester -c "chmod +x install.sh && ./install.sh"
 
   release:

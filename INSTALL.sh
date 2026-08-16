@@ -169,7 +169,8 @@ is_symlink_to_repo() {
 # Installation Functions
 backup_configs() {
   echo -e "${CYAN}[INTERNAL TASK] Checking for pre-existing configurations to back up...${NC}"
-  local TS=$(date +%Y%m%d_%H%M%S)
+  local TS
+  TS=$(date +%Y%m%d_%H%M%S)
   local BACKUP_DIR="$HOME/.zenities_backups/backup_$TS"
   local CONFIG_DIR="$HOME/.config"
   local DOTFILES_CONFIG="$REPO_ROOT/.config"
@@ -177,7 +178,8 @@ backup_configs() {
 
   if [ -d "$DOTFILES_CONFIG" ]; then
     for dir in "$DOTFILES_CONFIG"/*/; do
-      local folder_name=$(basename "$dir")
+      local folder_name
+      folder_name=$(basename "$dir")
       local target_path="$CONFIG_DIR/$folder_name"
       if [ -d "$target_path" ]; then
         if is_symlink_to_repo "$target_path"; then
