@@ -3,7 +3,7 @@
 sed -e
 
 # Remove symlinked dotfiles installed by stow
-cd $HOME/zenities
+cd "$HOME/zenities" || exit 1
 stow -D .
 
 # Restore the original hypr and kitty configurations (if backups exist)
@@ -61,7 +61,7 @@ fi
 
 
 # Remove cloned zenities dotfiles
-cd $HOME
+cd "$HOME" || exit 1
 rm -rf zenities
 
 # Clean up Eww
