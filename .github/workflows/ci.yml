@@ -39,7 +39,7 @@ jobs:
           chown -R tester:tester ./
       - name: Execute Install Script
         run: |
-          su tester -c "chmod +x install.sh && ./install.sh"
+          su tester -c "cd $GITHUB_WORKSPACE && chmod +x INSTALL.sh && ./INSTALL.sh"
 
   release:
     name: Production Release
