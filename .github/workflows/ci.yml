@@ -32,6 +32,12 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S --noconfirm base-devel git sudo stow
+      - name: Setup Arch Linux Container Environment
+        run: |
+          pacman-key --init
+          pacman-key --populate archlinux
+          systemd-sysusers || true
+          systemd-tmpfiles --create || true
       - name: Setup Non-Root User
         run: |
           useradd -m tester
