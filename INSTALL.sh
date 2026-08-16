@@ -27,7 +27,7 @@ CORE_PACKAGES=(
   "brightnessctl"
   "playerctl"
   "ncspot"
-  "rofi-wayland"
+  "rofi"
   "hyprlock"
   "hypridle"
   "hyprpaper"
@@ -130,8 +130,11 @@ execute() {
                 ((attempt++))
                 sleep 5
             else
-                printf "\r${RED}  [FATAL] Task '$task_name' failed. See install-log.txt${NC}\n"
-                exit 1
+		printf "\r${RED}  [FATAL] Task '$task_name' failed. See install-log.txt${NC}\n"
+        	echo -e "\n--- BEGIN ERROR LOG ($task_name) ---"
+        	cat install-log.txt
+        	echo -e "--- END ERROR LOG ---\n"
+        	exit 1    
             fi
         fi
     done
