@@ -251,7 +251,7 @@ install_eww() {
 }
 
 setup_scripts() {
-    execute "Executing Hyprland Setup" "bash ${REPO_ROOT}/.scripts/setup/hypr.sh"
+    execute "Executing Hyprland Setup" "bash ${REPO_ROOT}/scripts/setup/hypr.sh"
 
     execute "Executing Zsh Configuration" "bash ${REPO_ROOT}/scripts/zsh_setup.sh"
 
@@ -297,7 +297,7 @@ execute "System Update" "sudo pacman -Syu --noconfirm" true
 install_pkgs "${CORE_PACKAGES[@]}"
 
 # Install Rust toolchain
-execute "Setting up Rust Toolchain" "rustup default stable" true
+execute "Setting up Rust Toolchain" "rustup toolchain install stable && rustup default stable" true
 
 # Backup Existing Config
 backup_configs
