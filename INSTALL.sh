@@ -53,7 +53,7 @@ CORE_PACKAGES=(
   "hyprsunset"
   "fastfetch"
   "cava"
-  "ttf-iosevka"
+  "ttf-iosevka-nerd"
   "ttf-nerd-fonts-symbols-mono"
   "gvfs"
   "dbus"
@@ -73,9 +73,7 @@ CORE_PACKAGES=(
   "bluez"
   "bluez-utils"
   "bluez-obex"
-  "bluetuith"
   "python-gobject"
-  "zsh-theme-powerlevel10k"
 )
 
 
@@ -226,6 +224,17 @@ apply_dotfiles() {
   echo -e "${GREEN}[OK] Dotfiles applied.${NC}\n"
 }
 
+install_p10k() {
+    execute "Installing Powerlevel10k Theme" '
+        if [ ! -d "$HOME/powerlevel10k" ]; then
+            git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
+        fi
+        if [ -f "$HOME/.zshrc" ] && ! grep -q "powerlevel10k.zsh-theme" "$HOME/.zshrc"; then
+            echo "source ~/powerlevel10k/powerlevel10k.zsh-theme" >> "$HOME/.zshrc"
+        fi
+    ' true
+}
+
 install_eww() {
     if command -v eww >/dev/null; then
         echo "Eww is already installed. Skipping build..."
@@ -296,11 +305,13 @@ backup_configs
 # Apply Zenities Dotfiles
 apply_dotfiles
 
-# Eww installation
+# Eww installatio
 install_eww
 
 # Run Configuration Scripts
 setup_scripts
+
+install_p10k
 
 # Network Manager setup
 setup_network
