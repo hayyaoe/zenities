@@ -42,12 +42,13 @@ jobs:
         run: |
           useradd -m tester
           echo "tester ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown -R tester:tester /home/tester
           chown -R tester:tester ./
       - name: Execute Install Script
         env:
           TERM: xterm
         run: |
-          su --preserve-environment tester -c "cd $GITHUB_WORKSPACE && chmod +x INSTALL.sh && ./INSTALL.sh"
+          su - tester -c "export TERM=xterm GITHUB_ACTIONS=true GITHUB_WORKSPACE='$GITHUB_WORKSPACE'; cd '$GITHUB_WORKSPACE' && chmod +x INSTALL.sh && ./INSTALL.sh"
 
   release:
     name: Production Release
