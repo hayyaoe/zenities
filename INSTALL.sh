@@ -40,7 +40,7 @@ CORE_PACKAGES=(
   "acpi"
   "pavucontrol"
   "lua51"
-  "lua51-luarocks"
+  "luarocks"
   "xdg-desktop-portal-hyprland"
   "xdg-desktop-portal-gtk"
   "gtk4"
@@ -118,10 +118,11 @@ execute() {
                 sleep 0.1
             done
         done
-        wait $pid
-        local res=$?
-
-        if [ $res -eq 0 ]; then
+	
+	wait $pid || res=$?
+	res=${res:-0}
+        
+	if [ $res -eq 0 ]; then
             printf "\r${GREEN}  [OK] Completed!                                     ${NC}\n\n"
             break
         else
