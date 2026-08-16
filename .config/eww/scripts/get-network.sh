@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 CONNECTION_TYPE=$(nmcli -t -f TYPE,STATE device | grep -E "^ethernet:connected$|^wifi:connected$" | awk -F: '{print $1}')
 
 if [[ "$CONNECTION_TYPE" == "wifi" ]]; then

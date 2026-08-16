@@ -1,1 +1,3 @@
-sh ~/scripts/wifi_settings.sh
+#!/usr/bin/env bash
+
+bash ~/scripts/wifi_settings.sh

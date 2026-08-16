@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sink=$(pactl get-default-sink)
 
 muted=$(pactl get-sink-mute "$sink" | awk '{print $2}')

@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+sed -e
 
 # Remove symlinked dotfiles installed by stow
 cd $HOME/zenities

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 YEAR=$(date +%Y)
 MONTH=$(date +%m)
 TODAY=$(date +%d)
@@ -5,7 +7,7 @@ TODAY=$(date +%d)
 MONTH_NAME=$(date +%B)
 
 FIRST_DAY=$(date -d "$YEAR-$MONTH-01" +%u)
-DAYS_IN_MONTH=$(date -d "$YEAR-$MONTH-01 +1 month -1 day" +%d)
+DAYS_IN_MONTH=$(date -d "$YEAR-$MONTH-01 +1 MONTH -1 day" +%d)
 
 echo '(box :orientation "vertical" :class "calendar-container"'
 
