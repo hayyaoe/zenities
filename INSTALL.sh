@@ -294,6 +294,17 @@ keep_sudo_alive
 
 # Install necessary packages via pacman
 execute "System Update" "sudo pacman -Syu --noconfirm" true
+
+if ! getent group polkitd >/dev/null 2>&1; then
+    sudo groupadd -r polkitd 2>/dev/null || true
+fi
+
+if ! getent passwd polkitd >/dev/null 2>&1; then
+    sudo useradd -r -g polkitd -d / -s /usr/bin/nologin -c "User for polkitd" polkitd 2>/dev/null || true
+fi
+
+sudo systemd-sysusers 2>/dev/null || true
+
 install_pkgs "${CORE_PACKAGES[@]}"
 
 # Install Rust toolchain
