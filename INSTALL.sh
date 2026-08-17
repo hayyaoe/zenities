@@ -219,7 +219,11 @@ backup_configs() {
 apply_dotfiles() {
   echo -e "${CYAN}[INTERNAL TASK] Applying dotfiles via Stow...${NC}"
   cd "$REPO_ROOT" || exit 1
-  stow .
+
+  mkdir -p "$HOME/.config"
+
+  stow --restow --target="$HOME" .
+
   cd "$HOME" || exit 1
   echo -e "${GREEN}[OK] Dotfiles applied.${NC}\n"
 }
