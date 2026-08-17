@@ -255,7 +255,7 @@ install_eww() {
 }
 
 setup_scripts() {
-    execute "Executing Hyprland Setup" "bash ${REPO_ROOT}/scripts/hypr_setup.sh"
+    execute "Executing Hyprland Setup" "bash ${REPO_ROOT}/scripts/hypr.sh"
 
     execute "Executing Zsh Configuration" "bash ${REPO_ROOT}/scripts/zsh_setup.sh"
 
