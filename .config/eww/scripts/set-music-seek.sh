@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 
 LENGTH_MICROSECONDS=$(playerctl metadata --format "{{mpris:length}}")

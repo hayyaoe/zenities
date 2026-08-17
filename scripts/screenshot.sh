@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CHOICE=$(printf "Fullscreen\nRegion\nActive Window\nClipboard (Region)" | rofi -dmenu -p "∂")
 
 case "$CHOICE" in

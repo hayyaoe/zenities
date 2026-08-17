@@ -1,3 +1,5 @@
+#!/bin/bash
+
 WINDOW_NAME="device-control resource-monitor music-window custom-calendar"
 
 all_open=true

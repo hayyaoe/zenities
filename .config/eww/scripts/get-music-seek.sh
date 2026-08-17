@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Get the current position of the song in seconds
 POSITION=$(playerctl --player=ncspot position)
 LENGTH_MICROSECONDS=$(playerctl --player=ncspot metadata --format "{{mpris:length}}")

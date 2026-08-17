@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
+
 MONTH=$(date +%m)
-MONTH=$((month-1))
+MONTH=$((MONTH-1))
 
 echo $MONTH

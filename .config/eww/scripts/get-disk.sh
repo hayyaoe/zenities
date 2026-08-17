@@ -1,2 +1,3 @@
-printf "%.0f\n" $(df --output=pcent / | tail -n1 | tr -dc '0-9')
+#!/usr/bin/env bash
+printf "%.0f\n" "$(df --output=pcent / | tail -n1 | tr -dc '0-9')"
 

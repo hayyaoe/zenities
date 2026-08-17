@@ -1,13 +1,15 @@
+#!/bin/bash
+
 CHOICE=$(printf "\n\n\n\n" | rofi -dmenu -replace -config ~/.config/rofi/config-power.rasi)
 
 case "$CHOICE" in
   "")
-    cd /$HOME
+    cd "$HOME" || exit 1
     sleep 1
     shutdown now
   ;;
   "")
-    cd /$HOME
+    cd "$HOME" || exit 1
     sleep 1
     reboot 
   ;;
@@ -16,12 +18,12 @@ case "$CHOICE" in
     hyprlock -c $HOME/.config/hypr/service/hyprlock.conf
   ;;
   "")
-    cd /$HOME
+    cd "$HOME" || exit 1
     sleep 1
     systemctl suspend
   ;;
   "")
-    cd /$HOME
+    cd "$HOME" || exit 1
     sleep 1
     hyprctl dispatch exit
   ;;

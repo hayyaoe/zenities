@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+sed -e
 
 # Remove symlinked dotfiles installed by stow
-cd $HOME/zenities
+cd "$HOME/zenities" || exit 1
 stow -D .
 
 # Restore the original hypr and kitty configurations (if backups exist)
 # Define paths and backup suffix
 CONFIG_DIR="$HOME/.config"
 BACKUP_SUFFIX=".bak"
-DOTFILES_CONFIG="$HOME/zenities/.config"
+export DOTFILES_CONFIG="$HOME/zenities/.config"
 
 echo "Restoring configuration directories from backups in $CONFIG_DIR"
 cd "$CONFIG_DIR" || { echo "Could not access $CONFIG_DIR"; exit 1; }
@@ -59,7 +61,7 @@ fi
 
 
 # Remove cloned zenities dotfiles
-cd $HOME
+cd "$HOME" || exit 1
 rm -rf zenities
 
 # Clean up Eww
