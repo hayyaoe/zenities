@@ -5,8 +5,10 @@ set -e
 
 main() {
     # Find out where the absolute path of the script is
-    local SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-    local REPO_ROOT=$(cd "$SCRIPT_DIR/../.." && pwd)
+    local SCRIPT_DIR
+    SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+    local REPO_ROOT
+    REPO_ROOT=$(cd "$SCRIPT_DIR/.." && pwd)
 
     local TEMPLATE_DIR="$REPO_ROOT/.templates/hypr"
     local TARGET_DIR="$REPO_ROOT/.config/hypr/user"
@@ -20,7 +22,8 @@ main() {
         mkdir -p "$TARGET_DIR"
         for file in "$TEMPLATE_DIR"/*; do
             [ -e "$file" ] || continue
-            local filename=$(basename "$file")
+            local filename
+	    filename=$(basename "$file")
             if [ ! -e "$TARGET_DIR/$filename" ]; then
                 cp -rp "$file" "$TARGET_DIR/"
                 echo "  [+] Initialized template: $filename"
