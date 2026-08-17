@@ -1,5 +1,0 @@
-# Set programs that you use
-$terminal = kitty
-$fileManager = ~/scripts/open_yazi.sh
-$menu = rofi -show drun
-$browser = zen-browser
