@@ -1,0 +1,161 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Dynamic Path Resolution
+resolve_dir() {
+    local target
+    target="${BASH_SOURCE[0]}"
+    while [[ -L "$target" ]]; do
+        local dir
+        dir="$(cd -P "$(dirname "$target")" >/dev/null 2>&1 && pwd)"
+        target="$(readlink "$target")"
+        [[ "$target" != /* ]] && target="$dir/$target"
+    done
+    cd -P "$(dirname "$target")/.." >/dev/null 2>&1 && pwd
+}
+
+SOURCE_DIR="$(resolve_dir)"
+
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+ZENITIES_RICE_DIR="${ZENITIES_RICE_DIR:-$SOURCE_DIR}"
+ZENITIES_USER_DIR="$XDG_CONFIG_HOME/zenities"
+
+# Color Formatting
+C_RESET="$(printf '\033[0m')"
+C_GREEN="$(printf '\033[32m')"
+C_RED="$(printf '\033[31m')"
+C_YELLOW="$(printf '\033[33m')"
+C_BLUE="$(printf '\033[34m')"
+
+log_info() {
+    printf "%s[zenities]%s %s\n" "$C_BLUE" "$C_RESET" "$1"
+}
+
+log_success() {
+    printf "%s[zenities]%s %s\n" "$C_GREEN" "$C_RESET" "$1"
+}
+
+log_warn() {
+    printf "%s[zenities]%s %s\n" "$C_YELLOW" "$C_RESET" "$1"
+}
+
+log_error() {
+    printf "%s[zenities]%s %s\n" "$C_RED" "$C_RESET" "$1" >&2
+}
+
+# Command: init
+cmd_init() {
+    log_info "Initializing User Space at $ZENITIES_USER_DIR..."
+    mkdir -p "$ZENITIES_USER_DIR/generated"
+
+    if [[ ! -f "$ZENITIES_USER_DIR/config.json" ]]; then
+        if [[ -f "$ZENITIES_RICE_DIR/defaults/config.json" ]]; then
+            cp "$ZENITIES_RICE_DIR/defaults/config.json" "$ZENITIES_USER_DIR/config.json"
+            log_success "Created default config.json"
+        else
+            log_warn "Template defaults/config.json not found in Rice Space. Skipping."
+        fi
+    else
+        log_info "config.json already exists. Preserving current settings."
+    fi
+
+    log_success "Initialization complete."
+}
+
+# Command: run / dev
+cmd_run() {
+    cmd_init
+
+    local entrypoint="$ZENITIES_RICE_DIR/quickshell/shell.qml"
+
+    if [[ ! -f "$entrypoint" ]]; then
+        log_error "Entrypoint shell.qml not found at $entrypoint"
+        exit 1
+    fi
+
+    log_info "Launching Quickshell engine..."
+
+    if [[ -n "${UWSM_APP_UNIT:-}" ]] || command -v uwsm >/dev/null 2>&1; then
+        exec uwsm app -- quickshell -p "$entrypoint" "$@"
+    else
+        exec quickshell -p "$entrypoint" "$@"
+    fi
+}
+
+# Command: reload
+cmd_reload() {
+    log_info "Reloading Quickshell instance..."
+    if command -v quickshell >/dev/null 2>&1 && quickshell msg reload >/dev/null 2>&1; then
+        log_success "Reload triggered via Quickshell IPC."
+    elif command -v qs >/dev/null 2>&1 && qs msg reload >/dev/null 2>&1; then
+        log_success "Reload triggered via qs IPC."
+    elif pkill -USR1 quickshell >/dev/null 2>&1; then
+        log_success "Sent SIGUSR1 reload signal to Quickshell process."
+    else
+        log_warn "No active Quickshell instance detected."
+    fi
+}
+# Command: doctor
+cmd_doctor() {
+
+    local core_deps=(
+        "quickshell"
+        "hyprland"
+        "hypridle"
+        "hyprsunset"
+        "matugen"
+        "wpctl"
+        "nmcli"
+        "bluetoothctl"
+        "brightnessctl"
+    )
+    local missing=0
+
+    for bin in "${core_deps[@]}"; do
+        if command -v "$bin" >/dev/null 2>&1; then
+            printf "  %s✔%s %-16s %s\n" "$C_GREEN" "$C_RESET" "$bin" "($(command -v "$bin"))"
+        else
+            printf "  %s✖%s %-16s %sMISSING%s\n" "$C_RED" "$C_RESET" "$bin" "$C_RED" "$C_RESET"
+            missing=$((missing + 1))
+        fi
+    done
+
+    if [[ $missing -eq 0 ]]; then
+        log_success "All core dependencies satisfied."
+    else
+        log_warn "$missing dependencies missing. Install them before launching."
+    fi
+}
+
+# Router
+case "${1:-help}" in
+init)
+    cmd_init
+    ;;
+dev | run)
+    shift
+    cmd_run "$@"
+    ;;
+reload)
+    cmd_reload
+    ;;
+doctor)
+    cmd_doctor
+    ;;
+help | --help | -h)
+    printf "Usage: zenities [command]\n\n"
+    printf "Commands:\n"
+    printf "  init       Initialize user config files in ~/.config/zenities\n"
+    printf "  dev, run   Launch Quickshell engine (UWSM aware)\n"
+    printf "  reload     Trigger live reload on active Quickshell instance\n"
+    printf "  doctor     Verify presence of all system prerequisites\n"
+    printf "  help       Show this help message\n"
+    ;;
+*)
+    log_error "Unknown command: $1"
+    printf "Run 'zenities help' for usage instructions.\n"
+    exit 1
+    ;;
+esac
