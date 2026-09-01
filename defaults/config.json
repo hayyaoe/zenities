@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "mode": "normal",
+  "bar": {
+    "position": "top"
+  },
+  "features": {
+    "tray": false
+  }
+}
