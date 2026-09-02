@@ -64,39 +64,6 @@ cmd_init() {
     log_success "Initialization complete."
 }
 
-# Command: run / dev
-cmd_run() {
-    cmd_init
-
-    local entrypoint="$ZENITIES_RICE_DIR/quickshell/shell.qml"
-
-    if [[ ! -f "$entrypoint" ]]; then
-        log_error "Entrypoint shell.qml not found at $entrypoint"
-        exit 1
-    fi
-
-    log_info "Launching Quickshell engine..."
-
-    if [[ -n "${UWSM_APP_UNIT:-}" ]] || command -v uwsm >/dev/null 2>&1; then
-        exec uwsm app -- quickshell -p "$entrypoint" "$@"
-    else
-        exec quickshell -p "$entrypoint" "$@"
-    fi
-}
-
-# Command: reload
-cmd_reload() {
-    log_info "Reloading Quickshell instance..."
-    if command -v quickshell >/dev/null 2>&1 && quickshell msg reload >/dev/null 2>&1; then
-        log_success "Reload triggered via Quickshell IPC."
-    elif command -v qs >/dev/null 2>&1 && qs msg reload >/dev/null 2>&1; then
-        log_success "Reload triggered via qs IPC."
-    elif pkill -USR1 quickshell >/dev/null 2>&1; then
-        log_success "Sent SIGUSR1 reload signal to Quickshell process."
-    else
-        log_warn "No active Quickshell instance detected."
-    fi
-}
 # Command: doctor
 cmd_doctor() {
 
@@ -129,14 +96,53 @@ cmd_doctor() {
     fi
 }
 
+# Command: start
+cmd_start() {
+    cmd_doctor >/dev/null 2>&1 || {
+        echo "Error: Dependency check failed. Run 'zenities doctor' for details." >&2
+        exit 1
+    }
+
+    cmd_init
+
+    local entrypoint="$ZENITIES_RICE_DIR/quickshell/shell.qml"
+
+    if [[ ! -f "$entrypoint" ]]; then
+        log_error "Entrypoint shell.qml not found at $entrypoint"
+        exit 1
+    fi
+
+    log_info "Launching Quickshell engine..."
+
+    if [[ -n "${UWSM_APP_UNIT:-}" ]] || command -v uwsm >/dev/null 2>&1; then
+        exec uwsm app -- quickshell -p "$entrypoint" "$@"
+    else
+        exec quickshell -p "$entrypoint" "$@"
+    fi
+}
+
+# Command: reload
+cmd_reload() {
+    log_info "Reloading Quickshell instance..."
+    if command -v quickshell >/dev/null 2>&1 && quickshell msg reload >/dev/null 2>&1; then
+        log_success "Reload triggered via Quickshell IPC."
+    elif command -v qs >/dev/null 2>&1 && qs msg reload >/dev/null 2>&1; then
+        log_success "Reload triggered via qs IPC."
+    elif pkill -USR1 quickshell >/dev/null 2>&1; then
+        log_success "Sent SIGUSR1 reload signal to Quickshell process."
+    else
+        log_warn "No active Quickshell instance detected."
+    fi
+}
+
 # Router
 case "${1:-help}" in
 init)
     cmd_init
     ;;
-dev | run)
+start)
     shift
-    cmd_run "$@"
+    cmd_start "$@"
     ;;
 reload)
     cmd_reload
@@ -148,7 +154,7 @@ help | --help | -h)
     printf "Usage: zenities [command]\n\n"
     printf "Commands:\n"
     printf "  init       Initialize user config files in ~/.config/zenities\n"
-    printf "  dev, run   Launch Quickshell engine (UWSM aware)\n"
+    printf "  start      Launch Quickshell engine (UWSM aware)\n"
     printf "  reload     Trigger live reload on active Quickshell instance\n"
     printf "  doctor     Verify presence of all system prerequisites\n"
     printf "  help       Show this help message\n"
