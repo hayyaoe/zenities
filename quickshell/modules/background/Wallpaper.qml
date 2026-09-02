@@ -20,6 +20,7 @@ Variants{
 
 		WlrLayershell.layer: WlrLayer.Background
 		WlrLayershell.exclusionMode: ExclusionMode.Ignore
+		WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 		WlrLayershell.namespace: "zenities-wallpaper"
 
 		color: "black"
