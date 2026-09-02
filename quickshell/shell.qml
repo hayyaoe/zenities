@@ -22,5 +22,15 @@ ShellRoot{
 		}
 
 		color: "transparent"
+
+		WlrLayershell.layer: WlrLayer.Top
+		WlrLayershell.exclusionMode: ExclusionMode.Ignore
+		WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+		WlrLayershell.namespace: "quickshell-canvas"
+		
+		mask: Region {}
+
+		Item {id: fullMask; anchors.fill: parent}
 	}
+
 }
