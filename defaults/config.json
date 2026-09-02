@@ -4,7 +4,8 @@
   "bar": {
     "position": "top"
   },
+  "wallpaperPath": "https://gruvbox-wallpapers.pages.dev/wallpapers/painting/The_Backwater.png",
   "features": {
-    "tray": false
+    "any": false
   }
 }
