@@ -1,0 +1,4 @@
+[config]
+[templates.quickshell]
+input_path = '~/.local/share/zenities/matugen/templates/quickshell-template.qml'
+output_path = '~/.config/zenities/generated/QuickshellTheme.qml'
