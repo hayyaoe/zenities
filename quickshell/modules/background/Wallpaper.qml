@@ -25,30 +25,25 @@ Variants{
 
 		color: "black"
 
-		Image{
-			id: bgImage
-			anchors.fill: parent
-			fillMode: Image.PreserveAspectCrop
-			asynchronous: true
-			source: Theme.wallpaperPath
-			opacity: 0
+	Image {
+            id: bgImage
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            asynchronous: true
+            sourceSize: Qt.size(modelData.width, modelData.height)
 
-			sourceSize: Qt.size(modelData.width, modelData.height)
+            source: (Theme.wallpaperPath && Theme.wallpaperPath.startsWith("/")) 
+                ? ("file://" + Theme.wallpaperPath) 
+                : ""
 
-			onStatusChanged:{
-				if(status === Image.Ready){
-					opacity = 1
-				}else if(status === Image.Loading){
-					opacity = 0
-				}
-			}
+            opacity: status === Image.Ready ? 1 : 0
 
-			Behavior on opacity{
-				NumberAnimation{
-					duration: Theme.animationDuration
-					easing.type: Theme.animationCurve
-				}
-			}
-		}
-	}
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: Theme.animationDuration
+                    easing.type: Theme.animationCurve
+                }
+            }
+    	}
+    }
 }
