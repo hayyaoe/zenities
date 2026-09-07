@@ -21,6 +21,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 ZENITIES_RICE_DIR="${ZENITIES_RICE_DIR:-$SOURCE_DIR}"
 ZENITIES_USER_DIR="$XDG_CONFIG_HOME/zenities"
+UWSM_UNIT_NAME="zenities-quickshell.scope"
 
 # Color Formatting
 C_RESET="$(printf '\033[0m')"
@@ -91,9 +92,32 @@ cmd_doctor() {
 
     if [[ $missing -eq 0 ]]; then
         log_success "All core dependencies satisfied."
+        return 0
     else
         log_warn "$missing dependencies missing. Install them before launching."
+        return 1
     fi
+}
+
+# Command: run
+cmd_run() {
+    cmd_doctor >/dev/null 2>&1 || {
+        echo "Error: Dependency check failed. Run 'zenities doctor' for details." >&2
+        exit 1
+    }
+
+    cmd_init
+
+    local entrypoint="$ZENITIES_RICE_DIR/quickshell/shell.qml"
+
+    if [[ ! -f "$entrypoint" ]]; then
+        log_error "Entrypoint shell.qml not found at $entrypoint"
+        exit 1
+    fi
+
+    log_info "Running Quickshell in foreground..."
+    exec quickshell -p "$entrypoint" "$@"
+
 }
 
 # Command: start
@@ -114,25 +138,50 @@ cmd_start() {
 
     log_info "Launching Quickshell engine..."
 
-    if [[ -n "${UWSM_APP_UNIT:-}" ]] || command -v uwsm >/dev/null 2>&1; then
-        exec uwsm app -- quickshell -p "$entrypoint" "$@"
+    if command -v uwsm >/dev/null 2>&1; then
+        uwsm app -u "$UWSM_UNIT_NAME" -- quickshell -p "$entrypoint" "$@" >/dev/null 2>&1 &
     else
-        exec quickshell -p "$entrypoint" "$@"
+        nohup quickshell -p "$entrypoint" "$@" >/dev/null 2>&1 &
     fi
+}
+
+# Command: stop
+cmd_stop() {
+    log_info "Stopping Quickshell..."
+
+    systemctl --user stop "${UWSM_UNIT_NAME}" 2>/dev/null || true
+
+    pkill -x quickshell 2>/dev/null || true
+
+    while pgrep -x quickshell >/dev/null 2>&1; do
+        sleep 0.1
+    done
+
+    log_success "Quickshell stopped."
 }
 
 # Command: reload
 cmd_reload() {
-    log_info "Reloading Quickshell instance..."
-    if command -v quickshell >/dev/null 2>&1 && quickshell msg reload >/dev/null 2>&1; then
-        log_success "Reload triggered via Quickshell IPC."
-    elif command -v qs >/dev/null 2>&1 && qs msg reload >/dev/null 2>&1; then
-        log_success "Reload triggered via qs IPC."
-    elif pkill -USR1 quickshell >/dev/null 2>&1; then
-        log_success "Sent SIGUSR1 reload signal to Quickshell process."
-    else
-        log_warn "No active Quickshell instance detected."
+    log_info "Reloading Quickshell..."
+    local entrypoint="$ZENITIES_RICE_DIR/quickshell/shell.qml"
+
+    if command -v quickshell >/dev/null 2>&1; then
+        if quickshell -p "$entrypoint" --reload >/dev/null 2>&1; then
+            log_success "Reload triggered via Quickshell IPC."
+            return 0
+        fi
     fi
+
+    log_info "IPC reload unavailable, performing clean restart..."
+    cmd_stop
+
+    if command -v uwsm >/dev/null 2>&1; then
+        uwsm app -u "$UWSM_UNIT_NAME" -- quickshell -p "$entrypoint" "$@" >/dev/null 2>&1 &
+    else
+        nohup quickshell -p "$entrypoint" "$@" >/dev/null 2>&1 &
+    fi
+
+    log_success "Quickshell restarted successfully."
 }
 
 # Router
@@ -140,12 +189,21 @@ case "${1:-help}" in
 init)
     cmd_init
     ;;
+run)
+    shift
+    cmd_run "$@"
+    ;;
 start)
     shift
     cmd_start "$@"
     ;;
+stop)
+    shift
+    cmd_stop "$@"
+    ;;
 reload)
-    cmd_reload
+    shift
+    cmd_reload "$@"
     ;;
 doctor)
     cmd_doctor
@@ -154,7 +212,9 @@ help | --help | -h)
     printf "Usage: zenities [command]\n\n"
     printf "Commands:\n"
     printf "  init       Initialize user config files in ~/.config/zenities\n"
-    printf "  start      Launch Quickshell engine (UWSM aware)\n"
+    printf "  run        Run Quickshell in foreground (stdout/stderr debugging)\n"
+    printf "  start      Launch Quickshell engine (UWSM)\n"
+    printf "  stop       Stop active Quickshell instance and units\n"
     printf "  reload     Trigger live reload on active Quickshell instance\n"
     printf "  doctor     Verify presence of all system prerequisites\n"
     printf "  help       Show this help message\n"
