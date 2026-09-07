@@ -48,31 +48,87 @@ log_error() {
 
 # Command: init
 cmd_init() {
-    log_info "Initializing User Space at $ZENITIES_USER_DIR..."
-    mkdir -p "$ZENITIES_USER_DIR/generated"
+    log_info "Initializing Zenities user environment..."
 
-    if [[ ! -f "$ZENITIES_USER_DIR/config.json" ]]; then
-        if [[ -f "$ZENITIES_RICE_DIR/defaults/config.json" ]]; then
-            cp "$ZENITIES_RICE_DIR/defaults/config.json" "$ZENITIES_USER_DIR/config.json"
-            log_success "Created default config.json"
-        else
-            log_warn "Template defaults/config.json not found in Rice Space. Skipping."
+    for tool in jq matugen; do
+        if ! command -v "$tool" >/dev/null 2>&1; then
+            log_error "Essential setup tool '$tool' missing. Run 'zenities doctor'."
+            exit 1
         fi
+    done
+
+    local gen_dir="$ZENITIES_USER_DIR/generated"
+    if [[ ! -d "$gen_dir" ]]; then
+        log_info "Creating user generated directory: $gen_dir"
+        mkdir -p "$gen_dir"
     else
-        log_info "config.json already exists. Preserving current settings."
+        mkdir -p "$ZENITIES_USER_DIR"
     fi
 
-    log_success "Initialization complete."
+    local user_config="$ZENITIES_USER_DIR/config.json"
+    local default_config="$ZENITIES_RICE_DIR/defaults/config.json"
+    local default_wallpaper="$ZENITIES_RICE_DIR/assets/default-wallpaper.webp"
+
+    if [[ ! -f "$default_wallpaper" ]]; then
+        log_error "Default wallpaper missing at: $default_wallpaper"
+        exit 1
+    fi
+
+    if [[ ! -f "$default_config" ]]; then
+        log_error "Default config template missing at: $default_config"
+        exit 1
+    fi
+
+    local current_wp=""
+    local is_dark="true"
+
+    if [[ ! -f "$user_config" ]]; then
+        log_info "Copying default config.json to user directory..."
+        jq --arg wp "$default_wallpaper" \
+            '.wallpaperPath = (if (.wallpaperPath == "" or .wallpaperPath == null) then $wp else .wallpaperPath end)' \
+            "$default_config" >"$user_config"
+
+        current_wp="$default_wallpaper"
+        is_dark="$(jq -r '.darkMode // true' "$user_config")"
+    else
+        current_wp="$(jq -r '.wallpaperPath // empty' "$user_config")"
+        is_dark="$(jq -r '.darkMode // true' "$user_config")"
+
+        if [[ -z "$current_wp" || ! -f "$current_wp" ]]; then
+            log_warn "Configured wallpaper not found. Falling back to default."
+            current_wp="$default_wallpaper"
+            local tmp_json
+            tmp_json="$(mktemp)"
+            jq --arg wp "$default_wallpaper" '.wallpaperPath = $wp' "$user_config" >"$tmp_json"
+            mv "$tmp_json" "$user_config"
+        fi
+    fi
+
+    local mode_flag="dark"
+    [[ "$is_dark" == "false" ]] && mode_flag="light"
+
+    log_info "Generating initial theme palette with Matugen ($mode_flag mode)..."
+    matugen -c "$ZENITIES_RICE_DIR/matugen/config.toml" \
+        image "$current_wp" \
+        -m "$mode_flag" \
+        --source-color-index 0
+
+    ln -sfn "$ZENITIES_USER_DIR/generated/QuickshellTheme.qml" "$ZENITIES_RICE_DIR/quickshell/theme/QuickshellTheme.qml"
+
+    log_success "Initialization complete. Ready to launch."
+
+    export ZENITIES_WALLPAPER="$current_wp"
+    export ZENITIES_DARK_MODE="$is_dark"
 }
 
 # Command: doctor
 cmd_doctor() {
-
     local core_deps=(
         "quickshell"
         "hyprland"
         "hypridle"
         "hyprsunset"
+        "jq"
         "matugen"
         "wpctl"
         "nmcli"
@@ -90,6 +146,13 @@ cmd_doctor() {
         fi
     done
 
+    if [[ -f "/usr/lib/qt6/plugins/imageformats/libqwebp.so" || -f "/usr/lib64/qt6/plugins/imageformats/libqwebp.so" ]]; then
+        printf "  %s✔%s %-16s %s\n" "$C_GREEN" "$C_RESET" "qt6-webp" "(Qt6 WebP plugin found)"
+    else
+        printf "  %s✖%s %-16s %sMISSING (install qt6-imageformats)%s\n" "$C_RED" "$C_RESET" "qt6-webp" "$C_RED" "$C_RESET"
+        missing=$((missing + 1))
+    fi
+
     if [[ $missing -eq 0 ]]; then
         log_success "All core dependencies satisfied."
         return 0
@@ -101,10 +164,10 @@ cmd_doctor() {
 
 # Command: run
 cmd_run() {
-    cmd_doctor >/dev/null 2>&1 || {
-        echo "Error: Dependency check failed. Run 'zenities doctor' for details." >&2
+    if ! command -v quickshell >/dev/null 2>&1; then
+        log_error "quickshell binary not found in PATH."
         exit 1
-    }
+    fi
 
     cmd_init
 
@@ -122,10 +185,10 @@ cmd_run() {
 
 # Command: start
 cmd_start() {
-    cmd_doctor >/dev/null 2>&1 || {
-        echo "Error: Dependency check failed. Run 'zenities doctor' for details." >&2
+    if ! command -v quickshell >/dev/null 2>&1; then
+        log_error "quickshell binary not found in PATH."
         exit 1
-    }
+    fi
 
     cmd_init
 
@@ -184,6 +247,57 @@ cmd_reload() {
     log_success "Quickshell restarted successfully."
 }
 
+# Command: wallpaper
+cmd_wallpaper() {
+    local img_path="${1:-}"
+
+    if [[ -z "$img_path" ]]; then
+        log_error "Usage: zenities wallpaper /path/to/image.png"
+        exit 1
+    fi
+
+    img_path="$(realpath "$img_path" 2>/dev/null || true)"
+
+    if [[ ! -f "$img_path" ]]; then
+        log_error "Wallpaper file not found: $img_path"
+        exit 1
+    fi
+
+    if [[ ! -f "$ZENITIES_USER_DIR/config.json" ]]; then
+        cmd_init
+    fi
+
+    if ! command -v jq >/dev/null 2>&1; then
+        log_error "Dependency 'jq' is missing. Run 'zenities doctor' or install jq first."
+        exit 1
+    fi
+
+    if ! command -v matugen >/dev/null 2>&1; then
+        log_error "Dependency 'matugen' is missing. Run 'zenities doctor' or install matugen first."
+        exit 1
+    fi
+
+    local is_dark
+    is_dark="$(jq -r '.darkMode // true' "$ZENITIES_USER_DIR/config.json")"
+
+    local mode_flag="dark"
+    if [[ "$is_dark" == "false" ]]; then
+        mode_flag="light"
+    fi
+
+    log_info "Generating theme with Matugen..."
+    matugen -c "$ZENITIES_RICE_DIR/matugen/config.toml" image "$img_path" -m "$mode_flag" --source-color-index 0
+
+    log_info "Updating wallpaper path in config.json..."
+
+    local tmp_json
+    tmp_json="$(mktemp)"
+    jq --arg wp "$img_path" '.wallpaperPath = $wp' "$ZENITIES_USER_DIR/config.json" >"$tmp_json"
+    mv "$tmp_json" "$ZENITIES_USER_DIR/config.json"
+
+    log_success "Theme and wallpaper updated."
+}
+
 # Router
 case "${1:-help}" in
 init)
@@ -205,6 +319,10 @@ reload)
     shift
     cmd_reload "$@"
     ;;
+wallpaper)
+    shift
+    cmd_wallpaper "$@"
+    ;;
 doctor)
     cmd_doctor
     ;;
@@ -216,6 +334,7 @@ help | --help | -h)
     printf "  start      Launch Quickshell engine (UWSM)\n"
     printf "  stop       Stop active Quickshell instance and units\n"
     printf "  reload     Trigger live reload on active Quickshell instance\n"
+    printf "  wallpaper  Update wallpaper and regenerate color palette via matugen\n"
     printf "  doctor     Verify presence of all system prerequisites\n"
     printf "  help       Show this help message\n"
     ;;
