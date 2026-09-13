@@ -1,12 +1,11 @@
 {
   "version": 1,
-  "mode": "normal",
-  "bar": {
-    "position": "top"
-  },
+  "mode": "classic",
+  "barPosition": "top",
+  "barFloating": false,
+  "barRounded": true,
+  "screenCorners": true,
+  "scale": 1.0,
   "darkMode": true,
-  "wallpaperPath": "",
-  "features": {
-    "any": false
-  }
+  "wallpaperPath": ""
 }
