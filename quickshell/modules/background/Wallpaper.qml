@@ -3,15 +3,15 @@ import Quickshell
 import Quickshell.Wayland
 import "../../theme"
 
-Variants{
+Variants {
 	id: root
 	model: Quickshell.screens
 
-	delegate: PanelWindow{
+	delegate: PanelWindow {
 		required property ShellScreen modelData
 		screen: modelData
 
-		anchors{
+		anchors {
 			top: true
 			bottom: true
 			left: true
@@ -25,25 +25,23 @@ Variants{
 
 		color: "black"
 
-	Image {
-            id: bgImage
-            anchors.fill: parent
-            fillMode: Image.PreserveAspectCrop
-            asynchronous: true
-            sourceSize: Qt.size(modelData.width, modelData.height)
+		Image {
+			id: bgImage
+			anchors.fill: parent
+			fillMode: Image.PreserveAspectCrop
+			asynchronous: true
+			sourceSize: Qt.size(modelData.width, modelData.height)
 
-            source: (Theme.wallpaperPath && Theme.wallpaperPath.startsWith("/")) 
-                ? ("file://" + Theme.wallpaperPath) 
-                : ""
+			source: (Theme.wallpaperPath && Theme.wallpaperPath.startsWith("/")) ? ("file://" + Theme.wallpaperPath) : ""
 
-            opacity: status === Image.Ready ? 1 : 0
+			opacity: status === Image.Ready ? 1 : 0
 
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: Theme.animationDuration
-                    easing.type: Theme.animationCurve
-                }
-            }
-    	}
-    }
+			Behavior on opacity {
+				NumberAnimation {
+					duration: Theme.animationDuration
+					easing.type: Theme.animationCurve
+				}
+			}
+		}
+	}
 }
