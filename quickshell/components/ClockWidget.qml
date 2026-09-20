@@ -7,7 +7,13 @@ BaseWidget {
 	id: root
 
 	readonly property bool isHovered: hover.containsMouse
-	MouseArea { id: hover; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; acceptedButtons: Qt.NoButton }
+	MouseArea {
+		id: hover
+		anchors.fill: parent
+		hoverEnabled: true
+		cursorShape: Qt.PointingHandCursor
+		acceptedButtons: Qt.NoButton
+	}
 
 	clipContent: false
 	targetWidth: isVertical ? timeText.implicitWidth + Theme.spacing : timeText.implicitWidth + Theme.widgetPadding + (isHovered ? dateLabel.implicitWidth + Theme.spacing * 2 : 0)
