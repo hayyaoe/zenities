@@ -83,15 +83,21 @@ QtObject {
 	readonly property color textMuted: textSurfaceVariant
 	readonly property color border: outlineVariant
 
-	// Bar Thickness
+	// Bar
 	readonly property int barThickness: Math.round(32 * scale)
+
+	// Bar Widgets
+	// Sizing
+	readonly property int widgetSize: Math.round(26 * scale)
+	readonly property int widgetRadius: Math.round(widgetSize / 2)
+	readonly property int widgetPadding: Math.round(4 * scale)
 
 	// Spacings
 	readonly property int padding: Math.round(8 * scale)
 	readonly property int spacing: Math.round(4 * scale)
 	readonly property int barMargin: Math.round(8 * scale)
 
-	// Rounding
+	// Container Rounding
 	readonly property int radius: Math.round(12 * scale)
 
 	// Screen Rounding
@@ -99,6 +105,15 @@ QtObject {
 
 	// Typography
 	readonly property string font: "IosevkaMono"
+
+	// Text Size
+	readonly property int fontSmall: Math.round(8 * scale)
+	readonly property int fontNormal: Math.round(10 * scale)
+	readonly property int fontLarge: Math.round(12 * scale)
+
+	// Icons Size
+	readonly property int iconSmall: Math.round(9 * scale)
+	readonly property int iconNormal: Math.round(14 * scale)
 
 	// Animation Settings
 	readonly property int animationDuration: 200
