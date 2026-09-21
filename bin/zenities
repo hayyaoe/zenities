@@ -132,6 +132,7 @@ cmd_doctor() {
         "matugen"
         "wpctl"
         "nmcli"
+	"libnotify"
         "bluetoothctl"
         "brightnessctl"
     )

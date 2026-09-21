@@ -1,2 +1,3 @@
 singleton Theme 1.0 Theme.qml
 singleton QuickshellTheme 1.0 QuickshellTheme.qml
+singleton ConfigLoader 1.0 ConfigLoader.qml

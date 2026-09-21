@@ -6,41 +6,21 @@ import Quickshell.Io
 QtObject {
 	id: root
 
-	property FileView configFile: FileView {
-		path: (Quickshell.env("XDG_CONFIG_HOME") || (Quickshell.env("HOME") + "/.config")) + "/zenities/config.json"
-		watchChanges: true
-		onFileChanged: reload()
-		onAdapterUpdated: writeAdapter()
-		Component.onCompleted: {
-			reload();
-		}
-
-		JsonAdapter {
-			id: settingsAdapter
-			property bool darkMode: (Quickshell.env("ZENITIES_DARK_MODE") !== "false")
-			property bool barFloating: false
-			property bool barRounded: false
-			property bool screenCorners: false
-			property string wallpaperPath: Quickshell.env("ZENITIES_WALLPAPER") || ""
-			property string barPosition: "top"
-			property real scale: 1.0
-		}
-	}
-
-	property bool darkMode: settingsAdapter.darkMode
-	property bool barFloating: settingsAdapter.barFloating
-	property bool barRounded: settingsAdapter.barRounded
-	property bool screenCorners: settingsAdapter.screenCorners
-	property string barPosition: settingsAdapter.barPosition || "top"
-	property string wallpaperPath: settingsAdapter.wallpaperPath
-	property real scale: settingsAdapter.scale || 1.0
+	readonly property FileView configFile: ConfigLoader.configFile
+	readonly property bool darkMode: ConfigLoader.darkMode
+	readonly property bool barFloating: ConfigLoader.barFloating
+	readonly property bool barRounded: ConfigLoader.barRounded
+	readonly property bool screenCorners: ConfigLoader.screenCorners
+	readonly property string barPosition: ConfigLoader.barPosition
+	readonly property string wallpaperPath: ConfigLoader.wallpaperPath
+	readonly property real scale: ConfigLoader.scale
 
 	function setWallpaper(path) {
-		settingsAdapter.wallpaperPath = path;
+		ConfigLoader.setWallpaper(path);
 	}
 
 	function setDarkMode(enabled) {
-		settingsAdapter.darkMode = enabled;
+		ConfigLoader.setDarkMode(enabled);
 	}
 
 	// Colors
