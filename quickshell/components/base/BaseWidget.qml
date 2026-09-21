@@ -12,7 +12,6 @@ Rectangle {
 	implicitHeight: Math.round(targetHeight)
 
 	property bool clipContent: true
-	// Disable size animation during bar position slide (barCanvas jumps 0ms, widgets must snap)
 	property bool animateSize: true
 	radius: Theme.radius
 	color: "transparent"

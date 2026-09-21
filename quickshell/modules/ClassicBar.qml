@@ -145,7 +145,7 @@ PanelWindow {
 			property: "opacity"
 			value: 1
 		}
-			ParallelAnimation {
+		ParallelAnimation {
 			NumberAnimation {
 				target: barTranslate
 				property: "x"
@@ -180,8 +180,10 @@ PanelWindow {
 			easing.type: Easing.OutCubic
 		}
 	}
-	// vertical/horizontal parity: ensure only relevant axis animates, pause scales with Theme
-	PropertyAnimation { id: dummy }
+
+	PropertyAnimation {
+		id: dummy
+	}
 
 	implicitWidth: isVertical ? Theme.barThickness + (activeFloating ? Theme.barMargin * 2 : (Theme.screenCorners ? Theme.screenRadius : 0)) : 0
 	implicitHeight: !isVertical ? Theme.barThickness + (activeFloating ? Theme.barMargin * 2 : (Theme.screenCorners ? Theme.screenRadius : 0)) : 0
@@ -298,6 +300,9 @@ PanelWindow {
 			Item {
 				Layout.fillWidth: true
 			}
+			BrightnessWidget {
+				animateSize: !barTransition.running
+			}
 			BatteryWidget {
 				animateSize: !barTransition.running
 			}
@@ -318,6 +323,11 @@ PanelWindow {
 			}
 			Item {
 				Layout.fillHeight: true
+			}
+			BrightnessWidget {
+				isVertical: root.isVertical
+				animateSize: !barTransition.running
+				Layout.alignment: Qt.AlignHCenter
 			}
 			BatteryWidget {
 				isVertical: root.isVertical
