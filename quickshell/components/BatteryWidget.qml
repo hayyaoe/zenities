@@ -15,8 +15,8 @@ BaseWidget {
 		acceptedButtons: Qt.NoButton
 	}
 
-	targetWidth: isVertical ? Theme.widgetSize : Theme.widgetSize + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitWidth + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitWidth + Theme.spacing : 0)
-	targetHeight: isVertical ? Theme.widgetSize + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitHeight + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitHeight + Theme.spacing : 0) : Theme.widgetSize
+	targetWidth: isVertical ? ring.width : ring.width + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitWidth + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitWidth + Theme.spacing : 0)
+	targetHeight: isVertical ? ring.height + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitHeight + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitHeight + Theme.spacing : 0) : Theme.widgetSize
 
 	layer.enabled: true
 	layer.samples: 4
@@ -74,7 +74,7 @@ BaseWidget {
 		}
 		Text {
 			id: percentLabel
-			text: `${Battery.percentage}%`
+			text: root.isVertical ? `${Battery.percentage}` : `${Battery.percentage}%`
 			font.family: Theme.font
 			font.pixelSize: root.isVertical ? Theme.fontSmall : Theme.fontLarge
 			horizontalAlignment: Text.AlignHCenter

@@ -4,7 +4,7 @@ import "../../theme"
 
 Item {
 	id: root
-	property real value: 0.0 // 0..1
+	property real value: 0.0
 	property color trackColor: Theme.surfaceContainerHigh
 	property color progressColor: Theme.primary
 	property real strokeWidth: 4 * Theme.scale
