@@ -124,25 +124,29 @@ cmd_init() {
 # Command: doctor
 cmd_doctor() {
     local core_deps=(
-        "quickshell"
-        "hyprland"
-        "hypridle"
-        "hyprsunset"
-        "jq"
-        "matugen"
-        "wpctl"
-        "nmcli"
-	"libnotify"
-        "bluetoothctl"
-        "brightnessctl"
+        "quickshell:quickshell"
+        "hyprland:hyprland"
+        "hypridle:hypridle"
+        "hyprsunset:hyprsunset"
+        "jq:jq"
+        "matugen:matugen"
+        "wpctl:wireplumber"
+        "pactl:pipewire-pulse"
+        "nmcli:networkmanager"
+        "bluetoothctl:bluez"
+        "brightnessctl:brightnessctl"
+        "ddcutil:ddcutil"
+        "notify-send:libnotify"
     )
     local missing=0
 
-    for bin in "${core_deps[@]}"; do
+    for entry in "${core_deps[@]}"; do
+        local bin="${entry%%:*}"
+        local pkg="${entry#*:}"
         if command -v "$bin" >/dev/null 2>&1; then
             printf "  %s✔%s %-16s %s\n" "$C_GREEN" "$C_RESET" "$bin" "($(command -v "$bin"))"
         else
-            printf "  %s✖%s %-16s %sMISSING%s\n" "$C_RED" "$C_RESET" "$bin" "$C_RED" "$C_RESET"
+            printf "  %s✖%s %-16s %sMISSING (install %s)%s\n" "$C_RED" "$C_RESET" "$bin" "$C_RED" "$pkg" "$C_RED" "$C_RESET"
             missing=$((missing + 1))
         fi
     done
