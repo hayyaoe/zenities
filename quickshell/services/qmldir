@@ -1,3 +1,4 @@
+singleton Audio 1.0 Audio.qml
 singleton Battery 1.0 Battery.qml
 singleton Brightness 1.0 Brightness.qml
 singleton Time 1.0 Time.qml

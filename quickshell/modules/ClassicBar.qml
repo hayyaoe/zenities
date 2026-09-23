@@ -293,12 +293,15 @@ PanelWindow {
 		id: horizontalLayout
 		RowLayout {
 			anchors.fill: parent
-			spacing: Theme.spacing
+			spacing: Theme.spacing * 2
 			WorkspaceIndicatorWidget {
 				animateSize: !barTransition.running
 			}
 			Item {
 				Layout.fillWidth: true
+			}
+			AudioWidget {
+				animateSize: !barTransition.running
 			}
 			BrightnessWidget {
 				animateSize: !barTransition.running
@@ -323,6 +326,11 @@ PanelWindow {
 			}
 			Item {
 				Layout.fillHeight: true
+			}
+			AudioWidget {
+				isVertical: root.isVertical
+				animateSize: !barTransition.running
+				Layout.alignment: Qt.AlignHCenter
 			}
 			BrightnessWidget {
 				isVertical: root.isVertical
