@@ -15,8 +15,16 @@ BaseWidget {
 		acceptedButtons: Qt.NoButton
 	}
 
-	targetWidth: isVertical ? ring.width : ring.width + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitWidth + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitWidth + Theme.spacing : 0)
-	targetHeight: isVertical ? ring.height + Theme.widgetPadding + (chargingReveal.revealed ? chargingReveal.implicitHeight + Theme.spacing : 0) + (percentReveal.revealed ? percentReveal.implicitHeight + Theme.spacing : 0) : Theme.widgetSize
+	readonly property real ringWidth: ring.width + Theme.widgetPadding
+	readonly property real ringHeight: ring.height + Theme.widgetPadding
+	readonly property real chargingWidth: chargingReveal.revealed ? chargingReveal.implicitWidth + Theme.spacing : 0
+	readonly property real chargingHeight: chargingReveal.revealed ? chargingReveal.implicitHeight + Theme.spacing : 0
+	readonly property real percentWidth: percentReveal.revealed ? percentReveal.implicitWidth + Theme.spacing : 0
+	readonly property real percentHeight: percentReveal.revealed ? percentReveal.implicitHeight + Theme.spacing : 0
+	readonly property real revealGap: (chargingReveal.revealed || percentReveal.revealed) ? Theme.spacing * 1.5 : 0
+
+	targetWidth: isVertical ? ring.width : ringWidth + chargingWidth + percentWidth + revealGap
+	targetHeight: isVertical ? ringHeight + chargingHeight + percentHeight : Theme.widgetSize
 
 	layer.enabled: true
 	layer.samples: 4

@@ -16,8 +16,15 @@ BaseWidget {
 	}
 
 	clipContent: false
-	targetWidth: isVertical ? timeText.implicitWidth + Theme.spacing : timeText.implicitWidth + Theme.widgetPadding + (isHovered ? dateLabel.implicitWidth + Theme.spacing * 2 : 0)
-	targetHeight: isVertical ? timeText.implicitHeight + Theme.widgetPadding + (isHovered ? dateLabel.implicitHeight + Theme.spacing : 0) : Theme.widgetSize
+
+	readonly property real timeWidth: timeText.implicitWidth + Theme.widgetPadding
+	readonly property real timeHeight: timeText.implicitHeight + Theme.widgetPadding
+	readonly property real dateWidth: dateReveal.revealed ? dateLabel.implicitWidth + Theme.spacing * 2 : 0
+	readonly property real dateHeight: dateReveal.revealed ? dateLabel.implicitHeight + Theme.spacing : 0
+	readonly property real revealGap: dateReveal.revealed ? Theme.spacing * 2.5 : 0
+
+	targetWidth: isVertical ? timeText.implicitWidth + Theme.spacing : timeWidth + dateWidth + revealGap
+	targetHeight: isVertical ? timeHeight + dateHeight : Theme.widgetSize
 
 	Text {
 		id: timeText

@@ -11,8 +11,18 @@ BaseWidget {
 	readonly property int workspaceCount: Hyprland.workspaces ? Hyprland.workspaces.values.length : 0
 	readonly property int activeWorkspaceCount: Hyprland.workspaces ? Hyprland.workspaces.values.filter(ws => ws.focused || ws.active).length : 0
 
-	targetWidth: isVertical ? Theme.widgetSize : (Math.max(0, activeWorkspaceCount) * (Theme.widgetSize * 0.45)) + (Math.max(0, workspaceCount - (1 + activeWorkspaceCount)) * Theme.widgetSize * 0.2) + (Math.max(0, workspaceCount - 1) * Theme.spacing * 2) + (Theme.padding * 2)
-	targetHeight: isVertical ? (Math.max(0, activeWorkspaceCount) * (Theme.widgetSize * 0.45)) + (Math.max(0, workspaceCount - (1 + activeWorkspaceCount)) * Theme.widgetSize * 0.2) + (Math.max(0, workspaceCount - 1) * Theme.spacing * 2) + (Theme.padding * 2) : Theme.widgetSize
+	// Cell extents along the stacking axis (the cross axis is always widgetSize)
+	readonly property real activeCellLength: Theme.widgetSize * 0.45
+	readonly property real inactiveCellLength: Theme.widgetSize * 0.2
+
+	readonly property real activeExtent: Math.max(0, activeWorkspaceCount) * activeCellLength
+	readonly property real inactiveExtent: Math.max(0, workspaceCount - (1 + activeWorkspaceCount)) * inactiveCellLength
+	readonly property real gapExtent: Math.max(0, workspaceCount - 1) * Theme.spacing * 2
+	readonly property real paddingExtent: Theme.padding * 2
+	readonly property real stackExtent: activeExtent + inactiveExtent + gapExtent + paddingExtent
+
+	targetWidth: isVertical ? Theme.widgetSize : stackExtent
+	targetHeight: isVertical ? stackExtent : Theme.widgetSize
 
 	GridLayout {
 		anchors.top: isVertical ? parent.top : undefined
@@ -34,8 +44,8 @@ BaseWidget {
 			delegate: Item {
 				id: delegateItem
 
-				implicitWidth: Math.round(isVertical ? (Theme.widgetSize * 0.2) : (modelData.active ? (Theme.widgetSize * 0.45) : (Theme.widgetSize * 0.2)))
-				implicitHeight: Math.round(isVertical ? (modelData.active ? (Theme.widgetSize * 0.45) : (Theme.widgetSize * 0.2)) : (Theme.widgetSize * 0.2))
+				implicitWidth: Math.round(isVertical ? root.inactiveCellLength : (modelData.active ? root.activeCellLength : root.inactiveCellLength))
+				implicitHeight: Math.round(isVertical ? (modelData.active ? root.activeCellLength : root.inactiveCellLength) : root.inactiveCellLength)
 
 				readonly property bool isHovered: mouseArea.containsMouse
 

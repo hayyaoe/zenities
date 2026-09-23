@@ -8,8 +8,8 @@ Item {
 	// Direction & Dimention
 	property bool isVertical: false
 	property bool isIconStart: false
-	property real length: Theme.widgetSize * 2
-	property real thickness: Theme.widgetSize * 0.2
+	property real length: Theme.widgetSize * 1.8
+	property real thickness: Theme.widgetSize * 0.24
 
 	// Value & Style
 	property real value: 0.0

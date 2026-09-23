@@ -1,10 +1,14 @@
 import QtQuick
+import QtQuick.Window
 import "./base"
 import "../theme"
 import "../services"
 
 BaseWidget {
 	id: root
+
+	readonly property var monitor: Brightness.forScreen(Screen.name)
+	visible: monitor !== null && monitor.isControllable
 
 	readonly property bool isHovered: hover.containsMouse
 	MouseArea {
@@ -16,8 +20,16 @@ BaseWidget {
 	}
 
 	clipContent: false
-	targetWidth: isVertical ? Theme.widgetSize : iconText.implicitWidth + Theme.spacing + (sliderReveal.revealed ? sliderReveal.implicitWidth + Theme.spacing * 2 : 0)
-	targetHeight: isVertical ? iconText.implicitHeight + Theme.spacing + (sliderReveal.revealed ? sliderReveal.implicitHeight + Theme.spacing : 0) : Theme.widgetSize
+
+	// Named terms so the size below reads as a plain sum
+	readonly property real iconWidth: iconText.implicitWidth + Theme.spacing
+	readonly property real iconHeight: iconText.implicitHeight + Theme.spacing
+	readonly property real sliderWidth: sliderReveal.revealed ? sliderReveal.implicitWidth + Theme.spacing * 2 : 0
+	readonly property real sliderHeight: sliderReveal.revealed ? sliderReveal.implicitHeight + Theme.spacing : 0
+	readonly property real revealGap: sliderReveal.revealed ? Theme.spacing * 2 : 0
+
+	targetWidth: isVertical ? Theme.widgetSize : iconWidth + sliderWidth + revealGap
+	targetHeight: isVertical ? iconHeight + sliderHeight : Theme.widgetSize
 
 	Text {
 		id: iconText
@@ -66,8 +78,11 @@ BaseWidget {
 			length: Math.round(Theme.widgetSize * 2)
 			width: implicitWidth
 			height: implicitHeight
-			value: Brightness.brightness
-			onMoved: val => Brightness.setBrightness(Math.max(val, 0.01))
+			value: root.monitor ? root.monitor.brightness : 0.0
+			onMoved: val => {
+				if (root.monitor)
+					root.monitor.setBrightness(Math.max(val, 0.01));
+			}
 		}
 	}
 }
