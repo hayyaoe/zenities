@@ -11,8 +11,7 @@ BaseWidget {
 	readonly property int workspaceCount: Hyprland.workspaces ? Hyprland.workspaces.values.length : 0
 	readonly property int activeWorkspaceCount: Hyprland.workspaces ? Hyprland.workspaces.values.filter(ws => ws.focused || ws.active).length : 0
 
-	// Cell extents along the stacking axis (the cross axis is always widgetSize)
-	readonly property real activeCellLength: Theme.widgetSize * 0.45
+	readonly property real activeCellLength: Theme.widgetSize * 0.4
 	readonly property real inactiveCellLength: Theme.widgetSize * 0.2
 
 	readonly property real activeExtent: Math.max(0, activeWorkspaceCount) * activeCellLength
@@ -77,7 +76,7 @@ BaseWidget {
 					color: "transparent"
 					border.color: modelData.focused || delegateItem.isHovered ? Theme.fg : Theme.tertiary
 					border.width: Math.round(1 * Theme.scale)
-					radius: modelData.focused ? size / 4 : size / 2
+					radius: Math.round(modelData.focused ? size * 0.25 : size * 0.5)
 					rotation: modelData.focused ? 135 : 0
 
 					Behavior on rotation {
