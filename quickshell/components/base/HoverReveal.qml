@@ -16,7 +16,6 @@ Item {
 	default property alias content: container.data
 
 	clip: true
-	// Opacity 0 alone still hit-tests child MouseAreas; drop out of input only once the fade-out finishes
 	visible: revealed || opacity > 0
 	opacity: revealed ? 1 : 0
 	implicitWidth: container.implicitWidth
@@ -25,7 +24,7 @@ Item {
 	Behavior on opacity {
 		enabled: animate
 		NumberAnimation {
-			duration: Theme.animationDuration * 0.5
+			duration: Theme.animationDuration * 0.25
 		}
 	}
 	Behavior on anchors.rightMargin {

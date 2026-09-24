@@ -18,6 +18,20 @@ PanelWindow {
 	WlrLayershell.exclusionMode: ready ? ExclusionMode.Normal : ExclusionMode.Ignore
 	WlrLayershell.exclusiveZone: ready ? (activeFloating ? Theme.barThickness + Theme.barMargin : Theme.barThickness) : 0
 
+	readonly property ShellScreen targetScreen: {
+		const name = Theme.barScreen;
+		const screens = Quickshell.screens;
+		if (name !== "") {
+			for (let i = 0; i < screens.length; i++) {
+				if (screens[i].name === name)
+					return screens[i];
+			}
+		}
+		return screens.length > 0 ? screens[0] : null;
+	}
+
+	screen: targetScreen
+
 	property bool ready: false
 	property bool activeFloating: Theme.barFloating || false
 	property string activePosition: Theme.barPosition || "top"
@@ -294,6 +308,10 @@ PanelWindow {
 		RowLayout {
 			anchors.fill: parent
 			spacing: Theme.spacing * 2
+			PowerMenuWidget {
+				Layout.rightMargin: -Theme.spacing
+				animateSize: !barTransition.running
+			}
 			WorkspaceIndicatorWidget {
 				animateSize: !barTransition.running
 			}
@@ -319,6 +337,12 @@ PanelWindow {
 		ColumnLayout {
 			anchors.fill: parent
 			spacing: Theme.spacing
+			PowerMenuWidget {
+				isVertical: root.isVertical
+				Layout.bottomMargin: -Theme.spacing
+				animateSize: !barTransition.running
+				Layout.alignment: Qt.AlignHCenter
+			}
 			WorkspaceIndicatorWidget {
 				isVertical: root.isVertical
 				animateSize: !barTransition.running
