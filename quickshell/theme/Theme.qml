@@ -12,6 +12,7 @@ QtObject {
 	readonly property bool barRounded: ConfigLoader.barRounded
 	readonly property bool screenCorners: ConfigLoader.screenCorners
 	readonly property string barPosition: ConfigLoader.barPosition
+	readonly property string barScreen: ConfigLoader.barScreen
 	readonly property string wallpaperPath: ConfigLoader.wallpaperPath
 	readonly property real scale: ConfigLoader.scale
 

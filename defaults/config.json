@@ -4,6 +4,7 @@
   "barPosition": "top",
   "barFloating": false,
   "barRounded": true,
+  "barScreen": "",
   "screenCorners": true,
   "scale": 1.0,
   "darkMode": true,

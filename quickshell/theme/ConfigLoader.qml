@@ -68,6 +68,11 @@ QtObject {
 				key: "wallpaperPath",
 				ok: typeof raw.wallpaperPath === "string",
 				message: "wallpaperPath must be a string"
+			},
+			{
+				key: "barScreen",
+				ok: typeof raw.barScreen === "string",
+				message: "barScreen must be a string (connector name or empty)"
 			}
 		];
 	}
@@ -153,6 +158,7 @@ QtObject {
 			property bool screenCorners: false
 			property string wallpaperPath: Quickshell.env("ZENITIES_WALLPAPER") || ""
 			property string barPosition: "top"
+			property string barScreen: ""
 			property real scale: 1.0
 		}
 	}
@@ -162,6 +168,7 @@ QtObject {
 	property bool barRounded: invalidKeys.barRounded ? false : settingsAdapter.barRounded
 	property bool screenCorners: invalidKeys.screenCorners ? false : settingsAdapter.screenCorners
 	property string barPosition: invalidKeys.barPosition ? "top" : (settingsAdapter.barPosition || "top")
+	property string barScreen: invalidKeys.barScreen ? "" : (settingsAdapter.barScreen || "")
 	property string wallpaperPath: invalidKeys.wallpaperPath ? "" : settingsAdapter.wallpaperPath
 	property real scale: invalidKeys.scale ? 1.0 : (settingsAdapter.scale || 1.0)
 
