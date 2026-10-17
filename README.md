@@ -9,8 +9,14 @@ It's time for a fresh start with Quickshell. This update focuses on migrating an
 Zenities strictly follows the XDG Base Directory specification to keep engine updates isolated from user configurations:
 
 * **Rice Space (`~/.local/share/zenities`)**: Core QML engine, system rules, and color generation templates. Managed entirely by upstream releases.
-* **User Space (`~/.config/zenities`)**: User layout preferences, dynamic color palettes, and auto-generated application themes.
+* **User Space (`~/.config/zenities`)**: Appearance preferences (bar position, floating/rounded modes, scale, wallpaper), dynamic color palettes, and auto-generated application themes. The widget set and its placement are curated upstream — user config tunes how the rice looks, never what sits in the bar.
 
+
+## Interaction Model
+
+Bar widgets are mouse-driven by design: hover to reveal, click to control. No keybindings are consumed by the bar, keeping the rice layout fully curated and keyboard conflicts nonexistent.
+
+Keyboard interaction is reserved for full overlay surfaces — the app launcher and wallpaper selector — which own focus when open and are navigated entirely with arrows and Return.
 
 ## Dependencies
 
