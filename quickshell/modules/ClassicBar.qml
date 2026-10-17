@@ -265,6 +265,24 @@ PanelWindow {
 			anchors.bottomMargin: root.isVertical ? Theme.padding : 0
 			sourceComponent: root.isVertical ? verticalLayout : horizontalLayout
 		}
+		Loader {
+			// Destroy + re-create on every orientation flip. This is the
+			// one BaseWidget that can't ride inside the layouts' Loader
+			// (it floats dead-centre), and surviving the flip with its
+			// conditional-anchor + size-Behavior bindings intact leaves
+			// them anchor-conflict-killed: bar stuck on the previous
+			// mode's numbers after top->left->top (receipts logged
+			// during diagnosis: horizontal at rest with targetW=7,
+			// titleView.width=-26 while its binding source read 86.3).
+			// Fresh instance = fresh bindings, same deal the Layout
+			// widgets get from the Loader above.
+			id: mediaLoader
+			sourceComponent: root.isVertical ? mediaV : mediaH
+			width: implicitWidth
+			height: implicitHeight
+			x: barCanvas.width / 2 - width / 2
+			y: barCanvas.height / 2 - height / 2
+		}
 		Repeater {
 			model: (!root.activeFloating && Theme.screenCorners) ? 2 : 0
 			CornerShape {
@@ -371,6 +389,19 @@ PanelWindow {
 				animateSize: !barTransition.running
 				Layout.alignment: Qt.AlignHCenter
 			}
+		}
+	}
+	Component {
+		id: mediaH
+		MediaWidget {
+			animateSize: !barTransition.running
+		}
+	}
+	Component {
+		id: mediaV
+		MediaWidget {
+			isVertical: true
+			animateSize: !barTransition.running
 		}
 	}
 }
