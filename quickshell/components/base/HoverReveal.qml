@@ -24,7 +24,7 @@ Item {
 	Behavior on opacity {
 		enabled: animate
 		NumberAnimation {
-			duration: Theme.animationDuration * 0.25
+			duration: Theme.animationDuration * 0.4
 		}
 	}
 	Behavior on anchors.rightMargin {

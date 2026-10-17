@@ -21,7 +21,7 @@ BaseWidget {
 	readonly property real chargingHeight: chargingReveal.revealed ? chargingReveal.implicitHeight * 1.1  : 0
 	readonly property real percentWidth: percentReveal.revealed ? percentReveal.implicitWidth + Theme.spacing : 0
 	readonly property real percentHeight: percentReveal.revealed ? percentReveal.implicitHeight + Theme.spacing : 0
-	readonly property real revealGap: (chargingReveal.revealed || percentReveal.revealed) ? Theme.spacing * 1.5 : 0
+	readonly property real revealGap: (chargingReveal.revealed || percentReveal.revealed) ? Theme.spacing * 1.7 : 0
 
 	targetWidth: isVertical ? ring.width : ringWidth + chargingWidth + percentWidth + revealGap
 	targetHeight: isVertical ? ringHeight + chargingHeight + percentHeight : Theme.widgetSize
